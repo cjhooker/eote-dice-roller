@@ -22,28 +22,26 @@
 
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="https://eote-hangouts-dice-roller.googlecode.com/git/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://eote-hangouts-dice-roller.googlecode.com/git/css/styles.css">
 </head>
 <body>
+	<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
-<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+	<h3>Edge of the Empire Dice Roller</h3>
 
-<h3>Simple Hangout App LOCAL</h3>
+	<p>
+	<input class="button" type="button" value="Show participants!" id="showParticipants" 
+		style="visibility:hidden;"
+		onClick="showParticipants()"/>
+	</p>
 
-<p>
-<input class="button" type="button" value="Show participants!" id="showParticipants" 
-    style="visibility:hidden;"
-    onClick="showParticipants()"/>
-</p>
+	<div id="participantsDiv"></div>
 
-<div id="participantsDiv"></div>
+	<hr>
 
-<hr>
-
-<p><a href="http://developers.google.com/+/hangouts/getting-started">Read the docs</a> to learn more about developing hangouts!</a></p>
-
-<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/app.js"></script>
+	<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/app.js"></script>
 </body>
+</html>
 ]]>
 </Content>
 </Module>
