@@ -33,14 +33,6 @@ function showParticipants() {
     div.innerHTML = retVal;
 }
 
-function rollGreen() {
-	rollDie("green");
-}
-
-function rollYellow() {
-	rollDie("yellow");
-}
-
 function rollDie(color) {
 	var messages = new Array();
 	if (gapi.hangout.data.getValue('messages')) {

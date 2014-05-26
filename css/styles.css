@@ -1,4 +1,12 @@
-﻿.button {
+﻿#buttonContainer {
+	 visibility: hidden;
+}
+
+#outputArea {
+	overflow: scroll;
+}
+
+.button {
   border-radius: 3px;
   -moz-border-radius: 3px;
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
@@ -14,6 +22,16 @@
 #rollYellow.button {
   background: -webkit-gradient(linear, left top, left bottom, from(#ff0), to(#aa0));
   background: -moz-linear-gradient(top, #ff0, #aa0);  
+}
+
+#rollPurple.button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#f0f), to(#a0a));
+  background: -moz-linear-gradient(top, #f0f, #a0a);  
+}
+
+#rollRed.button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#a00));
+  background: -moz-linear-gradient(top, #f00, #a00);  
 }
 
 .button:active {
