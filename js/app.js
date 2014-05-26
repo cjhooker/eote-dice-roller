@@ -34,6 +34,14 @@ function showParticipants() {
 }
 
 function rollGreen() {
+	rollDie("green");
+}
+
+function rollYellow() {
+	rollDie("yellow");
+}
+
+function rollDie(color) {
 	var messages = new Array();
 	if (gapi.hangout.data.getValue('messages')) {
 		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
@@ -43,12 +51,13 @@ function rollGreen() {
 	message.type = "roll";
 	message.participant = gapi.hangout.getLocalParticipant();
 	message.data = new Object();
-	message.data.die = "green";
+	message.data.die = color;
 	message.data.quantity = 1;
-	message.data.result = getRoll(dice.green);
+	message.data.result = getRoll(dice[color]);
 	messages.push(message);
 	
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
+
 }
 
 function getRoll(die) {

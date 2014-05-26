@@ -34,6 +34,8 @@
 		<br/>
 		<input class="button" type="button" value="Roll Green" id="rollGreen" onClick="rollGreen()"/>
 		<br/>
+		<input class="button" type="button" value="Roll Yellow" id="rollYellow" onClick="rollYellow()"/>
+		<br/>
 		<input class="button" type="button" value="Clear messages" id="clearMessages" onClick="clearMessages()"/>
 	</div>
 
