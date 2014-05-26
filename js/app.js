@@ -65,6 +65,8 @@ function displayMessage(message) {
 	} else if (message.type = "html") {
 		output += message.data.html;
 	}
+	
+	return output;
 }
 
 var onStateChange = function(eventObj) {
