@@ -60,7 +60,7 @@ var onStateChange = function(eventObj) {
 	
 	if (messages.length == 0) {
 		localMessages = new Array();
-		outputArea.innnerHTML = "";
+		outputArea.innerHTML = "";
 	}
 	
 };
