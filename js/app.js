@@ -1,6 +1,17 @@
 ﻿var outputArea = document.getElementById('outputArea');
 var localMessages = new Array();
 
+function init() {
+    // When API is ready...
+    gapi.hangout.onApiReady.add(
+        function (eventObj) {
+            if (eventObj.isApiReady) {
+                document.getElementById('buttonContainer')
+                  .style.visibility = 'visible';
+			}
+        });
+}
+
 function showParticipants() {
     var participants = gapi.hangout.getParticipants();
 
@@ -34,20 +45,6 @@ function rollGreen() {
 function clearMessages() {
 	gapi.hangout.data.setValue("messages", JSON.stringify(new Array()));
 }
-
-function init() {
-    // When API is ready...
-    gapi.hangout.onApiReady.add(
-        function (eventObj) {
-            if (eventObj.isApiReady) {
-                document.getElementById('showParticipants')
-                  .style.visibility = 'visible';
-                document.getElementById('rollGreen')
-                  .style.visibility = 'visible';
-			}
-        });
-}
-
 var onStateChange = function(eventObj) {
 	var messages = new Array();
 	if (gapi.hangout.data.getValue('messages')) {
