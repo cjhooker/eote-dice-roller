@@ -38,13 +38,35 @@ function rollGreen() {
 	if (gapi.hangout.data.getValue('messages')) {
 		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
 	}
-	messages.push("Green rolled at " + (new Date()).toLocaleTimeString() + " by " + gapi.hangout.getLocalParticipant().person.displayName + "<br/>");
+	
+	var message = new Object();
+	message.type = "roll";
+	message.participant = gapi.hangout.getLocalParticipant();
+	message.data = new Object();
+	message.data.die = "green";
+	message.data.quantity = 1;
+	message.data.result = "SSAAA";
+	messages.push(message);
+	
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
 }
 
 function clearMessages() {
 	gapi.hangout.data.setValue("messages", JSON.stringify(new Array()));
 }
+
+function displayMessage(message) {
+	var output = "";
+	
+	if (message.type = "roll") {
+		output += message.participant.person.displayName + ": ";
+		output += message.data.die + ": ";
+		output += message.data.result + "<br/>";
+	} else if (message.type = "html") {
+		output += message.data.html;
+	}
+}
+
 var onStateChange = function(eventObj) {
 	var messages = new Array();
 	if (gapi.hangout.data.getValue('messages')) {
@@ -54,7 +76,7 @@ var onStateChange = function(eventObj) {
 	if (messages.length > localMessages.length)	{
 		for (var i = localMessages.length; i < messages.length; i++) {
 			localMessages.push(messages[i]);
-			outputArea.innerHTML += messages[i];
+			outputArea.innerHTML += displayMessage(messages[i]);
 		}
 	}
 	
