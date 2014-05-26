@@ -20,22 +20,9 @@
 	<Content type="html"><![CDATA[     
 
 <html>
-<style type="text/css">
-<!--
-.button {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-  background: -moz-linear-gradient(top, #fff, #ddd);  
-  border: 1px solid #bbb;
-}
-
-.button:active {
-	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
-	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
-
--->
-</style>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
 <body>
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
