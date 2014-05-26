@@ -1,4 +1,6 @@
-﻿function showParticipants() {
+﻿var outputArea = document.getElementById('outputArea');
+
+function showParticipants() {
     var participants = gapi.hangout.getParticipants();
 
     var retVal = '<p>Participants: </p><ul>';
@@ -20,8 +22,7 @@
 }
 
 function rollGreen() {
-	var div = document.getElementById('outputArea');
-	div.innerHTML += "Green rolled!<br/>";
+	gapi.hangout.data.setValue("setGreen", "Green rolled!<br/>");
 }
 
 function init() {
@@ -36,6 +37,23 @@ function init() {
 			}
         });
 }
+
+var onStateChange = function(eventObj) {
+	var updates = '';
+	for (var i = 0; i < eventObj.addedKeys.length; ++i) {
+		updates += 'Added: ' + eventObj.addedKeys[i].key + ', ' +
+			eventObj.addedKeys[i].value + ', ' +
+			eventObj.addedKeys[i].timestamp + '<br/>';
+	}
+	for (var j = 0; j < eventObj.removedKeys.length; ++j) {
+		updates += 'Removed: ' + eventObj.removedKeys[j] + '<br/>';
+	}
+	outputArea.innerHTML += updates;
+	state_ = eventObj.state;
+	metadata_ = eventObj.metadata;
+};
+
+gapi.hangout.data.onStateChanged.add(onStateChange);
 
 // Wait for gadget to load.
 gadgets.util.registerOnLoadHandler(init);
