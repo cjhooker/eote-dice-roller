@@ -49,7 +49,7 @@ function rollDie(color) {
 	
 	var message = new Object();
 	message.type = "roll";
-	message.participantId = gapi.hangout.getLocalParticipant().person.id;
+	message.participantId = gapi.hangout.getLocalParticipant().id;
 	message.data = new Object();
 	message.data.die = color;
 	message.data.quantity = 1;
