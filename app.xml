@@ -42,6 +42,7 @@
 	<hr>
 	<div id="outputArea">
 	</div>
+	<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/data.js"></script>
 	<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/app.js"></script>
 </body>
 </html>

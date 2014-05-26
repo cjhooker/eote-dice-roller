@@ -45,7 +45,7 @@ function rollGreen() {
 	message.data = new Object();
 	message.data.die = "green";
 	message.data.quantity = 1;
-	message.data.result = "SSAAA";
+	message.data.result = dice.green[2];
 	messages.push(message);
 	
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
