@@ -46,18 +46,22 @@ function init() {
 
 var onStateChange = function(eventObj) {
 	//var updates = '';
-	if (eventObj.addedKeys["messages"])
-	{
-		var eventMessages = JSON.parse(eventObj.addedKeys["messages"]);
-		if (eventMessages.length > localMessages.length)
+	var messages = new Array();
+	if (gapi.hangout.data.getValue('messages')) {
+		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
+	}
+	// if (eventObj.addedKeys["messages"])
+	// {
+		//var eventMessages = JSON.parse(eventObj.addedKeys["messages"]);
+		if (messages.length > localMessages.length)
 		{
-			for (var i = localMessages.length; i < eventMessages.length; i++)
+			for (var i = localMessages.length; i < messages.length; i++)
 			{
-				localMessages.push(eventMessages[i]);
-				outputArea.innerHTML += eventMessages[i];
+				localMessages.push(messages[i]);
+				outputArea.innerHTML += messages[i];
 			}
 		}
-	}
+	// }
 	// for (var i = 0; i < eventObj.addedKeys.length; ++i) {
 		// updates += 'Added: ' + eventObj.addedKeys[i].key + ', ' +
 			// eventObj.addedKeys[i].value + ', ' +
