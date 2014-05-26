@@ -49,7 +49,7 @@ function rollDie(color) {
 	
 	var message = new Object();
 	message.type = "roll";
-	message.participant = gapi.hangout.getLocalParticipant();
+	message.participantId = gapi.hangout.getLocalParticipant().person.id;
 	message.data = new Object();
 	message.data.die = color;
 	message.data.quantity = 1;
@@ -73,7 +73,7 @@ function displayMessage(message) {
 	var output = "";
 	
 	if (message.type = "roll") {
-		output += message.participant.person.displayName + ": ";
+		output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
 		output += message.data.die + ": ";
 		output += message.data.result + "<br/>";
 	} else if (message.type = "html") {
