@@ -33,12 +33,16 @@
 	<input class="button" type="button" value="Show participants!" id="showParticipants" 
 		style="visibility:hidden;"
 		onClick="showParticipants()"/>
+	<input class="button" type="button" value="Roll Green" id="rollGreen" 
+		style="visibility:hidden;"
+		onClick="rollGreen()"/>
 	</p>
 
 	<div id="participantsDiv"></div>
 
 	<hr>
-
+	<div id="outputArea">
+	</div>
 	<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/app.js"></script>
 </body>
 </html>

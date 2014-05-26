@@ -19,6 +19,11 @@
     div.innerHTML = retVal;
 }
 
+function rollGreen() {
+	var div = document.getElementById('outputArea');
+	div.innerHTML += "Green rolled!<br/>";
+}
+
 function init() {
     // When API is ready...
     gapi.hangout.onApiReady.add(
