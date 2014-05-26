@@ -31,6 +31,10 @@ function rollGreen() {
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
 }
 
+function clearMessages() {
+	gapi.hangout.data.setValue("messages", JSON.stringify(new Array()));
+}
+
 function init() {
     // When API is ready...
     gapi.hangout.onApiReady.add(
@@ -45,34 +49,23 @@ function init() {
 }
 
 var onStateChange = function(eventObj) {
-	//var updates = '';
 	var messages = new Array();
 	if (gapi.hangout.data.getValue('messages')) {
 		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
 	}
-	// if (eventObj.addedKeys["messages"])
-	// {
-		//var eventMessages = JSON.parse(eventObj.addedKeys["messages"]);
-		if (messages.length > localMessages.length)
-		{
-			for (var i = localMessages.length; i < messages.length; i++)
-			{
-				localMessages.push(messages[i]);
-				outputArea.innerHTML += messages[i];
-			}
+
+	if (messages.length > localMessages.length)	{
+		for (var i = localMessages.length; i < messages.length; i++) {
+			localMessages.push(messages[i]);
+			outputArea.innerHTML += messages[i];
 		}
-	// }
-	// for (var i = 0; i < eventObj.addedKeys.length; ++i) {
-		// updates += 'Added: ' + eventObj.addedKeys[i].key + ', ' +
-			// eventObj.addedKeys[i].value + ', ' +
-			// eventObj.addedKeys[i].timestamp + '<br/>';
-	// }
-	// for (var j = 0; j < eventObj.removedKeys.length; ++j) {
-		// updates += 'Removed: ' + eventObj.removedKeys[j] + '<br/>';
-	// }
+	}
 	
-	// state_ = eventObj.state;
-	// metadata_ = eventObj.metadata;
+	if (messages.length == 0) {
+		localMessages = new Array();
+		outputArea.innnerHTML = "";
+	}
+	
 };
 
 gapi.hangout.data.onStateChanged.add(onStateChange);
