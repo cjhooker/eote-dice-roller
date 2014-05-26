@@ -31,7 +31,9 @@ function init() {
             if (eventObj.isApiReady) {
                 document.getElementById('showParticipants')
                   .style.visibility = 'visible';
-            }
+                document.getElementById('rollGreen')
+                  .style.visibility = 'visible';
+			}
         });
 }
 
