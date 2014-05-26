@@ -22,7 +22,7 @@ function showParticipants() {
 }
 
 function rollGreen() {
-	gapi.hangout.data.setValue("setGreen" + (new Date()) , "Green rolled!<br/>");
+	gapi.hangout.data.setValue("setGreen", "Green rolled at " + (new Date()).toLocaleTime() + "<br/>");
 }
 
 function init() {
