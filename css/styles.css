@@ -3,7 +3,8 @@
 }
 
 #outputArea {
-	overflow: scroll;
+	overflow: auto;
+	height: 500px;
 }
 
 .button {
@@ -25,13 +26,24 @@
 }
 
 #rollPurple.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#f0f), to(#a0a));
-  background: -moz-linear-gradient(top, #f0f, #a0a);  
+  background: -webkit-gradient(linear, left top, left bottom, from(#a0a), to(#707));
+  background: -moz-linear-gradient(top, #a0a, #707);  
 }
 
 #rollRed.button {
   background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#a00));
   background: -moz-linear-gradient(top, #f00, #a00);  
+}
+
+#rollBlue.button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#55f), to(#55a));
+  background: -moz-linear-gradient(top, #55f, #55a);  
+}
+
+#rollBlack.button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#222));
+  background: -moz-linear-gradient(top, #000, #222);  
+  color: #fff;
 }
 
 .button:active {

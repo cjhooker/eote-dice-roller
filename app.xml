@@ -32,13 +32,17 @@
 	<div id="buttonContainer">
 		<input class="button" type="button" value="Show participants!" id="showParticipants" onClick="showParticipants()"/>
 		<br/>
-		<input class="button" type="button" value="Roll Green" id="rollGreen" onClick="rollDie('green')"/>
+		<input class="button" type="button" value="Green" id="rollGreen" onClick="rollDie('green')"/>
 		<br/>
-		<input class="button" type="button" value="Roll Yellow" id="rollYellow" onClick="rollDie('yellow')"/>
+		<input class="button" type="button" value="Yellow" id="rollYellow" onClick="rollDie('yellow')"/>
 		<br/>
-		<input class="button" type="button" value="Roll Purple" id="rollPurple" onClick="rollDie('purple')"/>
+		<input class="button" type="button" value="Purple" id="rollPurple" onClick="rollDie('purple')"/>
 		<br/>
-		<input class="button" type="button" value="Roll Red" id="rollRed" onClick="rollDie('red')"/>
+		<input class="button" type="button" value="Red" id="rollRed" onClick="rollDie('red')"/>
+		<br/>
+		<input class="button" type="button" value="Blue" id="rollPurple" onClick="rollDie('blue')"/>
+		<br/>
+		<input class="button" type="button" value="Black" id="rollBlack" onClick="rollDie('black')"/>
 		<br/>
 		<input class="button" type="button" value="Clear messages" id="clearMessages" onClick="clearMessages()"/>
 	</div>
