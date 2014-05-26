@@ -23,7 +23,10 @@ function showParticipants() {
 }
 
 function rollGreen() {
-	var messages = JSON.parse(gapi.hangout.data.getValue('messages'));
+	var messages = new Array();
+	if (gapi.hangout.data.getValue('messages')) {
+		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
+	}
 	messages.push("Green rolled at " + (new Date()).toLocaleTimeString() + "<br/>");
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
 }
