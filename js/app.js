@@ -84,7 +84,8 @@ var onStateChange = function(eventObj) {
 	if (messages.length > localMessages.length)	{
 		for (var i = localMessages.length; i < messages.length; i++) {
 			localMessages.push(messages[i]);
-			outputArea.innerHTML += displayMessage(messages[i]);
+			// Show the new message at the top
+			outputArea.innerHTML = displayMessage(messages[i]) + outputArea.innerHTML;
 		}
 	}
 	

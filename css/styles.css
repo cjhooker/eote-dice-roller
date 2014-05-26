@@ -1,10 +1,29 @@
-﻿#buttonContainer {
-	 visibility: hidden;
+﻿html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
 
-#outputArea {
-	overflow: auto;
-	height: 500px;
+#container {
+    display: table;
+    height: 100%;
+    width: 100%;
+    background: yellow;
+}
+
+#header {
+    display: table-row;
+    background: gray;
+}
+
+#content {
+    display: table-row;  /* height is dynamic, and will expand... */
+    height: 100%;        /* ...as content is added (won't scroll) */
+    background: turquoise;
+}
+
+#buttonContainer {
+	 visibility: hidden;
 }
 
 .button {

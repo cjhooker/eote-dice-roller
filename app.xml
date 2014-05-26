@@ -26,31 +26,35 @@
 </head>
 <body>
 	<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+	<div id="container">
+		<div id="header">
+			<h3>Edge of the Empire Dice Roller</h3>
 
-	<h3>Edge of the Empire Dice Roller</h3>
+			<div id="buttonContainer">
+				<input class="button" type="button" value="Show participants!" id="showParticipants" onClick="showParticipants()"/>
+				<br/>
+				<input class="button" type="button" value="Green" id="rollGreen" onClick="rollDie('green')"/>
+				<br/>
+				<input class="button" type="button" value="Yellow" id="rollYellow" onClick="rollDie('yellow')"/>
+				<br/>
+				<input class="button" type="button" value="Purple" id="rollPurple" onClick="rollDie('purple')"/>
+				<br/>
+				<input class="button" type="button" value="Red" id="rollRed" onClick="rollDie('red')"/>
+				<br/>
+				<input class="button" type="button" value="Blue" id="rollBlue" onClick="rollDie('blue')"/>
+				<br/>
+				<input class="button" type="button" value="Black" id="rollBlack" onClick="rollDie('black')"/>
+				<br/>
+				<input class="button" type="button" value="Clear messages" id="clearMessages" onClick="clearMessages()"/>
+			</div>
+			
+			<div id="participantsDiv"></div>
+		</div>
 
-	<div id="buttonContainer">
-		<input class="button" type="button" value="Show participants!" id="showParticipants" onClick="showParticipants()"/>
-		<br/>
-		<input class="button" type="button" value="Green" id="rollGreen" onClick="rollDie('green')"/>
-		<br/>
-		<input class="button" type="button" value="Yellow" id="rollYellow" onClick="rollDie('yellow')"/>
-		<br/>
-		<input class="button" type="button" value="Purple" id="rollPurple" onClick="rollDie('purple')"/>
-		<br/>
-		<input class="button" type="button" value="Red" id="rollRed" onClick="rollDie('red')"/>
-		<br/>
-		<input class="button" type="button" value="Blue" id="rollBlue" onClick="rollDie('blue')"/>
-		<br/>
-		<input class="button" type="button" value="Black" id="rollBlack" onClick="rollDie('black')"/>
-		<br/>
-		<input class="button" type="button" value="Clear messages" id="clearMessages" onClick="clearMessages()"/>
-	</div>
-
-	<div id="participantsDiv"></div>
-
-	<hr>
-	<div id="outputArea">
+		<div id="content">
+			<div id="outputArea">
+			</div>
+		</div>
 	</div>
 	<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/data.js"></script>
 	<script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/app.js"></script>
