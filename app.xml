@@ -40,7 +40,7 @@
 		<br/>
 		<input class="button" type="button" value="Red" id="rollRed" onClick="rollDie('red')"/>
 		<br/>
-		<input class="button" type="button" value="Blue" id="rollPurple" onClick="rollDie('blue')"/>
+		<input class="button" type="button" value="Blue" id="rollBlue" onClick="rollDie('blue')"/>
 		<br/>
 		<input class="button" type="button" value="Black" id="rollBlack" onClick="rollDie('black')"/>
 		<br/>

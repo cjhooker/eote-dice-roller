@@ -28,6 +28,7 @@
 #rollPurple.button {
   background: -webkit-gradient(linear, left top, left bottom, from(#a0a), to(#707));
   background: -moz-linear-gradient(top, #a0a, #707);  
+  color: white;
 }
 
 #rollRed.button {
