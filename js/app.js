@@ -138,7 +138,10 @@ function displayMessage(message) {
 		//output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
 		output += "<img class='person-image' src='" + person.image.url + "'/> ";
 		output += message.data.diceRolled.join("") + "<br/>";
-		output += message.data.diceResults.join(",") + "<br/>";
+		for (var diceResult in message.data.diceResults) {
+			output += getImagesHtml(diceResult) + "&nbsp;";
+		}
+		output += "<br/>";
 		output += getImagesHtml(message.data.overallResult) + "<br/>";
 	} else if (message.type = "html") {
 		output += message.data.html;
