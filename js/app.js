@@ -45,7 +45,7 @@ function roll() {
 	
 	var rollResult = "";
 	for (var color in dice) {
-		for (var i=0; i < document.getElementById("qty" + color); i++) {
+		for (var i=0; i < document.getElementById("qty" + color).value; i++) {
 			rollResult += getRoll(dice[color]);
 		}
 	}
