@@ -45,11 +45,11 @@
 				<input class="button die-button" type="button" value="Red" id="rollRed" onClick="clearQty('Red')"/>
 				<input type="number" value="0" id="qtyRed" class="qty-text-box" />
 				<br/>
-				<input class="button die-button" type="button" value="Blue" id="rollBlue" onClick="clearQty('Blue')"/>
-				<input type="number" value="0" id="qtyBlue" class="qty-text-box" />
+				<input class="button die-button" type="button" value="Boost" id="rollBoost" onClick="clearQty('Boost')"/>
+				<input type="number" value="0" id="qtyBoost" class="qty-text-box" />
 				<br/>
-				<input class="button die-button" type="button" value="Black" id="rollBlack" onClick="clearQty('Black')"/>
-				<input type="number" value="0" id="qtyBlack" class="qty-text-box" />
+				<input class="button die-button" type="button" value="Setback" id="rollSetback" onClick="clearQty('Setback')"/>
+				<input type="number" value="0" id="qtySetback" class="qty-text-box" />
 				<br/>
 				<input class="button" type="button" value="ROLL!" id="roll" onClick="roll()"/>
 				<br/>

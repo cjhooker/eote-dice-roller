@@ -69,12 +69,12 @@
 	background: -moz-linear-gradient(top, #f00, #a00);  
 }
 
-#rollBlue.button {
-	background: -webkit-gradient(linear, left top, left bottom, from(#55f), to(#55a));
-	background: -moz-linear-gradient(top, #55f, #55a);  
+#rollBoost.button {
+	background: -webkit-gradient(linear, left top, left bottom, from(#77f), to(#77a));
+	background: -moz-linear-gradient(top, #77f, #77a);  
 }
 
-#rollBlack.button {
+#rollSetback.button {
 	background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#222));
 	background: -moz-linear-gradient(top, #000, #222);  
 	color: #fff;
