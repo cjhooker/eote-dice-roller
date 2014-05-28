@@ -71,9 +71,9 @@ function getOverallResult(diceResults) {
 	var allResults = diceResults.join("");
 	var successes = (allResults.match(/S/g) || []).length;
 	var failures = (allResults.match(/F/g) || []).length;
-	var advantages (allResults.match(/A/g) || []).length;
+	var advantages = (allResults.match(/A/g) || []).length;
 	var threats = (allResults.match(/T/g) || []).length;
-	var triumphs (allResults.match(/\*/g) || []).length;
+	var triumphs = (allResults.match(/\*/g) || []).length;
 	var despairs = (allResults.match(/X/g) || []).length;
 	
 	if (successes > failures) {
