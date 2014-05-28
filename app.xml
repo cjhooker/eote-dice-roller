@@ -33,22 +33,22 @@
 			<div id="buttonContainer">
 				<input class="button" type="button" value="Show participants!" id="showParticipants" onClick="showParticipants()"/>
 				<br/>
-				<input class="button" type="button" value="Green" id="rollGreen" onClick="clearQty('Green')"/>
+				<input class="button die-button" type="button" value="Green" id="rollGreen" onClick="clearQty('Green')"/>
 				<input type="number" value="0" id="qtyGreen" class="qty-text-box" />
 				<br/>
-				<input class="button" type="button" value="Yellow" id="rollYellow" onClick="clearQty('Yellow')"/>
+				<input class="button die-button" type="button" value="Yellow" id="rollYellow" onClick="clearQty('Yellow')"/>
 				<input type="number" value="0" id="qtyYellow" class="qty-text-box" />
 				<br/>
-				<input class="button" type="button" value="Purple" id="rollPurple" onClick="clearQty('Purple')"/>
+				<input class="button die-button" type="button" value="Purple" id="rollPurple" onClick="clearQty('Purple')"/>
 				<input type="number" value="0" id="qtyPurple" class="qty-text-box" />
 				<br/>
-				<input class="button" type="button" value="Red" id="rollRed" onClick="clearQty('Red')"/>
+				<input class="button die-button" type="button" value="Red" id="rollRed" onClick="clearQty('Red')"/>
 				<input type="number" value="0" id="qtyRed" class="qty-text-box" />
 				<br/>
-				<input class="button" type="button" value="Blue" id="rollBlue" onClick="clearQty('Blue')"/>
+				<input class="button die-button" type="button" value="Blue" id="rollBlue" onClick="clearQty('Blue')"/>
 				<input type="number" value="0" id="qtyBlue" class="qty-text-box" />
 				<br/>
-				<input class="button" type="button" value="Black" id="rollBlack" onClick="clearQty('Black')"/>
+				<input class="button die-button" type="button" value="Black" id="rollBlack" onClick="clearQty('Black')"/>
 				<input type="number" value="0" id="qtyBlack" class="qty-text-box" />
 				<br/>
 				<input class="button" type="button" value="ROLL!" id="roll" onClick="roll()"/>

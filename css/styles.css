@@ -37,46 +37,50 @@
 }
 
 .button {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-  background: -moz-linear-gradient(top, #fff, #ddd);  
-  border: 1px solid #000;
-  width: 60px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+	background: -moz-linear-gradient(top, #fff, #ddd);  
+	border: 1px solid #000;
+}
+
+.die-button {
+	width: 60px;
 }
 
 #rollGreen.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#0f0), to(#0a0));
-  background: -moz-linear-gradient(top, #0f0, #0a0);  
+	background: -webkit-gradient(linear, left top, left bottom, from(#0f0), to(#0a0));
+	background: -moz-linear-gradient(top, #0f0, #0a0);  
 }
 
 #rollYellow.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#ff0), to(#aa0));
-  background: -moz-linear-gradient(top, #ff0, #aa0);  
+	background: -webkit-gradient(linear, left top, left bottom, from(#ff0), to(#aa0));
+	background: -moz-linear-gradient(top, #ff0, #aa0);  
 }
 
 #rollPurple.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#a0a), to(#707));
-  background: -moz-linear-gradient(top, #a0a, #707);  
-  color: white;
+	background: -webkit-gradient(linear, left top, left bottom, from(#a0a), to(#707));
+	background: -moz-linear-gradient(top, #a0a, #707);  
+	color: white;
 }
 
 #rollRed.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#a00));
-  background: -moz-linear-gradient(top, #f00, #a00);  
+	background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#a00));
+	background: -moz-linear-gradient(top, #f00, #a00);  
 }
 
 #rollBlue.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#55f), to(#55a));
-  background: -moz-linear-gradient(top, #55f, #55a);  
+	background: -webkit-gradient(linear, left top, left bottom, from(#55f), to(#55a));
+	background: -moz-linear-gradient(top, #55f, #55a);  
 }
 
 #rollBlack.button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#222));
-  background: -moz-linear-gradient(top, #000, #222);  
-  color: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#222));
+	background: -moz-linear-gradient(top, #000, #222);  
+	color: #fff;
 }
 
 .button:active {
 	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
-	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
+	background: -moz-linear-gradient(bottom, #ddd, #aaa); 
+}
