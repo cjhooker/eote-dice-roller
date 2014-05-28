@@ -43,10 +43,13 @@ function roll() {
 		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
 	}
 	
+	var diceRolled = "";
 	var rollResult = "";
 	for (var color in dice) {
-		for (var i=0; i < document.getElementById("qty" + color).value; i++) {
+		var qty = document.getElementById("qty" + color).value;
+		for (var i=0; i < qty; i++) {
 			rollResult += getRoll(dice[color]);
+			diceRolled += color.substring(0, 0);
 		}
 	}
 	
@@ -54,31 +57,13 @@ function roll() {
 	message.type = "roll";
 	message.participantId = gapi.hangout.getLocalParticipant().id;
 	message.data = new Object();
-	// message.data.die = color;
+	message.data.dice = diceRolled;
 	// message.data.quantity = 1;
 	message.data.result = rollResult;
 	messages.push(message);
 	
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
 }
-
-// function rollDie(color) {
-	// var messages = new Array();
-	// if (gapi.hangout.data.getValue('messages')) {
-		// messages = JSON.parse(gapi.hangout.data.getValue('messages'));
-	// }
-	
-	// var message = new Object();
-	// message.type = "roll";
-	// message.participantId = gapi.hangout.getLocalParticipant().id;
-	// message.data = new Object();
-	// message.data.die = color;
-	// message.data.quantity = 1;
-	// message.data.result = getRoll(dice[color]);
-	// messages.push(message);
-	
-	// gapi.hangout.data.setValue("messages", JSON.stringify(messages));
-// }
 
 function getRoll(die) {
 	var rand =  Math.floor(Math.random() * die.length);
@@ -94,7 +79,6 @@ function displayMessage(message) {
 	
 	if (message.type = "roll") {
 		output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
-		output += message.data.die + ": ";
 		output += message.data.result + "<br/>";
 	} else if (message.type = "html") {
 		output += message.data.html;
