@@ -66,6 +66,8 @@ function roll() {
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
 }
 
+// Based on array of results from individual dice,
+// do all the cancellations and figure out the end result
 function getOverallResult(diceResults) {
 	var result = "";
 	var allResults = diceResults.join("");
@@ -75,6 +77,9 @@ function getOverallResult(diceResults) {
 	var threats = (allResults.match(/T/g) || []).length;
 	var triumphs = (allResults.match(/\*/g) || []).length;
 	var despairs = (allResults.match(/X/g) || []).length;
+	
+	successes += triumphs;
+	failures += despairs;
 	
 	if (successes > failures) {
 		successes = successes - failures;
@@ -113,7 +118,7 @@ function displayMessage(message) {
 	if (message.type = "roll") {
 		output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
 		output += message.data.diceRolled.join("") + "->";
-		output += message.data.diceResults.join("") + "->";
+		output += message.data.diceResults.join(",") + "->";
 		output += message.data.overallResult + "<br/>";
 	} else if (message.type = "html") {
 		output += message.data.html;
