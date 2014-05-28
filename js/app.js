@@ -135,9 +135,7 @@ function displayMessage(message) {
 	
 	if (message.type = "roll") {
 		var person = gapi.hangout.getParticipantById(message.participantId).person;
-		//output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
 		output += "<img class='person-image' src='" + person.image.url + "'/> ";
-		//output += message.data.diceRolled.join("") + "<br/>";
 		for (var i = 0; i < message.data.diceResults.length; i++) {
 			output += getImagesHtml(message.data.diceResults[i], message.data.diceRolled[i]);
 		}
