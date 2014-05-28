@@ -34,7 +34,13 @@ function showParticipants() {
 }
 
 function clearQty(color) {
-	document.getElementById("qty" + color).value = 0;
+	if (color) {
+		document.getElementById("qty" + color).value = 0;
+	} else {
+		for (var c in dice) {
+			document.getElementById("qty" + c).value = 0;
+		}
+	}
 }
 
 function roll() {

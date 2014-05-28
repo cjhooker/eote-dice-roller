@@ -53,6 +53,8 @@
 				<br/>
 				<input class="button" type="button" value="ROLL!" id="roll" onClick="roll()"/>
 				<br/>
+				<input class="button" type="button" value="Clear Dice" id="clearAllQty" onClick="clearQty()"/>
+				<br/>
 				<input class="button" type="button" value="Clear messages" id="clearMessages" onClick="clearMessages()"/>
 			</div>
 			
