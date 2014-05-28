@@ -155,8 +155,12 @@ function getImagesHtml(result, die) {
 	
 	if (die) { output += "<span class='die " + die + "'>"; }
 	
-	for (var i = 0; i < result.length; i++) {
-		output += "<img class='symbol' src='" + baseUrl + "/images/" + symbols[result[i]] + "'/>";
+	if (die && result.length == 0) {
+		output += "<span style='width: 24px; height: 24px;'></span>";
+	} else {
+		for (var i = 0; i < result.length; i++) {
+			output += "<img class='symbol' src='" + baseUrl + "/images/" + symbols[result[i]] + "'/>";
+		}
 	}
 	
 	if (die) { output += "</span>";	}	

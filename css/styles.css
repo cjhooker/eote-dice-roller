@@ -70,7 +70,7 @@
 }
 
 #rollBoost.button {
-	background: -webkit-gradient(linear, left top, left bottom, from(#77f), to(#77a));
+	background: -webkit-gradient(linear, left top, left bottom, from(#99f), to(#99a));
 	background: -moz-linear-gradient(top, #77f, #77a);  
 }
 
@@ -118,9 +118,9 @@
 }
 
 .B {
-	background-color: #77f;
+	background-color: #99f;
 }
 
 .S {
-	background-color: #222;
+	background-color: #555;
 }
