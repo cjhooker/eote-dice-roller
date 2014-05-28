@@ -102,6 +102,12 @@
 	margin-right: 5px;
 }
 
+.empty-die {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+}
+
 .G {
 	background-color: #00FF00;
 }

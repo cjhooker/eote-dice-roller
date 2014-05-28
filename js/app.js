@@ -139,7 +139,7 @@ function displayMessage(message) {
 		output += "<img class='person-image' src='" + person.image.url + "'/> ";
 		//output += message.data.diceRolled.join("") + "<br/>";
 		for (var i = 0; i < message.data.diceResults.length; i++) {
-			output += getImagesHtml(message.data.diceResults[i], message.data.diceRolled[i]) + "&nbsp;";
+			output += getImagesHtml(message.data.diceResults[i], message.data.diceRolled[i]);
 		}
 		output += "<br/>";
 		output += getImagesHtml(message.data.overallResult) + "<br/>";
@@ -156,7 +156,7 @@ function getImagesHtml(result, die) {
 	if (die) { output += "<span class='die " + die + "'>"; }
 	
 	if (die && result.length == 0) {
-		output += "<span style='width: 24px; height: 24px;'></span>";
+		output += "<span class='empty-die'></span>";
 	} else {
 		for (var i = 0; i < result.length; i++) {
 			output += "<img class='symbol' src='" + baseUrl + "/images/" + symbols[result[i]] + "'/>";
