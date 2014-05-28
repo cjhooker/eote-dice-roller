@@ -35,8 +35,10 @@ function showParticipants() {
 
 function clearQty(color) {
 	if (color) {
+		// Clear the quanity for a specific die
 		document.getElementById("qty" + color).value = 0;
 	} else {
+		// Clear the quanity for all dice
 		for (var c in dice) {
 			document.getElementById("qty" + c).value = 0;
 		}
@@ -44,11 +46,13 @@ function clearQty(color) {
 }
 
 function roll() {
+	// Get messages list from shared state
 	var messages = new Array();
 	if (gapi.hangout.data.getValue('messages')) {
 		messages = JSON.parse(gapi.hangout.data.getValue('messages'));
 	}
 	
+	// Build arrays of dice rolled and their results
 	var diceRolled = new Array();
 	var diceResults = new Array();
 	
@@ -60,6 +64,7 @@ function roll() {
 		}
 	}
 	
+	// Build the message object for this roll
 	var message = new Object();
 	message.type = "roll";
 	message.participantId = gapi.hangout.getLocalParticipant().id;
@@ -69,6 +74,7 @@ function roll() {
 	message.data.overallResult = getOverallResult(diceResults);
 	messages.push(message);
 	
+	// Set the message in the shared state
 	gapi.hangout.data.setValue("messages", JSON.stringify(messages));
 }
 
@@ -89,6 +95,9 @@ function getOverallResult(diceResults) {
 	
 	if (successes > failures) {
 		successes = successes - failures;
+	} else {
+		failures = 1;
+		successes = 0;
 	}
 
 	if (threats > advantages) {
@@ -101,6 +110,7 @@ function getOverallResult(diceResults) {
 	
 	// Array(n).join(char) will produce a string of n-1 chars
 	result += Array(successes + 1).join("S");
+	result += Array(failures + 1).join("F");
 	result += Array(advantages + 1).join("A");
 	result += Array(threats + 1).join("T");
 	result += Array(triumphs + 1).join("*");
@@ -122,7 +132,9 @@ function displayMessage(message) {
 	var output = "";
 	
 	if (message.type = "roll") {
-		output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
+		var person = gapi.hangout.getParticipantById(message.participantId).person;
+		//output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
+		output += "<img src='" + person.image.url + "'/> ";
 		output += message.data.diceRolled.join("") + "->";
 		output += message.data.diceResults.join(",") + "->";
 		output += message.data.overallResult + "<br/>";
