@@ -32,6 +32,10 @@
 	overflow: auto;
 }
 
+.qty-text-box {
+	width: 30px;
+}
+
 .button {
   border-radius: 3px;
   -moz-border-radius: 3px;
