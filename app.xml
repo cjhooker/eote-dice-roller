@@ -34,6 +34,7 @@
 				<input class="button" type="button" value="Show participants!" id="showParticipants" onClick="showParticipants()"/>
 				<br/>
 				<input class="button" type="button" value="Green" id="rollGreen" onClick="rollDie('green')"/>
+				<input type="number" value="0" id="qtyGreen" />
 				<br/>
 				<input class="button" type="button" value="Yellow" id="rollYellow" onClick="rollDie('yellow')"/>
 				<br/>
@@ -44,6 +45,8 @@
 				<input class="button" type="button" value="Blue" id="rollBlue" onClick="rollDie('blue')"/>
 				<br/>
 				<input class="button" type="button" value="Black" id="rollBlack" onClick="rollDie('black')"/>
+				<br/>
+				<input class="button" type="button" value="ROLL!" id="roll" onClick="roll()"/>
 				<br/>
 				<input class="button" type="button" value="Clear messages" id="clearMessages" onClick="clearMessages()"/>
 			</div>
