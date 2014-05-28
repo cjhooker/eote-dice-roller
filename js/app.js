@@ -90,11 +90,13 @@ function getOverallResult(diceResults) {
 	var triumphs = (allResults.match(/\*/g) || []).length;
 	var despairs = (allResults.match(/X/g) || []).length;
 	
+	// Triumphs and despairs also count as successes and failures
 	successes += triumphs;
 	failures += despairs;
 	
 	if (successes > failures) {
 		successes = successes - failures;
+		failures = 0;
 	} else {
 		failures = 1;
 		successes = 0;
@@ -137,9 +139,18 @@ function displayMessage(message) {
 		output += "<img class='person-image' src='" + person.image.url + "'/> ";
 		output += message.data.diceRolled.join("") + "<br/>";
 		output += message.data.diceResults.join(",") + "<br/>";
-		output += message.data.overallResult + "<br/>";
+		output += getImagesHtml(message.data.overallResult) + "<br/>";
 	} else if (message.type = "html") {
 		output += message.data.html;
+	}
+	
+	return output;
+}
+
+function getImagesHtml(result) {
+	var output = "";
+	for (var i = 0; i < result.length; i++) {
+		output += "<img class='symbol' src='" + baseUrl + "/images/" + symbols[result[i]] + "'/>";
 	}
 	
 	return output;
