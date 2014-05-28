@@ -49,7 +49,7 @@ function roll() {
 	for (var color in dice) {
 		var qty = document.getElementById("qty" + color).value;
 		for (var i=0; i < qty; i++) {
-			diceRolled.push(color.substring(0, 0));
+			diceRolled.push(color.substring(0, 1));
 			diceResults.push(getRoll(dice[color]));
 		}
 	}
@@ -114,7 +114,7 @@ function displayMessage(message) {
 		output += gapi.hangout.getParticipantById(message.participantId).person.displayName + ": ";
 		output += message.data.diceRolled.join("") + "->";
 		output += message.data.diceResults.join("") + "->";
-		output += message.data.overallResults + "<br/>";
+		output += message.data.overallResult + "<br/>";
 	} else if (message.type = "html") {
 		output += message.data.html;
 	}
