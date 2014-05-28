@@ -94,3 +94,15 @@
 	width: 24px;
 	height: 24px;
 }
+
+.die {
+	padding-right: 20px;
+}
+
+.G {
+	background-color: #00FF00;
+}
+
+.Y {
+	background-color: #FFFF00;
+}

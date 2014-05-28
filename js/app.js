@@ -139,7 +139,7 @@ function displayMessage(message) {
 		output += "<img class='person-image' src='" + person.image.url + "'/> ";
 		output += message.data.diceRolled.join("") + "<br/>";
 		for (var i = 0; i < message.data.diceResults.length; i++) {
-			output += getImagesHtml(message.data.diceResults[i]) + "&nbsp;";
+			output += getImagesHtml(message.data.diceResults[i], message.data.diceRolled[i]) + "&nbsp;";
 		}
 		output += "<br/>";
 		output += getImagesHtml(message.data.overallResult) + "<br/>";
@@ -150,11 +150,16 @@ function displayMessage(message) {
 	return output;
 }
 
-function getImagesHtml(result) {
+function getImagesHtml(result, die) {
 	var output = "";
+	
+	if (die) { output += "<span class='die " + die + "'>"; }
+	
 	for (var i = 0; i < result.length; i++) {
 		output += "<img class='symbol' src='" + baseUrl + "/images/" + symbols[result[i]] + "'/>";
 	}
+	
+	if (die) { output += "</span>";	}	
 	
 	return output;
 }
