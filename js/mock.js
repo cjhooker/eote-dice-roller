@@ -1,3 +1,5 @@
+/* Code to mock Hangouts API so the app can be tested outside Hangouts */
+
 var _data = new Object();
 var _stateChangedFunction = function() {};
 
