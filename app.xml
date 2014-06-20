@@ -21,7 +21,7 @@
   <![CDATA[ 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://eote-hangouts-dice-roller.googlecode.com/git/css/styles.css">
 </head>
 <body>
     <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
