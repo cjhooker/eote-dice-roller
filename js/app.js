@@ -338,6 +338,7 @@ gapi.hangout.data.onStateChanged.add(function (stateChangedEvent) {
                 if (gapi.hangout.data.getValue('destiny')) {
                     destiny = gapi.hangout.data.getValue('destiny');
                 }
+                console.log(destiny);
                 document.getElementById("destinyTokenContainer").innerHTML = getDestinyHtml(destiny);
                 break;
         }
