@@ -81,7 +81,7 @@ h1 {
 	overflow: auto;
     /*white-space: nowrap;*/
 	background: red;
-	margin: 0 5px;
+	/*margin: 0 5px;*/
 	background-color: #fff;
     border-top: 1px solid black;
 }
