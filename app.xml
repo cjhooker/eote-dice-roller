@@ -39,31 +39,31 @@
                 <div id="buttonContainer">
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Green.png" class="die-button" id="rollGreen" onclick="clearQty('Green')" />
-                        <input type="number" value="2" id="qtyGreen" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtyGreen" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Yellow.png" class="die-button" id="rollYellow" onclick="clearQty('Yellow')" />
-                        <input type="number" value="2" id="qtyYellow" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtyYellow" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Boost.png" class="die-button" id="rollBoost" onclick="clearQty('Boost')" />
-                        <input type="number" value="2" id="qtyBoost" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtyBoost" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Purple.png" class="die-button" id="rollPurple" onclick="clearQty('Purple')" />
-                        <input type="number" value="2" id="qtyPurple" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtyPurple" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Red.png" class="die-button" id="rollRed" onclick="clearQty('Red')" />
-                        <input type="number" value="2" id="qtyRed" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtyRed" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Setback.png" class="die-button" id="rollSetback" onclick="clearQty('Setback')" />
-                        <input type="number" value="2" id="qtySetback" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtySetback" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Force.png" class="die-button" id="rollForce" onclick="clearQty('Force')" />
-                        <input type="number" value="2" id="qtyForce" class="qty-text-box" min="0" />
+                        <input type="number" value="0" id="qtyForce" class="qty-text-box" min="0" />
                     </div>
                     <div class="die-container">
                         <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Percentile.png" class="die-button" id="rollForce" onclick="rollStandardDie(100,'%')" />
