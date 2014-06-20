@@ -71,6 +71,7 @@ function addDestiny() {
 
     // Set the destiny in the shared state
     gapi.hangout.data.setValue("destiny", destiny);
+    console.log("set destiny to " + destiny);
 
     // Also add a message telling everyone that someone added a Destiny token
     var message = {
@@ -97,6 +98,7 @@ function removeDestiny() {
 
     // Set the destiny in the shared state
     gapi.hangout.data.setValue("destiny", destiny);
+    console.log("set destiny to " + destiny);
 
     // Also add a message telling everyone that someone removed a Destiny token
     var message = {
@@ -130,6 +132,7 @@ function toggleDestiny(position) {
 
     // Set the destiny in the shared state
     gapi.hangout.data.setValue("destiny", destiny);
+    console.log("set destiny to " + destiny);
 
     // Also add a message telling everyone that someone flipped Destiny token
     var message = {
