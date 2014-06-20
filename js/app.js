@@ -8,6 +8,11 @@ function init() {
             if (eventObj.isApiReady) {
                 document.getElementById('buttonContainer')
                   .style.visibility = 'visible';
+
+                if (gapi.hangout.data.getValue('destiny')) {
+                    var destiny = gapi.hangout.data.getValue('destiny');
+                    document.getElementById("destinyTokenContainer").innerHTML = getDestinyHtml(destiny);
+                }
             }
         });
 }
