@@ -291,9 +291,9 @@ function getDestinyHtml(destiny) {
 
     for (var i = 0; i < destiny.length; i++) {
         if (destiny.charAt(i) == "L") {
-            output += "<img src='images/destiny-light.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
+            output += "<img src='https://eote-hangouts-dice-roller.googlecode.com/git/images/destiny-light.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
         } else {
-            output += "<img src='images/destiny-dark.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
+            output += "<img src='https://eote-hangouts-dice-roller.googlecode.com/git/images/destiny-dark.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
         }
     }
 

@@ -1,5 +1,5 @@
-//var baseUrl = "https://eote-hangouts-dice-roller.googlecode.com/git/";
-var baseUrl = "";
+var baseUrl = "https://eote-hangouts-dice-roller.googlecode.com/git/";
+//var baseUrl = "";
 
 var dice = {
 	"Green": ["S", "S", "SS", "A", "A", "SA", "AA", ""],

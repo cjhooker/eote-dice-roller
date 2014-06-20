@@ -17,6 +17,85 @@
 		<Require feature="views" />
 		<Require feature="locked-domain" />
 	</ModulePrefs>
-	<Content type="url" href="https://eote-hangouts-dice-roller.googlecode.com/git/test.html" />
+  <Content type="html">
+  <![CDATA[ 
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+    <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+    <!--    <script src="js/mock.js"></script>-->
+    <div id="container">
+        <div id="header">
+            <div id="header-inner">
+                <!--<h1>Edge of the Empire Dice Roller</h1>-->
+                <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/title.png" />
+                <div id="destinyTracker">
+                    <input class="button" type="button" value="Add Destiny" id="addDestiny" onclick="addDestiny()" />
+                    <input class="button" type="button" value="Remove Destiny" id="removeDestiny" onclick="removeDestiny()" />
+                    <div id="destinyTokenContainer"></div>
+                </div>
+                <div id="buttonContainer">
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Green.png" class="die-button" id="rollGreen" onclick="clearQty('Green')" />
+                        <input type="number" value="2" id="qtyGreen" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Yellow.png" class="die-button" id="rollYellow" onclick="clearQty('Yellow')" />
+                        <input type="number" value="2" id="qtyYellow" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Boost.png" class="die-button" id="rollBoost" onclick="clearQty('Boost')" />
+                        <input type="number" value="2" id="qtyBoost" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Purple.png" class="die-button" id="rollPurple" onclick="clearQty('Purple')" />
+                        <input type="number" value="2" id="qtyPurple" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Red.png" class="die-button" id="rollRed" onclick="clearQty('Red')" />
+                        <input type="number" value="2" id="qtyRed" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Setback.png" class="die-button" id="rollSetback" onclick="clearQty('Setback')" />
+                        <input type="number" value="2" id="qtySetback" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Force.png" class="die-button" id="rollForce" onclick="clearQty('Force')" />
+                        <input type="number" value="2" id="qtyForce" class="qty-text-box" min="0" />
+                    </div>
+                    <div class="die-container">
+                        <img src="https://eote-hangouts-dice-roller.googlecode.com/git/images/Percentile.png" class="die-button" id="rollForce" onclick="rollStandardDie(100,'%')" />
+                    </div>
+                    <div id="buttonsBottom">
+                        <input class="button" type="button" value="ROLL!" id="roll" onclick="roll()" />
+
+                        <input class="button" type="button" value="Reset Dice" id="clearAllQty" onclick="clearQty()" />
+
+                        <input class="button" type="button" value="Clear Results" id="clearMessages" onclick="clearMessages()" />
+
+                        <input class="button" type="button" value="Insert Break" id="insertBreak" onclick="insertBreak()" />
+                    </div>
+                    <div id="optionsContainer">
+                        <input class="checkbox" type="checkbox" id="clearAfterRoll" /> Clear dice after each roll
+                    </div>
+                    <div id="alertMessage"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="outputArea">
+            </div>
+        </div>
+    </div>
+    <script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/data.js"></script>
+    <script src="https://eote-hangouts-dice-roller.googlecode.com/git/js/app.js"></script>
+</body>
+</html>  
+  
+  ]]>
+  </Content>
 </Module>
 
