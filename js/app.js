@@ -116,7 +116,7 @@ function removeDestiny() {
 }
 
 function toggleDestiny(position) {
-    console.log("toggleDestiny called for position " + i);
+    console.log("toggleDestiny called for position " + position);
     var destiny = "";
 
     if (gapi.hangout.data.getValue('destiny')) {
