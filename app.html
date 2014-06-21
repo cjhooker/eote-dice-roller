@@ -19,7 +19,7 @@
                         <input type="text" value="0" id="qtyGreen" class="qty-text-box" readonly />
                         <div class="arrow-container">
                             <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Green', 1)" />
-                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Green', -1)"  />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Green', -1)" />
                         </div>
                     </div>
                     <div class="die-container">
@@ -83,7 +83,8 @@
                         <input class="button" type="button" value="Insert Break" id="insertBreak" onclick="insertBreak()" />
                     </div>
                     <div id="optionsContainer">
-                        <input class="checkbox" type="checkbox" id="resetAfterRoll" /> Reset dice after each roll
+                        <input class="checkbox" type="checkbox" id="resetAfterRoll" />
+                        <label for="resetAfterRoll"><span></span>Reset dice after each roll</label>
                     </div>
                     <div id="alertMessage"></div>
                 </div>

@@ -10,11 +10,13 @@ if ($release) {
 	$destination = "C:\Users\Chris Hooker\eote\eote-hangouts-dice-roller-release\"
 	$hangoutJs = "//plus.google.com/hangouts/_/api/v1/hangout.js"
 	$basePath = "https://eote-hangouts-dice-roller-release.googlecode.com/git/"
+	$basePathCss = "https://eote-hangouts-dice-roller-release.googlecode.com/git/"	
 } else {
 	$source = "C:\Users\Chris Hooker\eote\eote-hangouts-dice-roller\"
 	$destination = "C:\Users\Chris Hooker\eote\eote-hangouts-dice-roller-local\"
 	$hangoutJs = "[[BASE_PATH]]js/fakes/hangout-fake.js"
 	$basePath = ""
+	$basePathCss = "../"
 }
 
 # First remove the destination if it exists. Then, get all the items to copy. Finally, create the destination.
@@ -52,5 +54,6 @@ foreach ($file in $files)
 	ForEach-Object { $_ -replace "\[\[APP_HTML\]\]", $appHtml } | 
 	ForEach-Object { $_ -replace "\[\[HANGOUT_JS\]\]", $hangoutJs } | 
 	ForEach-Object { $_ -replace "\[\[BASE_PATH\]\]", $basePath } | 
+	ForEach-Object { $_ -replace "\[\[BASE_PATH_CSS\]\]", $basePathCss } | 
 	Set-Content $file.FullName
 }

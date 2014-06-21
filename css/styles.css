@@ -5,8 +5,14 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
   background-color: #000;
+}
+body,
+div,
+span,
+p,
+td {
+  font-family: "Segoe UI", sans-serif;
 }
 h1 {
   margin-top: 5px;
@@ -39,6 +45,21 @@ input.button {
 }
 ::-webkit-scrollbar-thumb {
   background-color: #1f7fbe;
+}
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: -2px 4px 0 0;
+  vertical-align: middle;
+  background: url([[BASE_PATH_CSS]]images/checkbox-unchecked.png) left top no-repeat;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked + label span {
+  background: url([[BASE_PATH_CSS]]images/checkbox-checked.png) left top no-repeat;
 }
 /* Specific Sections */
 #container {
