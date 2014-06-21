@@ -1,0 +1,101 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="[[BASE_PATH]]css/styles.css">
+</head>
+<body>
+    <script src="[[HANGOUT_JS]]"></script>
+    <div id="container">
+        <div id="header">
+            <div id="header-inner">
+                <img src="[[BASE_PATH]]images/title.png" />
+                <div id="destinyTracker">
+                    <input class="button" type="button" value="Add Destiny" id="addDestiny" onclick="addDestiny()" />
+                    <input class="button" type="button" value="Remove Destiny" id="removeDestiny" onclick="removeDestiny()" />
+                    <div id="destinyTokenContainer"></div>
+                </div>
+                <div id="buttonContainer">
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Green.png" class="die-button" id="rollGreen" onclick="clearQty('Green')" />
+                        <input type="text" value="0" id="qtyGreen" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Green', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Green', -1)"  />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Yellow.png" class="die-button" id="rollYellow" onclick="clearQty('Yellow')" />
+                        <input type="text" value="0" id="qtyYellow" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Yellow', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Yellow', -1)" />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Boost.png" class="die-button" id="rollBoost" onclick="clearQty('Boost')" />
+                        <input type="text" value="0" id="qtyBoost" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Boost', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Boost', -1)" />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Purple.png" class="die-button" id="rollPurple" onclick="clearQty('Purple')" />
+                        <input type="text" value="0" id="qtyPurple" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Purple', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Purple', -1)" />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Red.png" class="die-button" id="rollRed" onclick="clearQty('Red')" />
+                        <input type="text" value="0" id="qtyRed" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Red', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Red', -1)" />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Setback.png" class="die-button" id="rollSetback" onclick="clearQty('Setback')" />
+                        <input type="text" value="0" id="qtySetback" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Setback', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Setback', -1)" />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Force.png" class="die-button" id="rollForce" onclick="clearQty('Force')" />
+                        <input type="text" value="0" id="qtyForce" class="qty-text-box" readonly />
+                        <div class="arrow-container">
+                            <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" onclick="changeQty('Force', 1)" />
+                            <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" onclick="changeQty('Force', -1)" />
+                        </div>
+                    </div>
+                    <div class="die-container">
+                        <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" onclick="rollStandardDie(100,'%')" />
+                    </div>
+                    <div id="buttonsBottom">
+                        <input class="button" type="button" value="ROLL!" id="roll" onclick="roll()" />
+
+                        <input class="button" type="button" value="Reset Dice" id="clearAllQty" onclick="clearQty()" />
+
+                        <input class="button" type="button" value="Clear Results" id="clearMessages" onclick="clearMessages()" />
+
+                        <input class="button" type="button" value="Insert Break" id="insertBreak" onclick="insertBreak()" />
+                    </div>
+                    <div id="optionsContainer">
+                        <input class="checkbox" type="checkbox" id="resetAfterRoll" /> Reset dice after each roll
+                    </div>
+                    <div id="alertMessage"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="outputArea">
+            </div>
+        </div>
+    </div>
+    <script src="[[BASE_PATH]]js/data.js"></script>
+    <script src="[[BASE_PATH]]js/app.js"></script>
+</body>
+</html>  

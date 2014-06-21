@@ -19,7 +19,7 @@ h1 {
 #container {
     display: table;
     height: 100%;
-    width: 100%;
+    width: 300px;
 	float: right;
 }
 
@@ -95,13 +95,6 @@ h1 {
 	width: 49%;
 }
 
-/*#addDestiny, #removeDestiny {
-    float: right;
-    height: 50px;
-    width: 20%;
-    white-space: normal;
-}*/
-
 .clearfix {
     display: inline-block;
     width: 100%;
@@ -112,8 +105,24 @@ h1 {
 	margin-right: 15px;
 }
 
+.die-container img, .die-container div, .die-container input {
+    float: left;
+    display: block;
+}
+
+.die-container div.arrow-container {
+    width: 16px;
+    margin-left: 2px;
+    /*position: relative;
+    top: -1px;*/
+}
+
+.arrow-up {
+    margin: 0;
+}
+
 .qty-text-box {
-	width: 40px;
+	width: 24px;
     height: 32px;
 }
 
@@ -125,6 +134,7 @@ h1 {
 	border: 0px solid #000;
 	padding: 5px;
 	width: 60px;
+    margin: 2px 0;
 }
 
 .button:hover {
@@ -184,6 +194,10 @@ h1 {
 #alertMessage {
     margin: 5px 0;
     color: red;
+}
+
+.standard-die-roll {
+    font-size: 2em;
 }
 
 ::-webkit-scrollbar {

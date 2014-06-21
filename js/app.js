@@ -1,4 +1,4 @@
-﻿var outputArea = document.getElementById('outputArea');
+var outputArea = document.getElementById('outputArea');
 var localMessages = new Array();
 
 function init() {
@@ -42,6 +42,16 @@ function clearQty(color) {
         // Clear the quanity for all dice
         for (var c in dice) {
             document.getElementById("qty" + c).value = 0;
+        }
+    }
+}
+
+function changeQty(color, delta) {
+    var textBox = document.getElementById("qty" + color)
+    if (!isNaN(textBox.value)) {
+        textBox.value = parseInt(textBox.value) + delta;
+        if (parseInt(textBox.value) < 0) {
+            textBox.value = 0;
         }
     }
 }
@@ -164,7 +174,7 @@ function rollStandardDie(maxValue, postText) {
     var roll = Math.floor(Math.random() * maxValue) + 1;
 
     // Build new message
-    var message = { messageId: getNextMessageId(), type: "html", participantId: gapi.hangout.getLocalParticipant().id, data: { html: roll + postText } };
+    var message = { messageId: getNextMessageId(), type: "html", participantId: gapi.hangout.getLocalParticipant().id, data: { html: "<span class='standard-die-roll'>" + roll + postText + "</span>" } };
 
     // Set the message in the shared state
     gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
@@ -201,7 +211,7 @@ function roll() {
         // Set the message in the shared state
         gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
 
-        if (document.getElementById("clearAfterRoll").checked) {
+        if (document.getElementById("resetAfterRoll").checked) {
             clearQty();
         }
     } else {
@@ -300,9 +310,9 @@ function getDestinyHtml(destiny) {
 
     for (var i = 0; i < destiny.length; i++) {
         if (destiny.charAt(i) == "L") {
-            output += "<img src='https://eote-hangouts-dice-roller.googlecode.com/git/images/destiny-light.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
+            output += "<img src='[[BASE_PATH]]images/destiny-light.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
         } else {
-            output += "<img src='https://eote-hangouts-dice-roller.googlecode.com/git/images/destiny-dark.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
+            output += "<img src='[[BASE_PATH]]images/destiny-dark.png' class='destiny-token' onclick='toggleDestiny(" + i + ")' />";
         }
     }
 
@@ -310,14 +320,14 @@ function getDestinyHtml(destiny) {
 }
 
 function getDieImageHtml(result, die) {
-    return "<img class='symbol' src='" + baseUrl + "images/" + die + "-" + result + ".png'/>";
+    return "<img class='symbol' src='[[BASE_PATH]]images/" + die + "-" + result + ".png'/>";
 }
 
 function getImagesHtml(result) {
     var output = "";
 
     for (var i = 0; i < result.length; i++) {
-        output += "<img class='symbol' src='" + baseUrl + "images/" + symbols[result[i]] + "'/>";
+        output += "<img class='symbol' src='[[BASE_PATH]]images/" + symbols[result[i]] + "'/>";
     }
 
     return output;
