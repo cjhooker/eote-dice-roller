@@ -174,7 +174,12 @@ function rollStandardDie(maxValue, postText) {
     var roll = Math.floor(Math.random() * maxValue) + 1;
 
     // Build new message
-    var message = { messageId: getNextMessageId(), type: "html", participantId: gapi.hangout.getLocalParticipant().id, data: { html: "<span class='standard-die-roll'>" + roll + postText + "</span>" } };
+    var message = {
+        messageId: getNextMessageId(),
+        type: "html",
+        participantId: gapi.hangout.getLocalParticipant().id,
+        data: { html: "<span class='standard-die-roll'>" + roll + postText + "</span>" }
+    };
 
     // Set the message in the shared state
     gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));

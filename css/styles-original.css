@@ -1,0 +1,215 @@
+﻿/* General Styles */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+	font-family: "Segoe UI"	, sans-serif;
+	background-color: #000;
+}
+
+h1 {
+	margin-top: 5px;
+	font-size: 15pt;
+	font-weight: normal;
+	color: #1F7FBE;
+}
+
+/* Major sections */
+
+#container {
+    display: table;
+    height: 100%;
+    width: 300px;
+	float: right;
+}
+
+#header {
+    display: table-cell;
+    background: #fff;
+	margin-bottom: 5px;
+	/*padding: 5px;*/
+}
+
+#header-inner {
+	background-color: #fff;
+    /*margin: 0 5px;*/
+}
+
+#destinyTracker {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+#destinyTokenContainer {
+    margin-top: 5px;
+}
+
+.destiny-token {
+    margin-right: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+#buttonContainer {
+	 visibility: hidden;
+     padding: 5px;
+}
+
+#buttonsBottom {
+    clear: left;
+}
+
+#buttonsBottom input.button {
+	width: 49%;
+}
+
+#optionsContainer {
+    clear: left;
+    margin: 5px 0;
+}
+
+#content {
+    display: table-row;  /* height is dynamic, and will expand... */
+    height: 100%;        /* ...as content is added (won't scroll) */
+    background: #fff;
+}
+
+#outputArea {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+    /*white-space: nowrap;*/
+	background: red;
+	/*margin: 0 5px;*/
+	background-color: #fff;
+    border-top: 1px solid black;
+}
+
+#destinyTokenContainer {
+    /*float: left;*/
+    width: 100%;
+}
+
+#destinyTracker input.button {
+	width: 49%;
+}
+
+.clearfix {
+    display: inline-block;
+    width: 100%;
+}
+
+.die-container {
+	float: left;
+	margin-right: 15px;
+}
+
+.die-container img, .die-container div, .die-container input {
+    float: left;
+    display: block;
+}
+
+.die-container div.arrow-container {
+    width: 16px;
+    margin-left: 2px;
+    /*position: relative;
+    top: -1px;*/
+}
+
+.arrow-up {
+    margin: 0;
+}
+
+.qty-text-box {
+	width: 24px;
+    height: 32px;
+}
+
+.button {
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	background: #1F7FBE;
+	color: #fff;
+	border: 0px solid #000;
+	padding: 5px;
+	width: 60px;
+    margin: 2px 0;
+}
+
+.button:hover {
+	background: #22A2F6;
+}
+
+.die-button {
+	width: 32px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	vertical-align: middle;
+}
+
+.person-image {
+	width: 48px;
+	height: 48px;
+	/*float: left;*/
+	margin-right: 5px;
+}
+
+.symbol {
+	width: 24px;
+	height: 24px;
+	margin-right: 2px;
+}
+
+.die {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.empty-die {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+}
+
+.row-wrapper {
+	margin: 5px 5px 20px 5px;
+	overflow: hidden;
+}
+
+.image-wrapper {
+	float: left;
+	width: 53px;
+}
+
+.results-wrapper {
+	float: left;
+	width: 220px;
+}
+
+.overall-results {
+	margin-top: 5px;
+}
+
+#alertMessage {
+    margin: 5px 0;
+    color: red;
+}
+
+.standard-die-roll {
+    font-size: 2em;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+}
+
+::-webkit-scrollbar-track {
+	/*background-color: blue;*/
+	border: 1px solid #1F7FBE;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #1F7FBE;
+}
