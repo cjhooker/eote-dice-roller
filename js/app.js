@@ -33,6 +33,12 @@ function replaceAt(str, index, character) {
 /******************************************************************************************/
 /*** UI Methods ***/
 
+function clearAllQtys() {
+    for (var c in dice) {
+        document.getElementById("qty" + c).value = 0;
+    }
+}
+
 function insertBreak() {
     outputArea.innerHTML = "<hr/>" + outputArea.innerHTML;
 }
@@ -194,7 +200,7 @@ function roll() {
         gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
 
         if (document.getElementById("resetAfterRoll").checked) {
-            clearQty();
+            clearAllQtys();
         }
     } else {
         showAlertMessage("No dice selected!");

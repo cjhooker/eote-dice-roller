@@ -5,6 +5,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
     <script src="[[BASE_PATH]]js/modules.js"></script>
     <script src="[[BASE_PATH]]js/directives/die-container.js"></script>
+    <script type="text/ng-template" id="die-container.html">
+        <div class="die-container">
+            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty(color)" />
+            <input type="text" value="0" id="qty{{color}}" class="qty-text-box" readonly />
+            <div class="arrow-container">
+                <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(color, 1)" />
+                <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" ng-click="changeQty(color, -1)" />
+            </div>
+        </div>
+    </script>
 </head>
 <body>
     <div id="container">
@@ -30,7 +40,7 @@
                     <div id="buttonsBottom">
                         <input class="button" type="button" value="ROLL!" id="roll" onclick="roll()" />
 
-                        <input class="button" type="button" value="Reset All Dice" id="clearAllQty" onclick="clearQty()" />
+                        <input class="button" type="button" value="Reset All Dice" id="clearAllQty" onclick="clearAllQtys()" />
 
                         <input class="button" type="button" value="Clear Results" id="clearMessages" onclick="clearMessages()" />
 

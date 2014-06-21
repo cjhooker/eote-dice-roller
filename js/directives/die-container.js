@@ -1,7 +1,7 @@
-﻿appModule.directive("dieContainer", [function () {
+﻿appModule.directive("dieContainer", ["$sce", function ($sce) {
     return {
         restrict: 'E',
-        templateUrl: "[[BASE_PATH]]templates/die-container.html",
+        templateUrl: "die-container.html",
         scope: {
             color: '@color',
         },
