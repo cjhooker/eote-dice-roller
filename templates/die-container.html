@@ -1,0 +1,8 @@
+﻿<div class="die-container">
+    <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty(color)" />
+    <input type="text" value="0" id="qty{{color}}" class="qty-text-box" readonly />
+    <div class="arrow-container">
+        <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(color, 1)" />
+        <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" ng-click="changeQty(color, -1)" />
+    </div>
+</div>

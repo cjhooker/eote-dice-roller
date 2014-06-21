@@ -6,8 +6,7 @@ function init() {
     gapi.hangout.onApiReady.add(
         function (eventObj) {
             if (eventObj.isApiReady) {
-                document.getElementById('buttonContainer')
-                  .style.visibility = 'visible';
+                document.getElementById('buttonContainer').style.visibility = 'visible';
 
                 if (gapi.hangout.data.getValue('destiny')) {
                     var destiny = gapi.hangout.data.getValue('destiny');
@@ -33,28 +32,6 @@ function replaceAt(str, index, character) {
 
 /******************************************************************************************/
 /*** UI Methods ***/
-
-function clearQty(color) {
-    if (color) {
-        // Clear the quanity for a specific die
-        document.getElementById("qty" + color).value = 0;
-    } else {
-        // Clear the quanity for all dice
-        for (var c in dice) {
-            document.getElementById("qty" + c).value = 0;
-        }
-    }
-}
-
-function changeQty(color, delta) {
-    var textBox = document.getElementById("qty" + color)
-    if (!isNaN(textBox.value)) {
-        textBox.value = parseInt(textBox.value) + delta;
-        if (parseInt(textBox.value) < 0) {
-            textBox.value = 0;
-        }
-    }
-}
 
 function insertBreak() {
     outputArea.innerHTML = "<hr/>" + outputArea.innerHTML;
