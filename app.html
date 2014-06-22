@@ -1,10 +1,23 @@
-<html ng-app="appModule">
+<html ng-app="appModule" ng-controller="appController">
 <head>
     <link rel="stylesheet" type="text/css" href="[[BASE_PATH]]css/styles.css">
     <script src="[[HANGOUT_JS]]"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+
     <script src="[[BASE_PATH]]js/modules.js"></script>
+    <script src="[[BASE_PATH]]js/filters.js"></script>
+    <script src="[[BASE_PATH]]js/controllers/app-controller.js"></script>
     <script src="[[BASE_PATH]]js/directives/die-container.js"></script>
+    <script src="[[BASE_PATH]]js/directives/message-display.js"></script>
+    <script src="[[BASE_PATH]]js/services/dice-service.js"></script>
+    <script src="[[BASE_PATH]]js/services/message-service.js"></script>
+
+    <script src="[[BASE_PATH]]js/data.js"></script>
+    <script src="[[BASE_PATH]]js/utilities.js"></script>
+
+    <!-- Angular Templates -->
+
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
             <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty(color)" />
@@ -15,16 +28,39 @@
             </div>
         </div>
     </script>
+
+    <script type="text/ng-template" id="message-display.html">
+        <div class='row-wrapper'>
+            <div class='image-wrapper'>
+                <img class='person-image' ng-src='{{person.image.url}}' title='{{person.displayName}}' />
+            </div>
+            <div class='results-wrapper' ng-show="message.type == 'roll'">
+                <div class='dice-results'>
+                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png' ng-repeat="dieResult in message.data.diceResults" />
+                </div>
+                <div class='overall-results'>
+                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' ng-repeat="result in message.data.overallResult track by $index" />
+                </div>
+            </div>
+            <div class="results-wrapper" ng-show="message.type == 'html'" ng-bind-html="message.data.html">
+            </div>
+        </div>
+    </script>
+
 </head>
+
 <body>
     <div id="container">
         <div id="header">
             <div id="header-inner">
                 <img src="[[BASE_PATH]]images/title.png" />
                 <div id="destinyTracker">
-                    <input class="button" type="button" value="Add Destiny" id="addDestiny" onclick="addDestiny()" />
-                    <input class="button" type="button" value="Remove Destiny" id="removeDestiny" onclick="removeDestiny()" />
-                    <div id="destinyTokenContainer"></div>
+                    <input class="button" type="button" value="Add Destiny" id="addDestiny" ng-click="addDestiny()" />
+                    <input class="button" type="button" value="Remove Destiny" id="removeDestiny" ng-click="removeDestiny()" />
+                    <div id="destinyTokenContainer">
+                        <img ng-src='[[BASE_PATH]]images/destiny-{{destinyChar|destinyType}}.png' class='destiny-token' ng-click='toggleDestiny($index)'
+                             ng-repeat="destinyChar in destiny track by $index" />
+                    </div>
                 </div>
                 <div id="buttonContainer">
                     <die-container color="Green"></die-container>
@@ -35,22 +71,22 @@
                     <die-container color="Setback"></die-container>
                     <die-container color="Force"></die-container>
                     <div class="die-container">
-                        <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" onclick="rollStandardDie(100,'%')" />
+                        <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" ng-click="rollStandardDie(100,'%')" />
                     </div>
                     <div id="buttonsBottom">
-                        <input class="button" type="button" value="ROLL!" id="roll" onclick="roll()" />
+                        <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
 
-                        <input class="button" type="button" value="Reset All Dice" id="clearAllQty" onclick="clearAllQtys()" />
+                        <input class="button" type="button" value="Reset All Dice" id="clearAllQty" ng-click="clearAllQtys()" />
 
-                        <input class="button" type="button" value="Clear Results" id="clearMessages" onclick="clearMessages()" />
+                        <input class="button" type="button" value="Clear Results" id="clearMessages" ng-click="clearMessages()" />
 
-                        <input class="button" type="button" value="Insert Break" id="insertBreak" onclick="insertBreak()" />
+                        <input class="button" type="button" value="Insert Break" id="insertBreak" ng-click="insertBreak()" />
                     </div>
                     <div id="optionsContainer">
                         <input class="checkbox" type="checkbox" id="resetAfterRoll" />
                         <label for="resetAfterRoll"><span></span>Reset dice after each roll</label>
                     </div>
-                    <div id="alertMessage"></div>
+                    <div id="alertMessage" ng-show="alertMessage">{{alertMessage}}</div>
                 </div>
             </div>
         </div>
@@ -60,9 +96,5 @@
             </div>
         </div>
     </div>
-
-    <script src="[[BASE_PATH]]js/data.js"></script>
-    <script src="[[BASE_PATH]]js/app.js"></script>
-
 </body>
 </html>  

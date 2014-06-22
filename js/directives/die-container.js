@@ -1,4 +1,4 @@
-﻿appModule.directive("dieContainer", ["$sce", function ($sce) {
+﻿appModule.directive("dieContainer", [function () {
     return {
         restrict: 'E',
         templateUrl: "die-container.html",
@@ -7,15 +7,7 @@
         },
         link: function ($scope, element, attrs) {
             $scope.clearQty = function (color) {
-                if (color) {
-                    // Clear the quantity for a specific die
-                    document.getElementById("qty" + color).value = 0;
-                } else {
-                    // Clear the quantity for all dice
-                    for (var c in dice) {
-                        document.getElementById("qty" + c).value = 0;
-                    }
-                }
+                document.getElementById("qty" + color).value = 0;
             }
 
             $scope.changeQty = function (color, delta) {
