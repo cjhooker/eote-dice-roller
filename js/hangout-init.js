@@ -8,7 +8,7 @@ function init() {
                 // Angular and the Google APIs
                 angular.bootstrap(document, ['appModule']);
 
-                document.getElementById('buttonContainer').style.visibility = 'visible';
+                document.getElementById('headerInner').style.visibility = 'visible';
 
                 // If destiny tokens have already been added, make sure the participant now joining sees the correct current state
                 if (gapi.hangout.data.getValue('destiny')) {

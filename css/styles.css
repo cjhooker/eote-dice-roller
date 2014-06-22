@@ -63,6 +63,7 @@ input[type="checkbox"]:checked + label span {
 }
 /* Specific Sections */
 #container {
+  /*visibility: hidden;*/
   display: table;
   height: 100%;
   width: 300px;
@@ -73,62 +74,62 @@ input[type="checkbox"]:checked + label span {
   background: #fff;
   margin-bottom: 5px;
 }
-#header #header-inner {
+#header #headerInner {
+  visibility: hidden;
   background-color: #fff;
 }
-#header #header-inner #destinyTracker {
+#header #headerInner #destinyTracker {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding: 5px;
 }
-#header #header-inner #destinyTracker #destinyTokenContainer {
+#header #headerInner #destinyTracker #destinyTokenContainer {
   margin-top: 5px;
   width: 100%;
 }
-#header #header-inner #destinyTracker #destinyTokenContainer .destiny-token {
+#header #headerInner #destinyTracker #destinyTokenContainer .destiny-token {
   margin-right: 5px;
   width: 40px;
   height: 40px;
 }
-#header #header-inner #buttonContainer {
-  visibility: hidden;
+#header #headerInner #buttonContainer {
   padding: 5px;
 }
-#header #header-inner #buttonContainer .die-container {
+#header #headerInner #buttonContainer .die-container {
   float: left;
   margin-right: 15px;
 }
-#header #header-inner #buttonContainer .die-container img,
-#header #header-inner #buttonContainer .die-container div,
-#header #header-inner #buttonContainer .die-container input {
+#header #headerInner #buttonContainer .die-container img,
+#header #headerInner #buttonContainer .die-container div,
+#header #headerInner #buttonContainer .die-container input {
   float: left;
   display: block;
 }
-#header #header-inner #buttonContainer .die-container .die-button {
+#header #headerInner #buttonContainer .die-container .die-button {
   width: 32px;
   margin-right: 5px;
   margin-bottom: 5px;
   vertical-align: middle;
 }
-#header #header-inner #buttonContainer .die-container .qty-text-box {
+#header #headerInner #buttonContainer .die-container .qty-text-box {
   width: 24px;
   height: 32px;
 }
-#header #header-inner #buttonContainer .die-container div.arrow-container {
+#header #headerInner #buttonContainer .die-container div.arrow-container {
   width: 16px;
   margin-left: 2px;
 }
-#header #header-inner #buttonContainer .die-container div.arrow-container .arrow-up {
+#header #headerInner #buttonContainer .die-container div.arrow-container .arrow-up {
   margin: 0;
 }
-#header #header-inner #buttonContainer #buttonsBottom {
+#header #headerInner #buttonContainer #buttonsBottom {
   clear: left;
 }
-#header #header-inner #buttonContainer #optionsContainer {
+#header #headerInner #buttonContainer #optionsContainer {
   clear: left;
   margin: 5px 0;
 }
-#header #header-inner #buttonContainer #alertMessage {
+#header #headerInner #buttonContainer #alertMessage {
   margin: 5px 0;
   color: red;
 }
