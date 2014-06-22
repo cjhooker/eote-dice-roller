@@ -4,21 +4,6 @@
 
         $scope.destiny = "";
 
-        function init() {
-            // When API is ready...
-            gapi.hangout.onApiReady.add(
-                function (eventObj) {
-                    if (eventObj.isApiReady) {
-                        document.getElementById('buttonContainer').style.visibility = 'visible';
-
-                        if (gapi.hangout.data.getValue('destiny')) {
-                            var destiny = gapi.hangout.data.getValue('destiny');
-                            document.getElementById("destinyTokenContainer").innerHTML = getDestinyHtml(destiny);
-                        }
-                    }
-                });
-        }
-
         $scope.alertMessage = "";
 
         $scope.clearAllQtys = function () {
@@ -77,7 +62,7 @@
 
             // Set the destiny in the shared state
             gapi.hangout.data.setValue("destiny", destiny);
-            console.log("set destiny to " + destiny);
+            //console.log("set destiny to " + destiny);
 
             // Also add a message telling everyone that someone added a Destiny token
             var message = {
@@ -103,7 +88,7 @@
 
             // Set the destiny in the shared state
             gapi.hangout.data.setValue("destiny", destiny);
-            console.log("set destiny to " + destiny);
+            //console.log("set destiny to " + destiny);
 
             // Also add a message telling everyone that someone removed a Destiny token
             var message = {
@@ -120,7 +105,7 @@
         }
 
         $scope.toggleDestiny = function (position) {
-            console.log("toggleDestiny called for position " + position);
+            //console.log("toggleDestiny called for position " + position);
             var destiny = "";
 
             if (gapi.hangout.data.getValue('destiny')) {
@@ -137,7 +122,7 @@
 
             // Set the destiny in the shared state
             gapi.hangout.data.setValue("destiny", destiny);
-            console.log("set destiny to " + destiny);
+            //console.log("set destiny to " + destiny);
 
             // Also add a message telling everyone that someone flipped Destiny token
             var message = {
@@ -180,7 +165,4 @@
                 }
             }
         });
-
-        // Wait for gadget to load.
-        gadgets.util.registerOnLoadHandler(init);
     }]);
