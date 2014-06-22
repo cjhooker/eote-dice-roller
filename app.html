@@ -82,7 +82,7 @@
                         <input class="button" type="button" value="Insert Break" id="insertBreak" ng-click="insertBreak()" />
                     </div>
                     <div id="optionsContainer">
-                        <input class="checkbox" type="checkbox" id="resetAfterRoll" />
+                        <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
                         <label for="resetAfterRoll"><span></span>Reset dice after each roll</label>
                     </div>
                     <div id="alertMessage" ng-show="alertMessage">{{alertMessage}}</div>

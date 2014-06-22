@@ -45,6 +45,8 @@ input.button {
 }
 ::-webkit-scrollbar-thumb {
   background-color: #1f7fbe;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 input[type="checkbox"] {
   display: none;
@@ -63,7 +65,6 @@ input[type="checkbox"]:checked + label span {
 }
 /* Specific Sections */
 #container {
-  /*visibility: hidden;*/
   display: table;
   height: 100%;
   width: 300px;
@@ -86,6 +87,7 @@ input[type="checkbox"]:checked + label span {
 #header #headerInner #destinyTracker #destinyTokenContainer {
   margin-top: 5px;
   width: 100%;
+  min-height: 40px;
 }
 #header #headerInner #destinyTracker #destinyTokenContainer .destiny-token {
   margin-right: 5px;

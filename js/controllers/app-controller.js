@@ -3,8 +3,8 @@
         var outputArea = angular.element(document.getElementById('outputArea'));
 
         $scope.destiny = "";
-
         $scope.alertMessage = "";
+        $scope.resetAfterRoll = false;
 
         $scope.clearAllQtys = function () {
             for (var c in diceService.dice) {
@@ -31,7 +31,7 @@
 
                 diceService.roll();
 
-                if (document.getElementById("resetAfterRoll").checked) {
+                if ($scope.resetAfterRoll) {
                     $scope.clearAllQtys();
                 }
             } else {
