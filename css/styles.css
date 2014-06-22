@@ -32,6 +32,7 @@ input.button {
   padding: 5px;
   width: 142px;
   margin: 2px 0;
+  cursor: pointer;
 }
 .button:hover {
   background: #22a2f6;
@@ -93,36 +94,63 @@ input[type="checkbox"]:checked + label span {
   margin-right: 5px;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 #header #headerInner #buttonContainer {
   padding: 5px;
 }
+#header #headerInner #buttonContainer die-container:nth-child(3n) .die-container {
+  margin-right: 0;
+}
 #header #headerInner #buttonContainer .die-container {
   float: left;
-  margin-right: 15px;
+  border: 1px solid rgba(34, 162, 246, 0.3);
+  background: rgba(34, 162, 246, 0.05);
+  margin-right: 6px;
+  margin-bottom: 3px;
+  padding: 3px 7px;
 }
 #header #headerInner #buttonContainer .die-container img,
 #header #headerInner #buttonContainer .die-container div,
-#header #headerInner #buttonContainer .die-container input {
+#header #headerInner #buttonContainer .die-container input,
+#header #headerInner #buttonContainer .die-container span {
   float: left;
   display: block;
 }
 #header #headerInner #buttonContainer .die-container .die-button {
   width: 32px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin-right: 0;
+  margin-bottom: 0;
   vertical-align: middle;
+  cursor: pointer;
 }
 #header #headerInner #buttonContainer .die-container .qty-text-box {
-  width: 24px;
+  width: 26px;
   height: 32px;
+  text-align: center;
+  border: none;
+  font-size: 1.4em;
+  color: #114466;
 }
 #header #headerInner #buttonContainer .die-container div.arrow-container {
   width: 16px;
   margin-left: 2px;
 }
+#header #headerInner #buttonContainer .die-container div.arrow-container .arrow-up,
+#header #headerInner #buttonContainer .die-container div.arrow-container .arrow-down {
+  cursor: pointer;
+}
 #header #headerInner #buttonContainer .die-container div.arrow-container .arrow-up {
   margin: 0;
+}
+#header #headerInner #buttonContainer .die-container.percentile {
+  width: 76px;
+}
+#header #headerInner #buttonContainer .die-container.percentile img.die-button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  float: none;
 }
 #header #headerInner #buttonContainer #buttonsBottom {
   clear: left;

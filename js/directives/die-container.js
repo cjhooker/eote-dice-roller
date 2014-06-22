@@ -13,6 +13,12 @@
 
             $scope.changeQty = function (delta) {
                 $scope.quantity += delta;
+                if ($scope.quantity < 0) {
+                    $scope.quantity = 0;
+                }
+                if ($scope.quantity > 99) {
+                    $scope.quantity = 99;
+                }
             }
 
         }

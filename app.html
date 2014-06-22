@@ -20,7 +20,8 @@
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
             <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty()" />
-            <input type="text" value="{{quantity}}" id="qty{{color}}" class="qty-text-box" readonly />
+            <!--<input type="text" ng-model="quantity" class="qty-text-box" readonly />-->
+            <span class="qty-text-box">{{quantity}}</span>
             <div class="arrow-container">
                 <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(1)" />
                 <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" ng-click="changeQty(-1)" />
@@ -69,7 +70,7 @@
                     <die-container color="Red" quantity="diceQuantities['Red']"></die-container>
                     <die-container color="Setback" quantity="diceQuantities['Setback']"></die-container>
                     <die-container color="Force" quantity="diceQuantities['Force']"></die-container>
-                    <div class="die-container">
+                    <div class="die-container percentile">
                         <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" ng-click="rollStandardDie(100,'%')" />
                     </div>
                     <div id="buttonsBottom">
