@@ -152,21 +152,20 @@ input[type="checkbox"]:checked + label span {
 }
 #content #outputArea .row-wrapper .image-wrapper {
   float: left;
-  width: 53px;
+  width: 69px;
 }
 #content #outputArea .row-wrapper .image-wrapper .person-image {
-  width: 48px;
-  height: 48px;
-  /*float: left;*/
+  width: 64px;
+  height: 64px;
   margin-right: 5px;
 }
 #content #outputArea .row-wrapper .results-wrapper {
   float: left;
-  width: 220px;
+  width: 204px;
 }
 #content #outputArea .row-wrapper .results-wrapper .symbol {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   margin-right: 2px;
 }
 #content #outputArea .row-wrapper .results-wrapper .overall-results {
