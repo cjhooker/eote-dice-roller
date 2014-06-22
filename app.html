@@ -19,11 +19,11 @@
 
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
-            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty(color)" />
-            <input type="text" value="0" id="qty{{color}}" class="qty-text-box" readonly />
+            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty()" />
+            <input type="text" value="{{quantity}}" id="qty{{color}}" class="qty-text-box" readonly />
             <div class="arrow-container">
-                <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(color, 1)" />
-                <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" ng-click="changeQty(color, -1)" />
+                <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(1)" />
+                <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" ng-click="changeQty(-1)" />
             </div>
         </div>
     </script>
@@ -62,20 +62,20 @@
                     </div>
                 </div>
                 <div id="buttonContainer">
-                    <die-container color="Green"></die-container>
-                    <die-container color="Yellow"></die-container>
-                    <die-container color="Boost"></die-container>
-                    <die-container color="Purple"></die-container>
-                    <die-container color="Red"></die-container>
-                    <die-container color="Setback"></die-container>
-                    <die-container color="Force"></die-container>
+                    <die-container color="Green" quantity="diceQuantities['Green']"></die-container>
+                    <die-container color="Yellow" quantity="diceQuantities['Yellow']"></die-container>
+                    <die-container color="Boost" quantity="diceQuantities['Boost']"></die-container>
+                    <die-container color="Purple" quantity="diceQuantities['Purple']"></die-container>
+                    <die-container color="Red" quantity="diceQuantities['Red']"></die-container>
+                    <die-container color="Setback" quantity="diceQuantities['Setback']"></die-container>
+                    <die-container color="Force" quantity="diceQuantities['Force']"></die-container>
                     <div class="die-container">
                         <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" ng-click="rollStandardDie(100,'%')" />
                     </div>
                     <div id="buttonsBottom">
                         <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
 
-                        <input class="button" type="button" value="Reset All Dice" id="clearAllQty" ng-click="clearAllQtys()" />
+                        <input class="button" type="button" value="Reset All Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
 
                         <input class="button" type="button" value="Clear Results" id="clearMessages" ng-click="clearMessages()" />
 

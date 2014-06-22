@@ -14,7 +14,7 @@
 
     // Roll a standard, non-Star Wars die (e.g. d100)
     // Append some text afterwards if specified. E.g. "%" after a d100 roll
-    this.rollStandardDie = function (maxValue, postText) {
+    this.rollStandardDie = function (maxValue, followingText) {
 
         var roll = Math.floor(Math.random() * maxValue) + 1;
 
@@ -22,18 +22,18 @@
             messageId: messageService.getNextMessageId(),
             type: "html",
             participantId: gapi.hangout.getLocalParticipant().id,
-            data: { html: "<span class='standard-die-roll'>" + roll + postText + "</span>" }
+            data: { html: "<span class='standard-die-roll'>" + roll + followingText + "</span>" }
         };
 
         gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
     }
 
     // Roll all the Star Wars dice the user has selected
-    this.roll = function () {
+    this.roll = function (diceQuantities) {
         var diceResults = [];
 
-        for (var color in this.dice) {
-            var qty = document.getElementById("qty" + color).value;
+        for (var color in diceQuantities) {
+            var qty = diceQuantities[color];
             for (var i = 0; i < qty; i++) {
                 diceResults.push({ die: color.substring(0, 1), result: getRoll(this.dice[color]) })
             }

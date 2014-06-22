@@ -55,7 +55,7 @@ input[type="checkbox"] + label span {
   display: inline-block;
   width: 16px;
   height: 16px;
-  margin: -2px 4px 0 0;
+  margin: -2px 6px 0 0;
   vertical-align: middle;
   background: url([[BASE_PATH_CSS]]images/checkbox-unchecked.png) left top no-repeat;
   cursor: pointer;

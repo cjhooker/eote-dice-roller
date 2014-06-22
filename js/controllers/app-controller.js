@@ -6,11 +6,17 @@
         $scope.alertMessage = "";
         $scope.resetAfterRoll = false;
 
-        $scope.clearAllQtys = function () {
-            for (var c in diceService.dice) {
-                document.getElementById("qty" + c).value = 0;
+        // Set the dice quantities when the app first loads
+        $scope.diceQuantities = [];
+        resetDiceQuantities();
+
+        function resetDiceQuantities() {
+            for (var color in diceService.dice) {
+                $scope.diceQuantities[color] = 0;
             }
         }
+        
+        $scope.resetDiceQuantities = resetDiceQuantities;
 
         $scope.insertBreak = function () {
             outputArea.prepend("<hr/>");
@@ -23,16 +29,16 @@
         $scope.roll = function () {
             var qty = 0;
             for (var color in diceService.dice) {
-                qty += document.getElementById("qty" + color).value;
+                qty += $scope.diceQuantities[color];
             }
 
             if (qty > 0) {
                 $scope.alertMessage = "";
 
-                diceService.roll();
+                diceService.roll($scope.diceQuantities);
 
                 if ($scope.resetAfterRoll) {
-                    $scope.clearAllQtys();
+                    resetDiceQuantities();
                 }
             } else {
                 $scope.alertMessage = "No dice selected!";
@@ -62,7 +68,6 @@
 
             // Set the destiny in the shared state
             gapi.hangout.data.setValue("destiny", destiny);
-            //console.log("set destiny to " + destiny);
 
             // Also add a message telling everyone that someone added a Destiny token
             var message = {
@@ -88,7 +93,6 @@
 
             // Set the destiny in the shared state
             gapi.hangout.data.setValue("destiny", destiny);
-            //console.log("set destiny to " + destiny);
 
             // Also add a message telling everyone that someone removed a Destiny token
             var message = {
@@ -105,7 +109,6 @@
         }
 
         $scope.toggleDestiny = function (position) {
-            //console.log("toggleDestiny called for position " + position);
             var destiny = "";
 
             if (gapi.hangout.data.getValue('destiny')) {
@@ -122,7 +125,6 @@
 
             // Set the destiny in the shared state
             gapi.hangout.data.setValue("destiny", destiny);
-            //console.log("set destiny to " + destiny);
 
             // Also add a message telling everyone that someone flipped Destiny token
             var message = {
@@ -150,7 +152,6 @@
                         // A message of any type to display in the main output area
                         // e.g. the results of a die roll
                         var message = JSON.parse(stateChangedEvent.addedKeys[i].value);
-                        //localMessages.push(message);
                         $scope.displayMessage(message);
                         break;
                     case "destiny":
@@ -159,8 +160,6 @@
                         if (gapi.hangout.data.getValue('destiny')) {
                             $scope.destiny = gapi.hangout.data.getValue('destiny');
                         }
-                        //console.log(destiny);
-                        //document.getElementById("destinyTokenContainer").innerHTML = getDestinyHtml(destiny);
                         break;
                 }
             }
