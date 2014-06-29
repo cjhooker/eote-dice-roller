@@ -82,7 +82,9 @@
                     <label for="resetAfterRoll"><span></span>Reset after each roll</label>
                     <input class="button" type="button" value="Reset Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
 
-                    <div id="alertMessage" ng-show="alertMessage" ng-click="alertMessage = null;">{{alertMessage}}</div>
+                    <div id="alertMessage" ng-show="alertMessage" ng-click="alertMessage = null;">
+                        <span>{{alertMessage}}</span>
+                    </div>
                 </div>
             </div>
         </div>
