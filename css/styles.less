@@ -1,6 +1,7 @@
 ﻿/* Variables */
 @baseColor: #1F7FBE;
 @lightColor: #22A2F6;
+@headerHeight: 245px;
 
 /* General Styles */
 html, body {
@@ -31,13 +32,12 @@ input.button {
     background: @baseColor;
     color: #fff;
     border: 0 solid #000;
-    padding: 5px;
-    width: 142px;
-    margin: 2px 0;
+    margin: 3px 0;
+    height: 24px;
     cursor: pointer;
 }
 
-.button:hover {
+input.button:hover {
     background: @lightColor;
 }
 
@@ -47,7 +47,10 @@ input.button {
 }
 
 ::-webkit-scrollbar-track {
-    border: 1px solid @baseColor;
+    border-left: 1px solid @baseColor;
+    border-right: 1px solid @baseColor;
+    border-top: none;
+    border-bottom: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -77,14 +80,18 @@ input[type="checkbox"]:checked + label span {
 /* Specific Sections */
 
 #container {
-    display: table;
+    position: relative;
+    /*display: table;*/
     height: 100%;
     width: 300px;
     float: right;
 }
 
 #header {
-    display: table-cell;
+    /*display: table-row;*/
+    position: absolute;
+    height: @headerHeight;
+    overflow: hidden;
     background: #fff;
     margin-bottom: 5px;
 
@@ -96,17 +103,44 @@ input[type="checkbox"]:checked + label span {
             border-top: 1px solid black;
             border-bottom: 1px solid black;
             padding: 5px;
+            height: 64px;
 
             #destinyTokenContainer {
-                margin-top: 5px;
-                width: 100%;
-                min-height: 40px;
+                position: relative;
+                float: left;
+                height: 64px;
+                width: 230px;
+                overflow: auto;
 
                 .destiny-token {
                     margin-right: 5px;
-                    width: 40px;
-                    height: 40px;
+                    width: 32px;
+                    height: 32px;
                     cursor: pointer;
+                }
+
+                #destinyWatermark {
+                    position: absolute;
+                    left: 45px;
+                    top: 7px;
+                    font-size:  2em;
+                    font-weight: bold;
+                    opacity: 0.05;
+                }
+
+                ::-webkit-scrollbar-track {
+                    border-top: 1px solid @baseColor;
+                    border-bottom: 1px solid @baseColor;
+                }
+            }
+
+            #destinyButtonContainer {
+                float: right;
+                width: 60px;
+
+                input.button {
+                    width: 60px;
+                    height: 26px;
                 }
             }
         }
@@ -114,6 +148,26 @@ input[type="checkbox"]:checked + label span {
         #buttonContainer {
             padding: 5px;
 
+            input.button#resetDiceQuantities {
+                width: 110px;
+                float: right; 
+                margin-right: 2px;
+            }
+            
+            input.button#roll {
+                width: 92px;
+                height: 40px;
+                margin: 0;
+                font-weight: bold;
+                font-size: 1.25em;
+            }
+
+            #resetAfterRoll + label {
+                float: left;
+                position: relative;
+                top: 4px;
+            }
+            
             die-container:nth-child(3n) .die-container {
                 margin-right: 0;
             }
@@ -161,7 +215,7 @@ input[type="checkbox"]:checked + label span {
                     }
                 }
             }
-                        
+
             .die-container.percentile {
                 width: 76px;
 
@@ -173,28 +227,32 @@ input[type="checkbox"]:checked + label span {
                 }
             }
 
-            #buttonsBottom {
-                clear: left;
-            }
-
-            #optionsContainer {
-                clear: left;
-                margin: 5px 0;
-            }
-
             #alertMessage {
-                margin: 5px 0;
+                position: relative;
+                top: -140px;
+                width: 200px;
+                margin: auto;
+                padding: 20px;
                 color: red;
+                font-weight: bold;
+                font-size: 1.2em;
+                background-color: lighten(@baseColor, 50%);
+                border: 2px solid black;
+                cursor: pointer;
+                text-align: center;
             }
         }
     }
 }
 
 #content {
-    /* Height is dynamic, and will expand */
-    /* as content is added (won't scroll) */
-    display: table-row;
-    height: 100%;
+    position: absolute;
+    top: @headerHeight;
+    bottom: 30px;
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
     background: #fff;
 
     #outputArea {
@@ -202,7 +260,7 @@ input[type="checkbox"]:checked + label span {
         width: 100%;
         overflow: auto;
         background-color: #fff;
-        border-top: 1px solid black;
+
 
         .row-wrapper {
             margin: 5px 5px 20px 5px;
@@ -237,6 +295,25 @@ input[type="checkbox"]:checked + label span {
 
         .standard-die-roll {
             font-size: 1.5em;
+        }
+    }
+}
+
+#footer {
+    /*display: table-row;*/
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    /*padding: 3px 0;*/
+    #footer-inner {
+        width: 290px;
+        margin: 0 auto;
+
+        input.button {
+            width: 142px;
         }
     }
 }

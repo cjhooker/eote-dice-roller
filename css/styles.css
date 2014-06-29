@@ -29,12 +29,11 @@ input.button {
   background: #1f7fbe;
   color: #fff;
   border: 0 solid #000;
-  padding: 5px;
-  width: 142px;
-  margin: 2px 0;
+  margin: 3px 0;
+  height: 24px;
   cursor: pointer;
 }
-.button:hover {
+input.button:hover {
   background: #22a2f6;
 }
 ::-webkit-scrollbar {
@@ -42,7 +41,10 @@ input.button {
   height: 13px;
 }
 ::-webkit-scrollbar-track {
-  border: 1px solid #1f7fbe;
+  border-left: 1px solid #1f7fbe;
+  border-right: 1px solid #1f7fbe;
+  border-top: none;
+  border-bottom: none;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #1f7fbe;
@@ -66,13 +68,17 @@ input[type="checkbox"]:checked + label span {
 }
 /* Specific Sections */
 #container {
-  display: table;
+  position: relative;
+  /*display: table;*/
   height: 100%;
   width: 300px;
   float: right;
 }
 #header {
-  display: table-cell;
+  /*display: table-row;*/
+  position: absolute;
+  height: 245px;
+  overflow: hidden;
   background: #fff;
   margin-bottom: 5px;
 }
@@ -84,20 +90,60 @@ input[type="checkbox"]:checked + label span {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding: 5px;
+  height: 64px;
 }
 #header #headerInner #destinyTracker #destinyTokenContainer {
-  margin-top: 5px;
-  width: 100%;
-  min-height: 40px;
+  position: relative;
+  float: left;
+  height: 64px;
+  width: 230px;
+  overflow: auto;
 }
 #header #headerInner #destinyTracker #destinyTokenContainer .destiny-token {
   margin-right: 5px;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
+}
+#header #headerInner #destinyTracker #destinyTokenContainer #destinyWatermark {
+  position: absolute;
+  left: 45px;
+  top: 7px;
+  font-size: 2em;
+  font-weight: bold;
+  opacity: 0.05;
+}
+#header #headerInner #destinyTracker #destinyTokenContainer ::-webkit-scrollbar-track {
+  border-top: 1px solid #1f7fbe;
+  border-bottom: 1px solid #1f7fbe;
+}
+#header #headerInner #destinyTracker #destinyButtonContainer {
+  float: right;
+  width: 60px;
+}
+#header #headerInner #destinyTracker #destinyButtonContainer input.button {
+  width: 60px;
+  height: 26px;
 }
 #header #headerInner #buttonContainer {
   padding: 5px;
+}
+#header #headerInner #buttonContainer input.button#resetDiceQuantities {
+  width: 110px;
+  float: right;
+  margin-right: 2px;
+}
+#header #headerInner #buttonContainer input.button#roll {
+  width: 92px;
+  height: 40px;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+#header #headerInner #buttonContainer #resetAfterRoll + label {
+  float: left;
+  position: relative;
+  top: 4px;
 }
 #header #headerInner #buttonContainer die-container:nth-child(3n) .die-container {
   margin-right: 0;
@@ -152,22 +198,28 @@ input[type="checkbox"]:checked + label span {
   display: block;
   float: none;
 }
-#header #headerInner #buttonContainer #buttonsBottom {
-  clear: left;
-}
-#header #headerInner #buttonContainer #optionsContainer {
-  clear: left;
-  margin: 5px 0;
-}
 #header #headerInner #buttonContainer #alertMessage {
-  margin: 5px 0;
+  position: relative;
+  top: -140px;
+  width: 200px;
+  margin: auto;
+  padding: 20px;
   color: red;
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #e2f1fa;
+  border: 2px solid black;
+  cursor: pointer;
+  text-align: center;
 }
 #content {
-  /* Height is dynamic, and will expand */
-  /* as content is added (won't scroll) */
-  display: table-row;
-  height: 100%;
+  position: absolute;
+  top: 245px;
+  bottom: 30px;
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
   background: #fff;
 }
 #content #outputArea {
@@ -175,7 +227,6 @@ input[type="checkbox"]:checked + label span {
   width: 100%;
   overflow: auto;
   background-color: #fff;
-  border-top: 1px solid black;
 }
 #content #outputArea .row-wrapper {
   margin: 5px 5px 20px 5px;
@@ -204,5 +255,22 @@ input[type="checkbox"]:checked + label span {
 }
 #content #outputArea .standard-die-roll {
   font-size: 1.5em;
+}
+#footer {
+  /*display: table-row;*/
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  /*padding: 3px 0;*/
+}
+#footer #footer-inner {
+  width: 290px;
+  margin: 0 auto;
+}
+#footer #footer-inner input.button {
+  width: 142px;
 }
 /*# sourceMappingURL=styles.css.map */

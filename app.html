@@ -53,13 +53,16 @@
     <div id="container">
         <div id="header">
             <div id="headerInner">
-                <img src="[[BASE_PATH]]images/title.png" />
+                <!--<img src="[[BASE_PATH]]images/title.png" />-->
                 <div id="destinyTracker">
-                    <input class="button" type="button" value="Add Destiny" id="addDestiny" ng-click="addDestiny()" />
-                    <input class="button" type="button" value="Remove Destiny" id="removeDestiny" ng-click="removeDestiny()" />
                     <div id="destinyTokenContainer">
                         <img ng-src='[[BASE_PATH]]images/destiny-{{destinyChar|destinyType}}.png' class='destiny-token' ng-click='toggleDestiny($index)'
                              ng-repeat="destinyChar in destiny track by $index" />
+                        <div id="destinyWatermark" ng-show="!destiny">DESTINY</div>
+                    </div>
+                    <div id="destinyButtonContainer">
+                        <input class="button" type="button" value="Add" id="addDestiny" ng-click="addDestiny()" />
+                        <input class="button" type="button" value="Remove" id="removeDestiny" ng-click="removeDestiny()" />
                     </div>
                 </div>
                 <div id="buttonContainer">
@@ -73,26 +76,27 @@
                     <div class="die-container percentile">
                         <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" ng-click="rollStandardDie(100,'%')" />
                     </div>
-                    <div id="buttonsBottom">
-                        <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
+                    <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
 
-                        <input class="button" type="button" value="Reset All Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
+                    <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
+                    <label for="resetAfterRoll"><span></span>Reset after each roll</label>
+                    <input class="button" type="button" value="Reset Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
 
-                        <input class="button" type="button" value="Clear Results" id="clearMessages" ng-click="clearMessages()" />
-
-                        <input class="button" type="button" value="Insert Break Line" id="insertBreak" ng-click="insertBreak()" />
-                    </div>
-                    <div id="optionsContainer">
-                        <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
-                        <label for="resetAfterRoll"><span></span>Reset dice after each roll</label>
-                    </div>
-                    <div id="alertMessage" ng-show="alertMessage">{{alertMessage}}</div>
+                    <div id="alertMessage" ng-show="alertMessage" ng-click="alertMessage = null;">{{alertMessage}}</div>
                 </div>
             </div>
         </div>
 
         <div id="content">
             <div id="outputArea">
+            </div>
+        </div>
+
+        <div id="footer">
+            <div id="footer-inner">
+                <input class="button" type="button" value="Clear Results" id="clearMessages" ng-click="clearMessages()" style="float: left;" />
+
+                <input class="button" type="button" value="Insert Break Line" id="insertBreak" ng-click="insertBreak()" style="float: right;" />
             </div>
         </div>
     </div>
