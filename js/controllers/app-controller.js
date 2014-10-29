@@ -3,17 +3,19 @@
         var outputArea = angular.element(document.getElementById('outputArea'));
 
         $scope.destiny = "";
-        $scope.alertMessage = "";
+        //$scope.alertMessage = "";
         $scope.resetAfterRoll = false;
 
         // Set the dice quantities when the app first loads
         $scope.diceQuantities = [];
         resetDiceQuantities();
+        $scope.numericDieType = 100;
 
         function resetDiceQuantities() {
             for (var color in diceService.dice) {
                 $scope.diceQuantities[color] = 0;
             }
+            $scope.diceQuantities['Numeric'] = 0;
         }
         
         $scope.resetDiceQuantities = resetDiceQuantities;
@@ -32,21 +34,24 @@
                 qty += $scope.diceQuantities[color];
             }
 
-            if (qty > 0) {
-                $scope.alertMessage = "";
+            qty += $scope.diceQuantities['Numeric'];
 
-                diceService.roll($scope.diceQuantities);
+            if (qty > 0) {
+                //$scope.alertMessage = "";
+
+                diceService.roll($scope.diceQuantities, $scope.numericDieType);
 
                 if ($scope.resetAfterRoll) {
                     resetDiceQuantities();
                 }
             } else {
-                $scope.alertMessage = "No dice selected!";
+                //$scope.alertMessage = "No dice selected!";
+                outputArea.prepend("<div class='alert'>No dice selected!</div>");
             }
         }
 
         $scope.rollStandardDie = function (maxValue, postText) {
-            $scope.alertMessage = "";
+            //$scope.alertMessage = "";
             diceService.rollStandardDie(maxValue, postText);
         }
 

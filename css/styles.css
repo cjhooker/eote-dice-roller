@@ -1,4 +1,4 @@
-﻿/* Variables */
+/* Variables */
 /* General Styles */
 html,
 body {
@@ -127,6 +127,36 @@ input[type="checkbox"]:checked + label span {
 }
 #header #headerInner #buttonContainer {
   padding: 5px;
+  /*.die-container.percentile {
+                width: 76px;
+
+                img.die-button {
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    float: none;
+                }
+            }*/
+  /*#alertMessage {
+                position: relative;
+                top: -120px;
+                width: 220px;
+                margin: auto;
+                padding: 20px;
+                color: red;
+                font-weight: bold;
+                font-size: 1.2em;
+                background-color: lighten(@baseColor, 50%);
+                border: 2px solid black;
+                cursor: pointer;
+                text-align: center;
+
+                span {
+                    display: inline-block;
+                    position: relative;
+                    top: -5px;
+                }
+            }*/
 }
 #header #headerInner #buttonContainer input.button#resetDiceQuantities {
   width: 110px;
@@ -170,6 +200,11 @@ input[type="checkbox"]:checked + label span {
   vertical-align: middle;
   cursor: pointer;
 }
+#header #headerInner #buttonContainer .die-container .numeric-die-type {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+}
 #header #headerInner #buttonContainer .die-container .qty-text-box {
   width: 26px;
   height: 32px;
@@ -189,34 +224,6 @@ input[type="checkbox"]:checked + label span {
 #header #headerInner #buttonContainer .die-container div.arrow-container .arrow-up {
   margin: 0;
 }
-#header #headerInner #buttonContainer .die-container.percentile {
-  width: 76px;
-}
-#header #headerInner #buttonContainer .die-container.percentile img.die-button {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  float: none;
-}
-#header #headerInner #buttonContainer #alertMessage {
-  position: relative;
-  top: -120px;
-  width: 220px;
-  margin: auto;
-  padding: 20px;
-  color: red;
-  font-weight: bold;
-  font-size: 1.2em;
-  background-color: #e2f1fa;
-  border: 2px solid black;
-  cursor: pointer;
-  text-align: center;
-}
-#header #headerInner #buttonContainer #alertMessage span {
-  display: inline-block;
-  position: relative;
-  top: -5px;
-}
 #content {
   position: absolute;
   top: 245px;
@@ -232,6 +239,10 @@ input[type="checkbox"]:checked + label span {
   width: 100%;
   overflow: auto;
   background-color: #fff;
+}
+#content #outputArea .alert {
+  color: red;
+  padding: 10px;
 }
 #content #outputArea .row-wrapper {
   margin: 5px 5px 20px 5px;
@@ -251,12 +262,23 @@ input[type="checkbox"]:checked + label span {
   width: 204px;
 }
 #content #outputArea .row-wrapper .results-wrapper .symbol {
+  float: left;
   width: 32px;
   height: 32px;
   margin-right: 2px;
 }
+#content #outputArea .row-wrapper .results-wrapper .numeric-result {
+  float: left;
+  height: 30px;
+  margin: 0 1px;
+  padding: 0 3px;
+  font-size: 1.55em;
+  line-height: 30px;
+  border: 1px solid #888888;
+}
 #content #outputArea .row-wrapper .results-wrapper .overall-results {
   margin-top: 5px;
+  clear: left;
 }
 #content #outputArea .standard-die-roll {
   font-size: 1.5em;

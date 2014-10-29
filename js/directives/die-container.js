@@ -4,7 +4,8 @@
         templateUrl: "die-container.html",
         scope: {
             color: '@color',
-            quantity: '=quantity'
+            quantity: '=quantity',
+            numericDieType: '=numericDieType'
         },
         link: function ($scope, element, attrs) {
             $scope.clearQty = function () {

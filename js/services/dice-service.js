@@ -29,13 +29,19 @@
     }
 
     // Roll all the Star Wars dice the user has selected
-    this.roll = function (diceQuantities) {
+    this.roll = function (diceQuantities, numericDieType) {
         var diceResults = [];
 
         for (var color in diceQuantities) {
             var qty = diceQuantities[color];
             for (var i = 0; i < qty; i++) {
-                diceResults.push({ die: color.substring(0, 1), result: getRoll(this.dice[color]) })
+                if (color == 'Numeric') {
+                    diceResults.push({ die: color.substring(0, 1), result: Math.floor(Math.random() * numericDieType) + 1 });
+                    //this.rollStandardDie(numericDieType, '');
+                }
+                else {
+                    diceResults.push({ die: color.substring(0, 1), result: getRoll(this.dice[color]) });
+                }
             }
         }
 

@@ -193,6 +193,12 @@ input[type="checkbox"]:checked + label span {
                     cursor: pointer;
                 }
 
+                .numeric-die-type {
+                    width: 32px;
+                    height: 32px;
+                    text-align: center;
+                }
+
                 .qty-text-box {
                     width: 26px;
                     height: 32px;
@@ -216,7 +222,7 @@ input[type="checkbox"]:checked + label span {
                 }
             }
 
-            .die-container.percentile {
+            /*.die-container.percentile {
                 width: 76px;
 
                 img.die-button {
@@ -225,9 +231,9 @@ input[type="checkbox"]:checked + label span {
                     display: block;
                     float: none;
                 }
-            }
+            }*/
 
-            #alertMessage {
+            /*#alertMessage {
                 position: relative;
                 top: -120px;
                 width: 220px;
@@ -246,7 +252,7 @@ input[type="checkbox"]:checked + label span {
                     position: relative;
                     top: -5px;
                 }
-            }
+            }*/
         }
     }
 }
@@ -266,7 +272,11 @@ input[type="checkbox"]:checked + label span {
         width: 100%;
         overflow: auto;
         background-color: #fff;
-
+        
+        .alert {
+            color: red;
+            padding: 10px;
+        }
 
         .row-wrapper {
             margin: 5px 5px 20px 5px;
@@ -288,13 +298,25 @@ input[type="checkbox"]:checked + label span {
                 width: 204px;
 
                 .symbol {
+                    float: left;
                     width: 32px;
                     height: 32px;
                     margin-right: 2px;
                 }
 
+                .numeric-result {
+                    float: left;
+                    height: 30px;               
+                    margin: 0 1px;
+                    padding: 0 3px;
+                    font-size: 1.55em;
+                    line-height: 30px;
+                    border: 1px solid #888888;
+                }
+
                 .overall-results {
                     margin-top: 5px;
+                    clear: left;
                 }
             }
         }

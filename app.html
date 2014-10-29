@@ -17,10 +17,11 @@
 
     <!-- Angular Templates -->
 
+    <!-- Template for display of dice controls -->
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
-            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="rollGreen" ng-click="clearQty()" />
-            <!--<input type="text" ng-model="quantity" class="qty-text-box" readonly />-->
+            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="roll{{color}}" ng-click="clearQty()" ng-show="color!='Numeric'" />
+            <input type="text" class="numeric-die-type" ng-model="numericDieType" ng-show="color=='Numeric'" />
             <span class="qty-text-box">{{quantity}}</span>
             <div class="arrow-container">
                 <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(1)" />
@@ -29,6 +30,7 @@
         </div>
     </script>
 
+    <!-- Template for display of a message -->
     <script type="text/ng-template" id="message-display.html">
         <div class='row-wrapper'>
             <div class='image-wrapper'>
@@ -36,7 +38,8 @@
             </div>
             <div class='results-wrapper' ng-show="message.type == 'roll'">
                 <div class='dice-results'>
-                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png' ng-repeat="dieResult in message.data.diceResults" />
+                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png' ng-show="dieResult.die != 'N'" ng-repeat="dieResult in message.data.diceResults" />
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" ng-show="dieResult.die == 'N'">{{dieResult.result}}</span>
                 </div>
                 <div class='overall-results'>
                     <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' ng-repeat="result in message.data.overallResult track by $index" />
@@ -73,18 +76,17 @@
                     <die-container color="Red" quantity="diceQuantities['Red']"></die-container>
                     <die-container color="Setback" quantity="diceQuantities['Setback']"></die-container>
                     <die-container color="Force" quantity="diceQuantities['Force']"></die-container>
-                    <div class="die-container percentile">
-                        <img src="[[BASE_PATH]]images/Percentile.png" class="die-button" id="rollForce" ng-click="rollStandardDie(100,'%')" />
-                    </div>
+                    <die-container color="Numeric" quantity="diceQuantities['Numeric']" numeric-die-type="numericDieType"></die-container>
+
                     <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
 
                     <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
                     <label for="resetAfterRoll"><span></span>Reset after each roll</label>
                     <input class="button" type="button" value="Reset Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
 
-                    <div id="alertMessage" ng-show="alertMessage" ng-click="alertMessage = null;">
+                    <!--<div id="alertMessage" ng-show="alertMessage" ng-click="alertMessage = null;">
                         <span>{{alertMessage}}</span>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
