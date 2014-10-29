@@ -2,23 +2,22 @@
     function ($scope, $compile, diceService, messageService) {
         var outputArea = angular.element(document.getElementById('outputArea'));
 
-        $scope.destiny = "";
-        //$scope.alertMessage = "";
-        $scope.resetAfterRoll = false;
+        $scope.init = function () {
+            $scope.destiny = "";
+            $scope.resetAfterRoll = false;
 
-        // Set the dice quantities when the app first loads
-        $scope.diceQuantities = [];
-        resetDiceQuantities();
-        $scope.numericDieType = 100;
+            // Set the dice quantities when the app first loads
+            $scope.diceQuantities = [];
+            $scope.resetDiceQuantities();
+            $scope.numericDieType = 100;
+        }
 
-        function resetDiceQuantities() {
+        $scope.resetDiceQuantities = function () {
             for (var color in diceService.dice) {
                 $scope.diceQuantities[color] = 0;
             }
             $scope.diceQuantities['Numeric'] = 0;
         }
-        
-        $scope.resetDiceQuantities = resetDiceQuantities;
 
         $scope.insertBreak = function () {
             outputArea.prepend("<hr/>");
@@ -37,21 +36,17 @@
             qty += $scope.diceQuantities['Numeric'];
 
             if (qty > 0) {
-                //$scope.alertMessage = "";
-
                 diceService.roll($scope.diceQuantities, $scope.numericDieType);
 
                 if ($scope.resetAfterRoll) {
-                    resetDiceQuantities();
+                    $scope.resetDiceQuantities();
                 }
             } else {
-                //$scope.alertMessage = "No dice selected!";
                 outputArea.prepend("<div class='alert'>No dice selected!</div>");
             }
         }
 
         $scope.rollStandardDie = function (maxValue, postText) {
-            //$scope.alertMessage = "";
             diceService.rollStandardDie(maxValue, postText);
         }
 
@@ -169,4 +164,7 @@
                 }
             }
         });
+
+        // After everything is defined, call the init function
+        $scope.init();
     }]);

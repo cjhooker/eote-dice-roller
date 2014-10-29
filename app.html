@@ -56,7 +56,6 @@
     <div id="container">
         <div id="header">
             <div id="headerInner">
-                <!--<img src="[[BASE_PATH]]images/title.png" />-->
                 <div id="destinyTracker">
                     <div id="destinyTokenContainer">
                         <img ng-src='[[BASE_PATH]]images/destiny-{{destinyChar|destinyType}}.png' class='destiny-token' ng-click='toggleDestiny($index)'
@@ -83,10 +82,6 @@
                     <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
                     <label for="resetAfterRoll"><span></span>Reset after each roll</label>
                     <input class="button" type="button" value="Reset Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
-
-                    <!--<div id="alertMessage" ng-show="alertMessage" ng-click="alertMessage = null;">
-                        <span>{{alertMessage}}</span>
-                    </div>-->
                 </div>
             </div>
         </div>
