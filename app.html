@@ -12,6 +12,7 @@
     <script src="[[BASE_PATH]]js/directives/message-display.js"></script>
     <script src="[[BASE_PATH]]js/services/dice-service.js"></script>
     <script src="[[BASE_PATH]]js/services/message-service.js"></script>
+    <script src="[[BASE_PATH]]js/services/setting-service.js"></script>
 
     <script src="[[BASE_PATH]]js/utilities.js"></script>
 
@@ -20,12 +21,13 @@
     <!-- Template for display of dice controls -->
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
-            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="roll{{color}}" ng-click="clearQty()" ng-show="color!='Numeric'" />
-            <input type="text" class="numeric-die-type" ng-model="numericDieType" ng-show="color=='Numeric'" />
+            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="roll{{color}}" alt="{{color}} die" 
+                 ng-click="clearQty()" ng-if="color!='Numeric'" />
+            <input type="text" class="numeric-die-type" ng-model="numericDieType" ng-if="color=='Numeric'" />
             <span class="qty-text-box">{{quantity}}</span>
             <div class="arrow-container">
-                <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" ng-click="changeQty(1)" />
-                <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" ng-click="changeQty(-1)" />
+                <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" alt="{{color}} +1" ng-click="changeQty(1)" />
+                <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" alt="{{color}} -1" ng-click="changeQty(-1)" />
             </div>
         </div>
     </script>
@@ -34,18 +36,21 @@
     <script type="text/ng-template" id="message-display.html">
         <div class='row-wrapper'>
             <div class='image-wrapper'>
-                <img class='person-image' ng-src='{{person.image.url}}' title='{{person.displayName}}' />
+                <img class='person-image' ng-src='{{person.image.url}}' title='{{person.displayName}}' alt="{{person.displayName}}" />
             </div>
-            <div class='results-wrapper' ng-show="message.type == 'roll'">
+            <div class='results-wrapper' ng-if="message.type == 'roll'">
                 <div class='dice-results'>
-                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png' ng-show="dieResult.die != 'N'" ng-repeat="dieResult in message.data.diceResults" />
-                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" ng-show="dieResult.die == 'N'">{{dieResult.result}}</span>
+                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png'
+                         alt="{{dieResult.die|dieName}} {{dieResult.result|dieResultSummary}}"
+                         ng-if="dieResult.die != 'N'" ng-repeat="dieResult in message.data.diceResults" />
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" ng-if="dieResult.die == 'N'">{{dieResult.result}}</span>
                 </div>
-                <div class='overall-results'>
-                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' ng-repeat="result in message.data.overallResult track by $index" />
+                <div class='overall-results' title="{{message.data.overallResult|dieResultSummary}}">
+                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' alt="{{result|symbolName}}" 
+                         ng-repeat="result in message.data.overallResult track by $index" />
                 </div>
             </div>
-            <div class="results-wrapper" ng-show="message.type == 'html'" ng-bind-html="message.data.html">
+            <div class="results-wrapper" ng-if="message.type == 'html'" ng-bind-html="message.data.html">
             </div>
         </div>
     </script>
@@ -58,7 +63,7 @@
             <div id="headerInner">
                 <div id="destinyTracker">
                     <div id="destinyTokenContainer">
-                        <img ng-src='[[BASE_PATH]]images/destiny-{{destinyChar|destinyType}}.png' class='destiny-token' ng-click='toggleDestiny($index)'
+                        <img ng-src='[[BASE_PATH]]images/destiny-{{destinyChar|destinyType}}.png' alt="Destiny {{destinyChar|destinyType}}" class='destiny-token' ng-click='toggleDestiny($index)'
                              ng-repeat="destinyChar in destiny track by $index" />
                         <div id="destinyWatermark" ng-show="!destiny">DESTINY</div>
                     </div>
@@ -86,16 +91,29 @@
             </div>
         </div>
 
-        <div id="content">
-            <div id="outputArea">
+        <div id="content-main" class="content" ng-hide="showSettings">
+            <div id="outputArea" class="{{imageSize}}">
+            </div>
+        </div>
+
+        <div id="content-settings" class="content" ng-show="showSettings">
+            <div id="settings-container">
+                <h1>Settings</h1>
+
+                <span class="settings-label">Image Size</span>
+                <select ng-model="imageSize"
+                        ng-change="imageSizeChange()"
+                        ng-options="value.id as value.label for value in imageSizeOptions"></select>
             </div>
         </div>
 
         <div id="footer">
             <div id="footer-inner">
-                <input class="button" type="button" value="Clear Results" id="clearMessages" ng-click="clearMessages()" style="float: left;" />
+                <input class="button" type="button" value="Clear Results" id="clearMessages" ng-click="clearMessages()" />
 
-                <input class="button" type="button" value="Insert Break Line" id="insertBreak" ng-click="insertBreak()" style="float: right;" />
+                <input class="button" type="button" value="Insert Break Line" id="insertBreak" ng-click="insertBreak()" />
+
+                <img class="settings-button" src="[[BASE_PATH]]images/settings-blue.png" alt="Settings" ng-click="toggleSettingsDisplay()" />
             </div>
         </div>
     </div>

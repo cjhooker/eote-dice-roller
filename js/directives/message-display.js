@@ -1,9 +1,9 @@
-﻿appModule.directive("messageDisplay", ["$sanitize", function ($sanitize) {
+﻿appModule.directive("messageDisplay", ["$sanitize", "settingService", function ($sanitize, settingService) {
     return {
         restrict: 'E',
         templateUrl: "message-display.html",
         scope: {
-            message: '=message'
+            message: '=message',
         },
         link: function ($scope, element, attrs) {
 

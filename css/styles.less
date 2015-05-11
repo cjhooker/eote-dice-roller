@@ -17,8 +17,8 @@ body, div, span, p, td {
 
 h1 {
     margin-top: 5px;
-    font-size: 15pt;
-    font-weight: normal;
+    font-size: 1.75em;
+    font-weight: bold;
     color: @baseColor;
 }
 
@@ -123,7 +123,7 @@ input[type="checkbox"]:checked + label span {
                     position: absolute;
                     left: 45px;
                     top: 7px;
-                    font-size:  2em;
+                    font-size: 2em;
                     font-weight: bold;
                     opacity: 0.05;
                 }
@@ -150,10 +150,12 @@ input[type="checkbox"]:checked + label span {
 
             input.button#resetDiceQuantities {
                 width: 110px;
-                float: right; 
+                float: right;
                 margin-right: 2px;
+                height: 32px;
+                margin-top: 0;
             }
-            
+
             input.button#roll {
                 width: 92px;
                 height: 40px;
@@ -167,7 +169,7 @@ input[type="checkbox"]:checked + label span {
                 position: relative;
                 top: 4px;
             }
-            
+
             die-container:nth-child(3n) .die-container {
                 margin-right: 0;
             }
@@ -221,43 +223,11 @@ input[type="checkbox"]:checked + label span {
                     }
                 }
             }
-
-            /*.die-container.percentile {
-                width: 76px;
-
-                img.die-button {
-                    margin-left: auto;
-                    margin-right: auto;
-                    display: block;
-                    float: none;
-                }
-            }*/
-
-            /*#alertMessage {
-                position: relative;
-                top: -120px;
-                width: 220px;
-                margin: auto;
-                padding: 20px;
-                color: red;
-                font-weight: bold;
-                font-size: 1.2em;
-                background-color: lighten(@baseColor, 50%);
-                border: 2px solid black;
-                cursor: pointer;
-                text-align: center;
-
-                span {
-                    display: inline-block;
-                    position: relative;
-                    top: -5px;
-                }
-            }*/
         }
     }
 }
 
-#content {
+.content {
     position: absolute;
     top: @headerHeight;
     bottom: 30px;
@@ -272,7 +242,7 @@ input[type="checkbox"]:checked + label span {
         width: 100%;
         overflow: auto;
         background-color: #fff;
-        
+
         .alert {
             color: red;
             padding: 10px;
@@ -284,33 +254,24 @@ input[type="checkbox"]:checked + label span {
 
             .image-wrapper {
                 float: left;
-                width: 69px;
 
                 .person-image {
-                    width: 64px;
-                    height: 64px;
                     margin-right: 5px;
                 }
             }
 
             .results-wrapper {
                 float: left;
-                width: 204px;
 
                 .symbol {
                     float: left;
-                    width: 32px;
-                    height: 32px;
                     margin-right: 2px;
                 }
 
                 .numeric-result {
                     float: left;
-                    height: 30px;               
                     margin: 0 1px;
                     padding: 0 3px;
-                    font-size: 1.55em;
-                    line-height: 30px;
                     border: 1px solid #888888;
                 }
 
@@ -325,23 +286,134 @@ input[type="checkbox"]:checked + label span {
             font-size: 1.5em;
         }
     }
+
+    #outputArea.small {
+        .row-wrapper {
+            margin-bottom: 10px;
+
+            .image-wrapper {
+                width: 37px;
+
+                .person-image {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            .results-wrapper {
+                width: 236px;
+
+                .symbol {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                .numeric-result {
+                    height: 14px;
+                    font-size: 1em;
+                    line-height: 14px;
+                }
+            }
+        }
+    }
+
+    #outputArea.medium {
+        .row-wrapper {
+            margin-bottom: 15px;
+
+            .image-wrapper {
+                width: 53px;
+
+                .person-image {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+
+            .results-wrapper {
+                width: 220px;
+
+                .symbol {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .numeric-result {
+                    height: 22px;
+                    font-size: 1.25em;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+
+    #outputArea.large {
+        .row-wrapper {
+            .image-wrapper {
+                width: 69px;
+
+                .person-image {
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+
+            .results-wrapper {
+                width: 204px;
+
+                .symbol {
+                    width: 32px;
+                    height: 32px;
+                }
+
+                .numeric-result {
+                    height: 30px;
+                    font-size: 1.55em;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}
+
+#settings-container {
+    padding: 5px;
+
+    .settings-label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
 }
 
 #footer {
-    /*display: table-row;*/
     position: absolute;
     bottom: 0;
     height: 30px;
     width: 100%;
     overflow: hidden;
     background: #fff;
-    /*padding: 3px 0;*/
+
     #footer-inner {
         width: 290px;
         margin: 0 auto;
 
         input.button {
-            width: 142px;
+            width: 120px;
+            margin: 3px 10px 3px 0;
+            float: left;
+        }
+
+        input.button:last-of-type {
+            margin-right: 0;
+        }
+
+        .settings-button {
+            position: relative;
+            top: 1px;
+            margin-right: 2px;
+            float: right;
+            height: 28px;
+            cursor: pointer;
         }
     }
 }

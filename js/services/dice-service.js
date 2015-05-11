@@ -36,7 +36,10 @@
             var qty = diceQuantities[color];
             for (var i = 0; i < qty; i++) {
                 if (color == 'Numeric') {
-                    diceResults.push({ die: color.substring(0, 1), result: Math.floor(Math.random() * numericDieType) + 1 });
+                    var result = Math.floor(Math.random() * numericDieType) + 1;
+                    if (numericDieType == 100) { result += "%"; }
+
+                    diceResults.push({ die: color.substring(0, 1), result: result });
                     //this.rollStandardDie(numericDieType, '');
                 }
                 else {

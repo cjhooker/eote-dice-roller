@@ -1,6 +1,31 @@
-﻿appModule.controller("appController", ["$scope", "$compile", "diceService", "messageService",
-    function ($scope, $compile, diceService, messageService) {
+﻿appModule.controller("appController", ["$scope", "$compile", "diceService", "messageService", "settingService",
+    function ($scope, $compile, diceService, messageService, settingService) {
         var outputArea = angular.element(document.getElementById('outputArea'));
+
+        settingService.set("imageSize", "medium");
+
+        $scope.showSettings = false;
+
+        $scope.imageSizeOptions = [
+                {
+                    "id": "small",
+                    "label": "Small"
+                },
+                {
+                    "id": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "id": "large",
+                    "label": "Large"
+                }
+        ];
+
+        $scope.imageSize = settingService.get("imageSize");
+
+        $scope.imageSizeChange = function () {
+            settingService.set("imageSize", $scope.imageSize);
+        }
 
         $scope.init = function () {
             $scope.destiny = "";
@@ -139,6 +164,10 @@
             // Set the message in the shared state
             gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
         }
+
+        $scope.toggleSettingsDisplay = function () {
+            $scope.showSettings = !$scope.showSettings;
+        };
 
         gapi.hangout.data.onStateChanged.add(function (stateChangedEvent) {
             // Loop through all the keys that were added to the shared state
