@@ -24,4 +24,4 @@ There are three targets:
 2. **qa**: This will also run in Hangouts. Paths hardcoded to https://cjhooker.github.io/eote-dice-roller-qa/. 
 3. **local**: This will run on your local machine, by faking all the Google Hangouts API code. Use this for testing most functionality, which doesn't depend specifically on the Hangouts API.
 
-**NOTE**: Right now, **release** and **qa** are not terribly useful to anyone but me, as only I have access to release a new version of the app. You could, however, create your own development Hangouts app with your own URL and create a target for it, and use this to generate the code to run there. I hope to make this smoother by some enhancements to Gruntfile.js ([Issue #3](/../../issues/3)).
+**NOTE**: Right now, **release** and **qa** are not terribly useful to anyone but me, as only I have access to release a new version of the app. You could, however, create your own development Hangouts app with your own URL and create a target for it, and use this to generate the code to run there. I hope to make this smoother by some enhancements to `Gruntfile.js` ([Issue #3](/../../issues/3)).
