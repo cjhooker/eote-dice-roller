@@ -1,6 +1,6 @@
 ﻿appModule.controller("appController", ["$scope", "$compile", "diceService", "messageService", "settingService",
     function ($scope, $compile, diceService, messageService, settingService) {
-        var outputArea = angular.element(document.getElementById('outputArea'));
+        var getOutputArea = function () { return angular.element(document.getElementById('outputArea')) };
 
         settingService.set("imageSize", "medium");
 
@@ -45,11 +45,11 @@
         }
 
         $scope.insertBreak = function () {
-            outputArea.prepend("<hr/>");
+            getOutputArea().prepend("<hr/>");
         }
 
         $scope.clearMessages = function () {
-            outputArea.html("");
+            getOutputArea().html("");
         }
 
         $scope.roll = function () {
@@ -67,7 +67,7 @@
                     $scope.resetDiceQuantities();
                 }
             } else {
-                outputArea.prepend("<div class='alert'>No dice selected!</div>");
+                getOutputArea().prepend("<div class='alert'>No dice selected!</div>");
             }
         }
 
@@ -80,7 +80,7 @@
             var newScope = $scope.$new(true);
             newScope.message = message;
             var el = $compile(messageDisplay)(newScope);
-            outputArea.prepend(messageDisplay);
+            getOutputArea().prepend(messageDisplay);
         };
 
         $scope.addDestiny = function () {
