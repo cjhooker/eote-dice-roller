@@ -1,7 +1,7 @@
 ﻿module.exports = function (grunt) {
     var sourceFiles = ['**', "!node_modules/**", "!Gruntfile.js", "!package.json"];
-    var releaseDir = "../grunt-release/";
-    var localDir = "../grunt-local/";
+    var releaseDir = "../eote-hangouts-dice-roller-release/";
+    var localDir = "../eote-hangouts-dice-roller-local/";
 
     // Project configuration.
     grunt.initConfig({
