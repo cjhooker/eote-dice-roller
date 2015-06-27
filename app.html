@@ -17,11 +17,10 @@
     <script src="[[BASE_PATH]]js/utilities.js"></script>
 
     <!-- Angular Templates -->
-
     <!-- Template for display of dice controls -->
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
-            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="roll{{color}}" alt="{{color}} die" 
+            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="roll{{color}}" alt="{{color}} die"
                  ng-click="clearQty()" ng-if="color!='Numeric'" />
             <input type="text" class="numeric-die-type" ng-model="numericDieType" ng-if="color=='Numeric'" />
             <span class="qty-text-box">{{quantity}}</span>
@@ -46,7 +45,7 @@
                     <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" ng-if="dieResult.die == 'N'">{{dieResult.result}}</span>
                 </div>
                 <div class='overall-results' title="{{message.data.overallResult|dieResultSummary}}">
-                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' alt="{{result|symbolName}}" 
+                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' alt="{{result|symbolName}}"
                          ng-repeat="result in message.data.overallResult track by $index" />
                 </div>
             </div>
@@ -99,16 +98,22 @@
 
         <div id="content-settings" class="content ng-hide" ng-hide="!showSettings">
             <div id="settings-container">
+                <div id="settings-close" ng-click="showSettings=false">
+                    <img src="[[BASE_PATH]]images/close-button.png" alt="Close Settings" />
+                </div>
+
                 <h1>Settings</h1>
 
-                <span class="settings-label">Image Size</span>
-                <select id="image-size-dropdown"
-                        ng-model="imageSize"
-                        ng-change="imageSizeChange()"
-                        ng-options="value.id as value.label for value in imageSizeOptions"></select>
+                <div class="settings-item">
+                    <span class="settings-label">Image Size</span>
+                    <select id="image-size-dropdown"
+                            ng-model="imageSize"
+                            ng-change="imageSizeChange()"
+                            ng-options="value.id as value.label for value in imageSizeOptions"></select>
+                </div>
 
-                <div id="settings-close" ng-click="showSettings=false">
-                    <img src="images/close-button.png" alt="Close Settings" />
+                <div class="settings-item">
+                    <a href="https://github.com/cjhooker/eote-dice-roller/issues" target="_blank">Report a bug or request a feature</a>
                 </div>
             </div>
             [[DEBUG_WATERMARK]]
@@ -120,7 +125,9 @@
 
                 <input class="button" type="button" value="Insert Break Line" id="insertBreak" ng-click="insertBreak()" />
 
-                <img class="settings-button" src="[[BASE_PATH]]images/settings-blue.png" alt="Settings" ng-click="toggleSettingsDisplay()" />
+                <img class="settings-button" ng-src="[[BASE_PATH]]images/{{settingsButtonSrc}}" alt="Settings"
+                     ng-init="settingsButtonSrc='settings.png'" ng-mouseover="settingsButtonSrc='settings-hover.png'" ng-mouseout="settingsButtonSrc='settings.png'"
+                     ng-click="toggleSettingsDisplay()" />
             </div>
         </div>
     </div>

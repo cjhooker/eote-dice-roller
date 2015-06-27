@@ -319,15 +319,18 @@ input[type="checkbox"]:checked + label span {
   line-height: 30px;
 }
 #settings-container {
-  padding: 5px;
-}
-#settings-container .settings-label {
-  font-weight: bold;
-  margin-right: 10px;
+  padding: 10px;
 }
 #settings-container select {
   height: 30px;
   font-size: 16px;
+}
+#settings-container .settings-item {
+  margin-bottom: 20px;
+}
+#settings-container .settings-label {
+  font-weight: bold;
+  margin-right: 10px;
 }
 #settings-container #settings-close {
   position: absolute;
