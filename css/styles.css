@@ -206,6 +206,15 @@ input[type="checkbox"]:checked + label span {
   border-bottom: 1px solid #000;
   background: #fff;
 }
+.content .debugWatermark {
+  position: absolute;
+  right: 15px;
+  bottom: 0;
+  font-size: 50px;
+  font-weight: bold;
+  opacity: 0.1;
+  color: #FF0000;
+}
 .content #outputArea {
   height: 100%;
   width: 100%;
