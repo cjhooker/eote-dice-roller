@@ -73,6 +73,8 @@ input[type="checkbox"]:checked + label span {
   height: 100%;
   width: 300px;
   float: right;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 #header {
   /*display: table-row;*/
@@ -206,20 +208,11 @@ input[type="checkbox"]:checked + label span {
   border-bottom: 1px solid #000;
   background: #fff;
 }
-.content .debugWatermark {
-  position: absolute;
-  right: 15px;
-  bottom: 0;
-  font-size: 50px;
-  font-weight: bold;
-  opacity: 0.1;
-  color: #FF0000;
-}
 .content #outputArea {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .content #outputArea .alert {
   color: red;
@@ -338,6 +331,15 @@ input[type="checkbox"]:checked + label span {
   right: 5px;
   cursor: pointer;
 }
+.debugWatermark {
+  position: absolute;
+  right: 15px;
+  bottom: 35px;
+  font-size: 35px;
+  font-weight: bold;
+  opacity: 0.1;
+  color: #FF0000;
+}
 #footer {
   position: absolute;
   bottom: 0;
@@ -365,5 +367,18 @@ input[type="checkbox"]:checked + label span {
   float: right;
   height: 28px;
   cursor: pointer;
+}
+/*** Animations ***/
+.slide-down-animation.ng-hide-add,
+.slide-down-animation.ng-hide-remove {
+  display: block !important;
+}
+.slide-down-animation {
+  -webkit-transition: 0.3s linear all;
+  transition: 0.3s linear all;
+  top: 245px;
+}
+.slide-down-animation.ng-hide {
+  top: 100%;
 }
 /*# sourceMappingURL=styles.css.map */

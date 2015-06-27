@@ -1,1 +1,1 @@
-﻿var appModule = angular.module("appModule", ["ngSanitize"]);
+﻿var appModule = angular.module("appModule", ["ngSanitize", "ngAnimate"]);

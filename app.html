@@ -4,6 +4,7 @@
     <script src="[[HANGOUT_JS]]"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-animate.js"></script>
 
     <script src="[[BASE_PATH]]js/modules.js"></script>
     <script src="[[BASE_PATH]]js/filters.js"></script>
@@ -90,36 +91,34 @@
             </div>
         </div>
 
-        <div ng-switch="showSettings">
-            <div id="content-main" class="content" ng-switch-when="false">
-                <div id="outputArea" class="{{imageSize}}">
-                </div>
-                [[DEBUG_WATERMARK]]
-            </div>
-
-            <div id="content-settings" class="content ng-hide" ng-switch-when="true">
-                <div id="settings-container">
-                    <div id="settings-close" ng-click="showSettings=false">
-                        <img src="[[BASE_PATH]]images/close-button.png" alt="Close Settings" />
-                    </div>
-
-                    <h1>Settings</h1>
-
-                    <div class="settings-item">
-                        <span class="settings-label">Image Size</span>
-                        <select id="image-size-dropdown"
-                                ng-model="imageSize"
-                                ng-change="imageSizeChange()"
-                                ng-options="value.id as value.label for value in imageSizeOptions"></select>
-                    </div>
-
-                    <div class="settings-item">
-                        <a href="https://github.com/cjhooker/eote-dice-roller/issues" target="_blank">Report a bug or request a feature</a>
-                    </div>
-                </div>
-                [[DEBUG_WATERMARK]]
+        <div id="content-main" class="content">
+            <div id="outputArea" class="{{imageSize}}">
             </div>
         </div>
+
+        <div id="content-settings" class="content ng-hide slide-down-animation" ng-show="showSettings">
+            <div id="settings-container">
+                <div id="settings-close" ng-click="showSettings=false">
+                    <img src="[[BASE_PATH]]images/close-button.png" alt="Close Settings" />
+                </div>
+
+                <h1>Settings</h1>
+
+                <div class="settings-item">
+                    <span class="settings-label">Image Size</span>
+                    <select id="image-size-dropdown"
+                            ng-model="imageSize"
+                            ng-change="imageSizeChange()"
+                            ng-options="value.id as value.label for value in imageSizeOptions"></select>
+                </div>
+
+                <div class="settings-item">
+                    <a href="https://github.com/cjhooker/eote-dice-roller/issues" target="_blank">Report a bug or request a feature</a>
+                </div>
+            </div>
+        </div>
+
+        [[DEBUG_WATERMARK]]
 
         <div id="footer">
             <div id="footer-inner">

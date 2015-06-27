@@ -25,9 +25,11 @@
                 }, {
                     from: "[[BASE_PATH]]",
                     to: "https://cjhooker.github.io/eote-dice-roller-release/"
+                    //to: "https://eote-hangouts-dice-roller-release.googlecode.com/git/"
                 }, {
                     from: "[[BASE_PATH_CSS]]",
                     to: "https://cjhooker.github.io/eote-dice-roller-release/"
+                    //to: "https://eote-hangouts-dice-roller-release.googlecode.com/git/"
                 }, {
                     from: "[[APP_ID]]",
                     to: "1028986225138"
@@ -48,11 +50,9 @@
                 }, {
                     from: "[[BASE_PATH]]",
                     to: "https://cjhooker.github.io/eote-dice-roller-qa/"
-                    //to: "https://eote-hangouts-dice-roller-release.googlecode.com/git/"
                 }, {
                     from: "[[BASE_PATH_CSS]]",
                     to: "https://cjhooker.github.io/eote-dice-roller-qa/"
-                    //to: "https://eote-hangouts-dice-roller-release.googlecode.com/git/"
                 }, {
                     from: "[[APP_ID]]",
                     to: "484530845672"
