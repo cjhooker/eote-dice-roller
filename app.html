@@ -97,14 +97,19 @@
             [[DEBUG_WATERMARK]]
         </div>
 
-        <div id="content-settings" class="content" ng-show="showSettings">
+        <div id="content-settings" class="content ng-hide" ng-hide="!showSettings">
             <div id="settings-container">
                 <h1>Settings</h1>
 
                 <span class="settings-label">Image Size</span>
-                <select ng-model="imageSize"
+                <select id="image-size-dropdown"
+                        ng-model="imageSize"
                         ng-change="imageSizeChange()"
                         ng-options="value.id as value.label for value in imageSizeOptions"></select>
+
+                <div id="settings-close" ng-click="showSettings=false">
+                    <img src="images/close-button.png" alt="Close Settings" />
+                </div>
             </div>
             [[DEBUG_WATERMARK]]
         </div>
