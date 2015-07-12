@@ -26,6 +26,9 @@ var gapi = {
 				_data[key] = value;
 				_stateChangedFunction({addedKeys: [{key: key, value: value}]});
 			},
+			//getKeys: function() {
+			//    return Object.keys(_data);
+			//},
 			onStateChanged: {
 				add: function(func) {
 					_stateChangedFunction = func;
