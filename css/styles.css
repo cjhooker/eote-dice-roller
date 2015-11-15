@@ -18,7 +18,7 @@ h1 {
   margin-top: 5px;
   font-size: 1.75em;
   font-weight: bold;
-  color: #1f7fbe;
+  color: #1F7FBE;
 }
 .clearfix {
   display: inline-block;
@@ -26,7 +26,7 @@ h1 {
 }
 input.button {
   border-radius: 0;
-  background: #1f7fbe;
+  background: #1F7FBE;
   color: #fff;
   border: 0 solid #000;
   margin: 3px 0;
@@ -34,20 +34,20 @@ input.button {
   cursor: pointer;
 }
 input.button:hover {
-  background: #22a2f6;
+  background: #22A2F6;
 }
 ::-webkit-scrollbar {
   width: 13px;
   height: 13px;
 }
 ::-webkit-scrollbar-track {
-  border-left: 1px solid #1f7fbe;
-  border-right: 1px solid #1f7fbe;
+  border-left: 1px solid #1F7FBE;
+  border-right: 1px solid #1F7FBE;
   border-top: none;
   border-bottom: none;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #1f7fbe;
+  background-color: #1F7FBE;
   border: 2px solid transparent;
   background-clip: content-box;
 }
@@ -79,7 +79,7 @@ input[type="checkbox"]:checked + label span {
 #header {
   /*display: table-row;*/
   position: absolute;
-  height: 245px;
+  height: 265px;
   overflow: hidden;
   background: #fff;
   margin-bottom: 5px;
@@ -116,8 +116,8 @@ input[type="checkbox"]:checked + label span {
   opacity: 0.05;
 }
 #header #headerInner #destinyTracker #destinyTokenContainer ::-webkit-scrollbar-track {
-  border-top: 1px solid #1f7fbe;
-  border-bottom: 1px solid #1f7fbe;
+  border-top: 1px solid #1F7FBE;
+  border-bottom: 1px solid #1F7FBE;
 }
 #header #headerInner #destinyTracker #destinyButtonContainer {
   float: right;
@@ -198,9 +198,29 @@ input[type="checkbox"]:checked + label span {
 #header #headerInner #buttonContainer .die-container div.arrow-container .arrow-up {
   margin: 0;
 }
+#header #moreButton {
+  clear: both;
+  float: right;
+  font-size: 0.8em;
+  color: #1F7FBE;
+  cursor: pointer;
+}
+#header #morePanel {
+  clear: both;
+  height: 25px;
+  padding-top: 5;
+  padding-right: 2px;
+}
+#header #morePanel #rollCaption {
+  float: right;
+  width: 190px;
+}
+#header.more-panel-open {
+  height: 295px;
+}
 .content {
   position: absolute;
-  top: 245px;
+  top: 265px;
   bottom: 30px;
   width: 100%;
   overflow: hidden;
@@ -270,6 +290,9 @@ input[type="checkbox"]:checked + label span {
   font-size: 1em;
   line-height: 14px;
 }
+.content #outputArea.small .row-wrapper .results-wrapper .roll-caption {
+  font-size: 0.9em;
+}
 .content #outputArea.medium .row-wrapper {
   margin-bottom: 15px;
 }
@@ -292,6 +315,9 @@ input[type="checkbox"]:checked + label span {
   font-size: 1.25em;
   line-height: 22px;
 }
+.content #outputArea.medium .row-wrapper .results-wrapper .roll-caption {
+  font-size: 1em;
+}
 .content #outputArea.large .row-wrapper .image-wrapper {
   width: 69px;
 }
@@ -311,6 +337,12 @@ input[type="checkbox"]:checked + label span {
   font-size: 1.55em;
   line-height: 30px;
 }
+.content #outputArea.large .row-wrapper .results-wrapper .roll-caption {
+  font-size: 1.1em;
+}
+.content.more-panel-open {
+  top: 295px;
+}
 #settings-container {
   padding: 10px;
 }
@@ -328,7 +360,7 @@ input[type="checkbox"]:checked + label span {
 #settings-container #settings-close {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 4px;
   cursor: pointer;
 }
 .debugWatermark {
@@ -376,9 +408,11 @@ input[type="checkbox"]:checked + label span {
 .slide-down-animation {
   -webkit-transition: 0.3s linear all;
   transition: 0.3s linear all;
-  top: 245px;
+  top: 265px;
+}
+.slide-down-animation.more-panel-open {
+  top: 295px;
 }
 .slide-down-animation.ng-hide {
   top: 100%;
 }
-/*# sourceMappingURL=styles.css.map */

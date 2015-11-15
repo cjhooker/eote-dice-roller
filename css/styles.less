@@ -1,7 +1,8 @@
 ﻿/* Variables */
 @baseColor: #1F7FBE;
 @lightColor: #22A2F6;
-@headerHeight: 245px;
+@headerHeight: 265px;
+@morePanelHeight: 30px;
 
 /* General Styles */
 html, body {
@@ -227,6 +228,32 @@ input[type="checkbox"]:checked + label span {
             }
         }
     }
+
+    #moreButton {
+        clear: both;
+        float: right; 
+        font-size: 0.8em;
+        color:  @baseColor;
+        cursor: pointer;
+    }
+
+    #morePanel {
+        @paddingTop: 5;
+
+        clear: both;
+        height: @morePanelHeight - @paddingTop;
+        padding-top: @paddingTop;
+        padding-right: 2px;
+
+        #rollCaption {
+            float: right;
+            width: 190px;
+        }
+    }
+}
+
+#header.more-panel-open {
+    height: @headerHeight + @morePanelHeight;
 }
 
 .content {
@@ -315,6 +342,10 @@ input[type="checkbox"]:checked + label span {
                     font-size: 1em;
                     line-height: 14px;
                 }
+
+                .roll-caption {
+                    font-size: 0.9em;
+                }
             }
         }
     }
@@ -345,6 +376,11 @@ input[type="checkbox"]:checked + label span {
                     font-size: 1.25em;
                     line-height: 22px;
                 }
+
+                .roll-caption {
+                    font-size: 1em;
+                }
+
             }
         }
     }
@@ -373,9 +409,18 @@ input[type="checkbox"]:checked + label span {
                     font-size: 1.55em;
                     line-height: 30px;
                 }
+
+                .roll-caption {
+                    font-size: 1.1em;
+                }
+
             }
         }
     }
+}
+
+.content.more-panel-open {
+    top: @headerHeight + @morePanelHeight;
 }
 
 #settings-container {
@@ -398,7 +443,7 @@ input[type="checkbox"]:checked + label span {
     #settings-close {
         position: absolute;
         top: 5px;
-        right: 5px;
+        right: 4px;
         cursor: pointer;
     }
 }
@@ -457,6 +502,10 @@ input[type="checkbox"]:checked + label span {
     -webkit-transition: 0.3s linear all;
     transition: 0.3s linear all;
     top: @headerHeight;
+}
+
+.slide-down-animation.more-panel-open {
+    top: @headerHeight + @morePanelHeight;
 }
 
 .slide-down-animation.ng-hide {

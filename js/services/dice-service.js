@@ -29,7 +29,7 @@
     }
 
     // Roll all the Star Wars dice the user has selected
-    this.roll = function (diceQuantities, numericDieType) {
+    this.roll = function (diceQuantities, numericDieType, rollCaption) {
         var diceResults = [];
 
         for (var color in diceQuantities) {
@@ -56,6 +56,7 @@
             message.data = new Object();
             message.data.diceResults = diceResults;
             message.data.overallResult = calculateOverallRollResult(diceResults);
+            message.data.rollCaption = rollCaption;
 
             gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
         }

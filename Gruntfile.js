@@ -1,9 +1,9 @@
 ﻿module.exports = function (grunt) {
-    var sourceFiles = ['**', "!node_modules/**", "!Gruntfile.js", "!package.json"];
-    var releaseDir = "../eote-hangouts-dice-roller-release/";
-    var qaDir = "../eote-hangouts-dice-roller-qa/";
-    var devDir = "../eote-hangouts-dice-roller-dev/";
-    var localDir = "../eote-hangouts-dice-roller-local/";
+    var sourceFiles = ['**', "!node_modules/**", "!Gruntfile.js", "!package.json", "!compilerconfig.*"];
+    var releaseDir = "../eote-dice-roller-release/";
+    var qaDir = "../eote-dice-roller-qa/";
+    var devDir = "../eote-dice-roller-dev/";
+    var localDir = "../eote-dice-roller-local/";
 
     // Project configuration.
     grunt.initConfig({

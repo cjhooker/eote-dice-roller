@@ -39,6 +39,8 @@
                 <img class='person-image' ng-src='{{person.image.url}}' title='{{person.displayName}}' alt="{{person.displayName}}" />
             </div>
             <div class='results-wrapper' ng-if="message.type == 'roll'">
+                <div class="roll-caption" ng-if="message.data.rollCaption" ng-bind="message.data.rollCaption">
+                </div>
                 <div class='dice-results'>
                     <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png'
                          alt="{{dieResult.die|dieName}} {{dieResult.result|dieResultSummary}}"
@@ -59,7 +61,7 @@
 
 <body>
     <div id="container">
-        <div id="header">
+        <div id="header" ng-class="{'more-panel-open': showMore}">
             <div id="headerInner">
                 <div id="destinyTracker">
                     <div id="destinyTokenContainer">
@@ -87,18 +89,24 @@
                     <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
                     <label for="resetAfterRoll"><span></span>Reset after each roll</label>
                     <input class="button" type="button" value="Reset Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
+
+                    <div id="morePanel" ng-show="showMore">
+                        Roll caption: <input type="text" id="rollCaption" ng-model="rollCaption" />
+                    </div>
+
+                    <div id="moreButton" ng-click="toggleMorePanel()">{{showMore ? "Less" : "More"}}</div>
                 </div>
             </div>
         </div>
 
         <!-- Main Content View -->
-        <div id="content-main" class="content">
+        <div id="content-main" class="content" ng-class="{'more-panel-open': showMore}">
             <div id="outputArea" class="{{imageSize}}">
             </div>
         </div>
 
         <!-- Settings Content View -->
-        <div id="content-settings" class="content ng-hide slide-down-animation" ng-show="showSettings">
+        <div id="content-settings" class="content ng-hide slide-down-animation" ng-show="showSettings" ng-class="{'more-panel-open': showMore}">
             <div id="settings-container">
                 <div id="settings-close" ng-click="showSettings=false">
                     <img src="[[BASE_PATH]]images/close-button.png" alt="Close Settings" />

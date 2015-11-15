@@ -4,6 +4,7 @@
 
         settingService.set("imageSize", "medium");
 
+        $scope.showMore = false;
         $scope.showSettings = false;
 
         $scope.imageSizeOptions = [
@@ -61,10 +62,11 @@
             qty += $scope.diceQuantities['Numeric'];
 
             if (qty > 0) {
-                diceService.roll($scope.diceQuantities, $scope.numericDieType);
+                diceService.roll($scope.diceQuantities, $scope.numericDieType, $scope.rollCaption);
 
                 if ($scope.resetAfterRoll) {
                     $scope.resetDiceQuantities();
+                    $scope.rollCaption = "";
                 }
             } else {
                 getOutputArea().prepend("<div class='alert'>No dice selected!</div>");
@@ -168,6 +170,13 @@
         $scope.toggleSettingsDisplay = function () {
             $scope.showSettings = !$scope.showSettings;
         };
+
+        $scope.toggleMorePanel = function () {
+            $scope.showMore = !$scope.showMore;
+            if (!$scope.showMore) {
+                $scope.rollCaption = "";
+            }
+        }
 
         gapi.hangout.data.onStateChanged.add(function (stateChangedEvent) {
             // Loop through all the keys that were added to the shared state
