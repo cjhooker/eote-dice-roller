@@ -44,8 +44,9 @@
                 <div class='dice-results'>
                     <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png'
                          alt="{{dieResult.die|dieName}} {{dieResult.result|dieResultSummary}}"
-                         ng-if="dieResult.die != 'N'" ng-repeat="dieResult in message.data.diceResults" />
-                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" ng-if="dieResult.die == 'N'">{{dieResult.result}}</span>
+                         ng-if="dieResult.die != 'Numeric'" ng-repeat="dieResult in message.data.diceResults" />
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" 
+                          ng-if="dieResult.die == 'Numeric'">{{dieResult.result}}</span>
                 </div>
                 <div class='overall-results' title="{{message.data.overallResult|dieResultSummary}}">
                     <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' alt="{{result|symbolName}}"
@@ -81,18 +82,26 @@
                     <die-container color="Purple" quantity="diceQuantities['Purple']"></die-container>
                     <die-container color="Red" quantity="diceQuantities['Red']"></die-container>
                     <die-container color="Setback" quantity="diceQuantities['Setback']"></die-container>
+
+                    <die-container color="Success" quantity="diceQuantities['Success']" ng-if="showMore"></die-container>
+                    <die-container color="Advantage" quantity="diceQuantities['Advantage']" ng-if="showMore"></die-container>
+                    <die-container color="Triumph" quantity="diceQuantities['Triumph']" ng-if="showMore"></die-container>
+                    <die-container color="Failure" quantity="diceQuantities['Failure']" ng-if="showMore"></die-container>
+                    <die-container color="Threat" quantity="diceQuantities['Threat']" ng-if="showMore"></die-container>
+                    <die-container color="Despair" quantity="diceQuantities['Despair']" ng-if="showMore"></die-container>
+
                     <die-container color="Force" quantity="diceQuantities['Force']"></die-container>
                     <die-container color="Numeric" quantity="diceQuantities['Numeric']" numeric-die-type="numericDieType"></die-container>
 
                     <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
+                    
+                    <div id="rollCaptionContainer" ng-show="showMore">
+                        Roll caption: <input type="text" id="rollCaption" ng-model="rollCaption" />
+                    </div>
 
                     <input class="checkbox" type="checkbox" id="resetAfterRoll" ng-model="resetAfterRoll" />
                     <label for="resetAfterRoll"><span></span>Reset after each roll</label>
-                    <input class="button" type="button" value="Reset Dice" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
-
-                    <div id="morePanel" ng-show="showMore">
-                        Roll caption: <input type="text" id="rollCaption" ng-model="rollCaption" />
-                    </div>
+                    <input class="button" type="button" value="Reset" id="resetDiceQuantities" ng-click="resetDiceQuantities()" />
 
                     <div id="moreButton" ng-click="toggleMorePanel()">{{showMore ? "Less" : "More"}}</div>
                 </div>

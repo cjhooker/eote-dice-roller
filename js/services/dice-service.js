@@ -1,5 +1,7 @@
 ﻿appModule.service("diceService", ["messageService", function (messageService) {
 
+    // List of the results for each side of each die
+    // Fixed symbols are treated as a "die" with only one side
     this.dice = {
         "Green": ["S", "S", "SS", "A", "A", "SA", "AA", ""],
         "Yellow": ["S", "S", "SS", "SS", "A", "SA", "SA", "SA", "AA", "AA", "X", ""],
@@ -7,29 +9,19 @@
         "Red": ["F", "F", "FF", "FF", "T", "T", "FT", "FT", "TT", "TT", "D", ""],
         "Boost": ["S", "SA", "AA", "A", "", ""],
         "Setback": ["F", "F", "T", "T", "", ""],
-        "Force": ["B", "B", "B", "B", "B", "B", "BB", "W", "W", "W", "WW", "WW"]
+        "Force": ["B", "B", "B", "B", "B", "B", "BB", "W", "W", "W", "WW", "WW"],
+        "Success": ["S"],
+        "Advantage": ["A"],
+        "Triumph": ["X"],
+        "Failure": ["F"],
+        "Threat": ["T"],
+        "Despair": ["D"]
     };
 
     /***** Public Methods *****/
 
-    // Roll a standard, non-Star Wars die (e.g. d100)
-    // Append some text afterwards if specified. E.g. "%" after a d100 roll
-    this.rollStandardDie = function (maxValue, followingText) {
-
-        var roll = Math.floor(Math.random() * maxValue) + 1;
-
-        var message = {
-            messageId: messageService.getNextMessageId(),
-            type: "html",
-            participantId: gapi.hangout.getLocalParticipant().id,
-            data: { html: "<span class='standard-die-roll'>" + roll + followingText + "</span>" }
-        };
-
-        gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
-    }
-
     // Roll all the Star Wars dice the user has selected
-    this.roll = function (diceQuantities, numericDieType, rollCaption) {
+    this.roll = function (diceQuantities, numericDieType, symbolQuantities, rollCaption) {
         var diceResults = [];
 
         for (var color in diceQuantities) {
@@ -39,11 +31,11 @@
                     var result = Math.floor(Math.random() * numericDieType) + 1;
                     if (numericDieType == 100) { result += "%"; }
 
-                    diceResults.push({ die: color.substring(0, 1), result: result });
-                    //this.rollStandardDie(numericDieType, '');
+                    diceResults.push({ die: color, result: result });
                 }
                 else {
-                    diceResults.push({ die: color.substring(0, 1), result: getRoll(this.dice[color]) });
+                    //diceResults.push({ die: color.substring(0, 1), result: getRoll(this.dice[color]) });
+                    diceResults.push({ die: color, result: getRoll(this.dice[color]) });
                 }
             }
         }

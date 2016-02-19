@@ -8,19 +8,19 @@
 appModule.filter("dieName", [function () {
     return function (input) {
         switch (input) {
-            case "G":
+            case "Green":
                 return "Ability";
-            case "Y":
+            case "Yellow":
                 return "Proficiency";
-            case "P":
+            case "Purple":
                 return "Difficulty";
-            case "R":
+            case "Red":
                 return "Challenge";
-            case "B":
+            case "Boost":
                 return "Boost";
-            case "S":
+            case "Setback":
                 return "Setback";
-            case "F":
+            case "Force":
                 return "Force";
         }
         return input;

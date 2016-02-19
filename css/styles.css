@@ -83,6 +83,14 @@ input[type="checkbox"]:checked + label span {
   overflow: hidden;
   background: #fff;
   margin-bottom: 5px;
+  /*#morePanel {
+        @paddingTop: 5;
+
+        clear: both;
+        height: @morePanelHeight - @paddingTop;
+        padding-top: @paddingTop;
+        padding-right: 2px;
+    }*/
 }
 #header #headerInner {
   visibility: hidden;
@@ -205,18 +213,17 @@ input[type="checkbox"]:checked + label span {
   color: #1F7FBE;
   cursor: pointer;
 }
-#header #morePanel {
+#header #rollCaptionContainer {
   clear: both;
-  height: 25px;
-  padding-top: 5;
-  padding-right: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-#header #morePanel #rollCaption {
+#header #rollCaptionContainer #rollCaption {
   float: right;
   width: 190px;
 }
 #header.more-panel-open {
-  height: 295px;
+  height: 380px;
 }
 .content {
   position: absolute;
@@ -341,7 +348,7 @@ input[type="checkbox"]:checked + label span {
   font-size: 1.1em;
 }
 .content.more-panel-open {
-  top: 295px;
+  top: 380px;
 }
 #settings-container {
   padding: 10px;
@@ -411,7 +418,7 @@ input[type="checkbox"]:checked + label span {
   top: 265px;
 }
 .slide-down-animation.more-panel-open {
-  top: 295px;
+  top: 380px;
 }
 .slide-down-animation.ng-hide {
   top: 100%;

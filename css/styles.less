@@ -2,7 +2,7 @@
 @baseColor: #1F7FBE;
 @lightColor: #22A2F6;
 @headerHeight: 265px;
-@morePanelHeight: 30px;
+@morePanelHeight: 115px;
 
 /* General Styles */
 html, body {
@@ -237,13 +237,19 @@ input[type="checkbox"]:checked + label span {
         cursor: pointer;
     }
 
-    #morePanel {
+    /*#morePanel {
         @paddingTop: 5;
 
         clear: both;
         height: @morePanelHeight - @paddingTop;
         padding-top: @paddingTop;
         padding-right: 2px;
+    }*/
+
+    #rollCaptionContainer {
+        clear: both;
+        padding-top: 5px;
+        padding-bottom: 5px;
 
         #rollCaption {
             float: right;

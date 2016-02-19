@@ -60,7 +60,7 @@
                     to: grunt.option("qa-app-id") || "484530845672"
                 }, {
                     from: "[[DEBUG_WATERMARK]]",
-                    to: "<div class='debugWatermark'>QA</div>"
+                    to: "<div class='debugWatermark'>BETA</div>"
                 }]
             },
             dev: {
