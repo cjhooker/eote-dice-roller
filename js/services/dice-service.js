@@ -21,7 +21,7 @@
     /***** Public Methods *****/
 
     // Roll all the Star Wars dice the user has selected
-    this.roll = function (diceQuantities, numericDieType, symbolQuantities, rollCaption) {
+    this.roll = function (diceQuantities, numericDieType, rollCaption) {
         var diceResults = [];
 
         for (var color in diceQuantities) {
@@ -34,7 +34,6 @@
                     diceResults.push({ die: color, result: result });
                 }
                 else {
-                    //diceResults.push({ die: color.substring(0, 1), result: getRoll(this.dice[color]) });
                     diceResults.push({ die: color, result: getRoll(this.dice[color]) });
                 }
             }

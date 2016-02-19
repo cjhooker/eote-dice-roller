@@ -10,12 +10,12 @@
             $scope.person = gapi.hangout.getParticipantById($scope.message.participantId).person;
 
             $scope.symbols = {
-                "S": "success.png",
-                "F": "failure.png",
-                "A": "advantage.png",
-                "T": "threat.png",
-                "X": "triumph.png",
-                "D": "despair.png",
+                "S": "Success.png",
+                "F": "Failure.png",
+                "A": "Advantage.png",
+                "T": "Threat.png",
+                "X": "Triumph.png",
+                "D": "Despair.png",
                 "B": "black-circle.png",
                 "W": "white-circle.png"
             }
