@@ -46,11 +46,13 @@
                          alt="{{dieResult.die|dieName}} {{dieResult.result|dieResultSummary}}"
                          ng-if="dieResult.die != 'Numeric'" ng-repeat="dieResult in message.data.diceResults" />
                     <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" 
-                          ng-if="dieResult.die == 'Numeric'">{{dieResult.result}}</span>
+                          ng-if="dieResult.die == 'Numeric'">{{dieResult.numericDieType}}</span>
                 </div>
                 <div class='overall-results' title="{{message.data.overallResult|dieResultSummary}}">
                     <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' alt="{{result|symbolName}}"
                          ng-repeat="result in message.data.overallResult track by $index" />
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" 
+                          ng-if="dieResult.die == 'Numeric'">{{dieResult.result}}</span>
                 </div>
             </div>
             <div class="results-wrapper" ng-if="message.type == 'html'" ng-bind-html="message.data.html">
