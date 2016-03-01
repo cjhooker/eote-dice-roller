@@ -14,6 +14,7 @@
     <script src="[[BASE_PATH]]js/services/dice-service.js"></script>
     <script src="[[BASE_PATH]]js/services/message-service.js"></script>
     <script src="[[BASE_PATH]]js/services/setting-service.js"></script>
+    <script src="[[BASE_PATH]]js/services/player-service.js"></script>
 
     <script src="[[BASE_PATH]]js/utilities.js"></script>
 
@@ -76,6 +77,18 @@
                     </div>
                 </div>
                 <div id="buttonContainer">
+                    <div id="controlDiceForContainer" ng-show="showMore">
+                        Control dice for: 
+                        <select id="controlDiceFor" 
+                                ng-model="controlDiceForPlayer"
+                                ng-options="value.id as value.person.displayName for value in playerList">
+                        </select>
+                    </div>
+                    <div id="controlsYourDiceContainer" ng-show="showMore">
+                        Controls your dice: 
+                        <span id="controlsYourDice" ng-bind="controlsYourDice">
+                        </span>
+                    </div>
                     <die-container color="Green" quantity="diceQuantities['Green']"></die-container>
                     <die-container color="Yellow" quantity="diceQuantities['Yellow']"></die-container>
                     <die-container color="Boost" quantity="diceQuantities['Boost']"></die-container>

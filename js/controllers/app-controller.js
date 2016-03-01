@@ -1,5 +1,5 @@
-﻿appModule.controller("appController", ["$scope", "$compile", "diceService", "messageService", "settingService",
-    function ($scope, $compile, diceService, messageService, settingService) {
+﻿appModule.controller("appController", ["$scope", "$compile", "diceService", "messageService", "settingService", "playerService",
+    function ($scope, $compile, diceService, messageService, settingService, playerService) {
         var getOutputArea = function () { return angular.element(document.getElementById('outputArea')) };
 
         settingService.set("imageSize", "medium");
@@ -22,6 +22,10 @@
                 }
         ];
 
+        $scope.playerList = playerService.getPlayerList();
+        $scope.controlDiceForPlayer = playerService.getCurrentPlayer().id;
+        $scope.controlsYourDice = "nobody";
+
         $scope.imageSize = settingService.get("imageSize");
 
         $scope.imageSizeChange = function () {
@@ -34,7 +38,6 @@
 
             // Set the dice quantities when the app first loads
             $scope.diceQuantities = [];
-            //$scope.symbolQuantities = [];
             $scope.resetDiceQuantities();
             $scope.numericDieType = 100;
         }

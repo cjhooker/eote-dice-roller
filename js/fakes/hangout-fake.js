@@ -40,19 +40,44 @@ var gapi = {
 		},
 		getParticipantById: function(id) {
 			return participant;
+		},
+		getEnabledParticipants: function () {
+		    return enabledParticipants;
 		}
 	}
 };
 
 var participant = {
-	id: 1234,
-	person: {
-		image: {
-			url: "https://lh4.googleusercontent.com/-XlaUq1MC7PQ/AAAAAAAAAAI/AAAAAAAAAAA/UhEE5TO7Li8/s96-c/photo.jpg"
-		},
+    id: 1234,
+    person: {
+        image: {
+            url: "https://lh4.googleusercontent.com/-XlaUq1MC7PQ/AAAAAAAAAAI/AAAAAAAAAAA/UhEE5TO7Li8/s96-c/photo.jpg"
+        },
         displayName: "Chris Hooker"
-	}
+    }
 };
+
+var enabledParticipants = [
+    participant,
+    {
+        id: 1,
+        person: {
+            image: {
+                url: "https://lh4.googleusercontent.com/-XlaUq1MC7PQ/AAAAAAAAAAI/AAAAAAAAAAA/UhEE5TO7Li8/s96-c/photo.jpg"
+            },
+            displayName: "Han Solo"
+        }
+    },
+    {
+        id: 2,
+        person: {
+            image: {
+                url: "https://lh4.googleusercontent.com/-XlaUq1MC7PQ/AAAAAAAAAAI/AAAAAAAAAAA/UhEE5TO7Li8/s96-c/photo.jpg"
+            },
+            displayName: "Princess Leia"
+        }
+    }
+];
 
 var eventObj = {
 	isApiReady: true
