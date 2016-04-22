@@ -74,3 +74,24 @@ appModule.filter("dieResultSummary", ["$filter", function ($filter) {
         return output;
     }
 }]);
+
+appModule.filter("participantArrayToString", ["$filter", function ($filter) {
+    return function (participantIds, showFullList) {
+        if (showFullList) {
+            var participantNames = [];
+            for (var i = 0; i < participantIds.length; i++) {
+                participantNames.push(gapi.hangout.getParticipantById(participantIds[i]).person.displayName);
+            }
+            return participantNames.join(", ");
+        } else {
+            // If there's only one person, show their name, otherwise just show the number of people
+            if (participantIds.length == 0) {
+                return "nobody";
+            } else if (participantIds.length == 1) {
+                return gapi.hangout.getParticipantById(participantIds[0]).person.displayName;
+            } else {
+                return participantIds.length + " people";
+            }
+        }
+    }
+}]);

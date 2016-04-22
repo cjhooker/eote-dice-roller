@@ -42,6 +42,12 @@ input.button:hover {
     background: @lightColor;
 }
 
+input.button:disabled {
+    background: #BBBBBB;
+    color: #999999;
+    cursor: default;
+}
+
 ::-webkit-scrollbar {
     width: 13px;
     height: 13px;
@@ -194,7 +200,7 @@ input[type="checkbox"]:checked + label span {
                 top: 4px;
             }
 
-            die-container:nth-child(3n) .die-container {
+            die-container:nth-of-type(3n) .die-container {
                 margin-right: 0;
             }
 

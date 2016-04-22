@@ -86,7 +86,7 @@
                     </div>
                     <div id="controlsYourDiceContainer" ng-show="showMore">
                         Controls your dice: 
-                        <span id="controlsYourDice" ng-bind="controlsYourDice">
+                        <span id="controlsYourDice" ng-bind="controlsYourDice | participantArrayToString: false" ng-attr-title="{{controlsYourDice | participantArrayToString: true}}">
                         </span>
                     </div>
                     <die-container color="Green" quantity="diceQuantities['Green']"></die-container>
@@ -106,7 +106,7 @@
                     <die-container color="Force" quantity="diceQuantities['Force']"></die-container>
                     <die-container color="Numeric" quantity="diceQuantities['Numeric']" numeric-die-type="numericDieType"></die-container>
 
-                    <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
+                    <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" ng-disabled="controlDiceForPlayer != currentPlayer" />
                     
                     <div id="rollCaptionContainer" ng-show="showMore">
                         Roll caption: <input type="text" id="rollCaption" ng-model="rollCaption" />
@@ -147,6 +147,8 @@
                 <div class="settings-item">
                     <a href="https://github.com/cjhooker/eote-dice-roller/issues" target="_blank">Report a bug or request a feature</a>
                 </div>
+
+                [[FAKE_CONTROLS_HTML]]
 
                 <!--<div>
                     <input class="button" type="button" value="DEBUG" id="debugButton" ng-click="displayDebug()" />

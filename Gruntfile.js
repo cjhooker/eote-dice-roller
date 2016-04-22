@@ -38,6 +38,12 @@
                 }, {
                     from: "[[DEBUG_WATERMARK]]",
                     to: ""
+                }, {
+                    from: "[[FAKE_CONTROLS_HTML]]",
+                    to: ""
+                }, {
+                    from: "[[FAKE_CONTROLS_JS]]",
+                    to: ""
                 }]
             },
             qa: {
@@ -61,6 +67,12 @@
                 }, {
                     from: "[[DEBUG_WATERMARK]]",
                     to: "<div class='debugWatermark'>BETA</div>"
+                }, {
+                    from: "[[FAKE_CONTROLS_HTML]]",
+                    to: ""
+                }, {
+                    from: "[[FAKE_CONTROLS_JS]]",
+                    to: ""
                 }]
             },
             dev: {
@@ -84,6 +96,12 @@
                 }, {
                     from: "[[DEBUG_WATERMARK]]",
                     to: "<div class='debugWatermark'>DEV</div>"
+                }, {
+                    from: "[[FAKE_CONTROLS_HTML]]",
+                    to: ""
+                }, {
+                    from: "[[FAKE_CONTROLS_JS]]",
+                    to: ""
                 }]
             },
             local: {
@@ -101,6 +119,12 @@
                 }, {
                     from: "[[DEBUG_WATERMARK]]",
                     to: "<div class='debugWatermark'>LOCAL</div>"
+                }, {
+                    from: "[[FAKE_CONTROLS_HTML]]",
+                    to: grunt.file.read("fake-controls.html")
+                }, {
+                    from: "[[FAKE_CONTROLS_JS]]",
+                    to: grunt.file.read("js/fakes/fake-controls.js")
                 }]
             }
         },
