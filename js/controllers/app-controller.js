@@ -229,7 +229,8 @@
                         break;
                     case "diceQuantities":
                         var participantId = key.split("-")[1];
-                        if (participantId == $scope.currentPlayer || participantId == $scope.controlDiceForPlayer) {
+                        // Only update the dice UI if the update is for the dice you are currently controlling
+                        if (participantId == $scope.controlDiceForPlayer) {
                             var diceQuantities = JSON.parse(stateChangedEvent.addedKeys[i].value);
                             $timeout(function () {
                                 $scope.diceQuantities = diceQuantities;
@@ -272,9 +273,23 @@
         //}
 
         // Watch controlDiceForPlayer so that if the user takes control of another's dice,
-        // they are aware of the change. 
+        // the other player is made aware of the change.
         $scope.$watch("controlDiceForPlayer", function (newValue, oldValue) {
             gapi.hangout.data.setValue("controlDiceForPlayer-" + $scope.currentPlayer, newValue);
+            if (newValue == $scope.currentPlayer) {
+                // If switching back to your own dice, get the values from the hangout data if they are there,
+                // otherwise reset them.
+                var diceQuantities = gapi.hangout.data.getValue("diceQuantities-" + $scope.currentPlayer);
+                if (diceQuantities == undefined) {
+                    $scope.resetDiceQuantities();
+                } else {
+                    $scope.diceQuantities = JSON.parse(gapi.hangout.data.getValue("diceQuantities-" + $scope.currentPlayer));
+                }
+            } else {
+                // If taking control of someone else, we also need to send the current player's dice quantities
+                // so the value is stored
+                gapi.hangout.data.setValue("diceQuantities-" + $scope.currentPlayer, JSON.stringify($scope.diceQuantities));
+            }
         });
 
         // Whether we should notify other players when we change dice quantities
