@@ -1,5 +1,6 @@
-﻿appModule.controller("appController", ["$scope", "$compile", "$timeout", "diceService", "messageService", "settingService", "playerService",
-    function ($scope, $compile, $timeout, diceService, messageService, settingService, playerService) {
+﻿appModule.controller("appController", ["$scope", "$compile", "$timeout", "diceService",
+    "messageService", "settingService", "playerService", "hangoutService",
+    function ($scope, $compile, $timeout, diceService, messageService, settingService, playerService, hangoutService) {
         var getOutputArea = function () { return angular.element(document.getElementById('outputArea')) };
 
         settingService.set("imageSize", "medium");
@@ -38,7 +39,7 @@
             $scope.resetAfterRoll = false;
 
             // Set the dice quantities when the app first loads
-            $scope.diceQuantities = {};
+            $scope.diceQuantities = new DiceQuantities();
             $scope.resetDiceQuantities();
             $scope.numericDieType = 100;
         }
@@ -49,13 +50,9 @@
             }
             $scope.diceQuantities['Numeric'] = 0;
 
-            // Note that this is here rather than just a $watch to avoid an infinite loop of sending and receiving notifications
-            // when another player changes the quantity.
-            if ($scope.shouldSendDiceQuantityNotifications()) {
-                gapi.hangout.data.setValue("diceQuantities-" + $scope.controlDiceForPlayer,
-                    JSON.stringify($scope.diceQuantities));
-                console.log('sent from resetDiceQuantities diceQuantities-' + $scope.controlDiceForPlayer);
-            }
+            // Note that this is here rather than just a $watch to avoid sending a notification in response to receiving
+            // a notification when another player changes your quantity.
+            playerService.setDiceForPlayer($scope.controlDiceForPlayer, $scope.diceQuantities);
         }
 
         $scope.resetSymbolQuantites = function () {
@@ -197,11 +194,14 @@
             }
         }
 
-        gapi.hangout.onEnabledParticipantsChanged.add(function (enabledParticipantsChangedEvent) {
-            $scope.playerList = enabledParticipantsChangedEvent;
+        hangoutService.onEnabledParticipantsChanged(function (enabledParticipantsChangedEvent) {
+            debugLog("enabledParticipants changed");
+            $scope.playerList = enabledParticipantsChangedEvent.enabledParticipants;
         });
 
-        gapi.hangout.data.onStateChanged.add(function (stateChangedEvent) {
+        hangoutService.data.onStateChanged(function (stateChangedEvent) {
+            // debugLog(JSON.stringify(stateChangedEvent));
+
             // Loop through all the keys that were added to the shared state
             for (var i = 0; i < stateChangedEvent.addedKeys.length; i++) {
                 var key = stateChangedEvent.addedKeys[i].key;
@@ -228,17 +228,23 @@
                         });
                         break;
                     case "diceQuantities":
+                        // Don't bother processing updates that are from yourself
+                        if (stateChangedEvent.metadata[key].lastWriter == $scope.currentPlayer) return;
+
                         var participantId = key.split("-")[1];
+                        debugLog("received diceQuantities for " + playerService.getPlayer(participantId).name);
                         // Only update the dice UI if the update is for the dice you are currently controlling
                         if (participantId == $scope.controlDiceForPlayer) {
                             var diceQuantities = JSON.parse(stateChangedEvent.addedKeys[i].value);
                             $timeout(function () {
                                 $scope.diceQuantities = diceQuantities;
-                                console.log('received diceQuantities');
                             });
                         }
                         break;
                     case "controlDiceForPlayer":
+                        // Don't bother processing updates that are from yourself
+                        if (stateChangedEvent.metadata[key].lastWriter == $scope.currentPlayer) return;
+
                         var controllingPlayerId = key.split("-")[1];
                         var controlledPlayerId = stateChangedEvent.addedKeys[i].value;
 
@@ -272,41 +278,34 @@
         //    }
         //}
 
-        // Watch controlDiceForPlayer so that if the user takes control of another's dice,
-        // the other player is made aware of the change.
         $scope.$watch("controlDiceForPlayer", function (newValue, oldValue) {
-            gapi.hangout.data.setValue("controlDiceForPlayer-" + $scope.currentPlayer, newValue);
-            if (newValue == $scope.currentPlayer) {
-                // If switching back to your own dice, get the values from the hangout data if they are there,
-                // otherwise reset them.
-                var diceQuantities = gapi.hangout.data.getValue("diceQuantities-" + $scope.currentPlayer);
-                if (diceQuantities == undefined) {
-                    $scope.resetDiceQuantities();
-                } else {
-                    $scope.diceQuantities = JSON.parse(gapi.hangout.data.getValue("diceQuantities-" + $scope.currentPlayer));
-                }
-            } else {
-                // If taking control of someone else, we also need to send the current player's dice quantities
-                // so the value is stored
-                gapi.hangout.data.setValue("diceQuantities-" + $scope.currentPlayer, JSON.stringify($scope.diceQuantities));
+            // Make sure the other players are made aware of the change
+            hangoutService.data.setValue("controlDiceForPlayer-" + $scope.currentPlayer, newValue);
+
+            if (newValue != $scope.currentPlayer) {
+                // If taking control of someone else, we also need to send our dice quantities so the value is stored
+                playerService.setDiceForPlayer($scope.currentPlayer, $scope.diceQuantities);
             }
+
+            // Get the dice that you are controlling
+            $scope.diceQuantities = playerService.getDiceForPlayer(newValue);
         });
 
-        // Whether we should notify other players when we change dice quantities
-        $scope.shouldSendDiceQuantityNotifications = function () {
-            return $scope.controlDiceForPlayer != $scope.currentPlayer || $scope.controlsYourDice.length > 0;
-        };
+        // // Whether we should notify other players when we change dice quantities
+        // $scope.shouldSendDiceQuantityNotifications = function () {
+        //     return $scope.controlDiceForPlayer != $scope.currentPlayer || $scope.controlsYourDice.length > 0;
+        // };
 
-        // Whenever the list of people controlling your dice changes, you need to transmit your list of diceQuantities
-        // so they have them.
-        $scope.$watchCollection("controlsYourDice", function (newValue, oldValue) {
-            if (newValue.length > 0) {
-                gapi.hangout.data.setValue("diceQuantities-" + $scope.currentPlayer, JSON.stringify($scope.diceQuantities));
-            }
-        });
+        // // Whenever the list of people controlling your dice changes, you need to transmit your list of diceQuantities
+        // // so they have them.
+        // $scope.$watchCollection("controlsYourDice", function (newValue, oldValue) {
+        //     if (newValue.length > 0) {
+        //         gapi.hangout.data.setValue("diceQuantities-" + $scope.currentPlayer, JSON.stringify($scope.diceQuantities));
+        //     }
+        // });
 
         // After everything is defined, call the init function
         $scope.init();
 
-        [[FAKE_CONTROLS_JS]]
+        //FAKE_CONTROLS_JS//
     }]);

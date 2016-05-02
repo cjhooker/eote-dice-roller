@@ -17,28 +17,22 @@
         }
 
         $scope.fakeHanChangesDice = function () {
-            var tempDiceQuantities = JSON.parse(gapi.hangout.data.getValue("diceQuantities-1234"));
-            for (var prop in tempDiceQuantities) {
-                if (tempDiceQuantities.hasOwnProperty(prop)) {
-                    tempDiceQuantities[prop] += 1;
-                }
-            }
-            gapi.hangout.data.setValue("diceQuantities-1234", JSON.stringify(tempDiceQuantities));
+            var diceQuantities = playerService.getDiceForPlayer(1234);
+            diceQuantities["Green"] += 1;
+            gapi.hangout.fake.setLastWriter(1);
+            playerService.setDiceForPlayer(1234, diceQuantities);
         }
 
         $scope.fakeLeiaChangesDice = function () {
-            var tempDiceQuantities = JSON.parse(gapi.hangout.data.getValue("diceQuantities-1234"));
-            for (var prop in tempDiceQuantities) {
-                if (tempDiceQuantities.hasOwnProperty(prop)) {
-                    tempDiceQuantities[prop] += 2;
-                }
-            }
-            gapi.hangout.data.setValue("diceQuantities-1234", JSON.stringify(tempDiceQuantities));
+            var diceQuantities = playerService.getDiceForPlayer(1234);
+            diceQuantities["Purple"] += 1;
+            gapi.hangout.fake.setLastWriter(2);
+            playerService.setDiceForPlayer(1234, diceQuantities);
         }
 
         var seeDice = function (participantId) {
             var output = "";
-            var diceQuantities = JSON.parse(gapi.hangout.data.getValue("diceQuantities-" + participantId));
+            var diceQuantities = playerService.getDiceForPlayer(participantId);
             for (var prop in diceQuantities) {
                 if ($scope.diceQuantities.hasOwnProperty(prop)) {
                     output += prop + ": " + diceQuantities[prop] + "\r\n";

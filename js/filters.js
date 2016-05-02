@@ -75,12 +75,12 @@ appModule.filter("dieResultSummary", ["$filter", function ($filter) {
     }
 }]);
 
-appModule.filter("participantArrayToString", ["$filter", function ($filter) {
+appModule.filter("participantArrayToString", ["$filter", "playerService", function ($filter, playerService) {
     return function (participantIds, showFullList) {
         if (showFullList) {
             var participantNames = [];
             for (var i = 0; i < participantIds.length; i++) {
-                participantNames.push(gapi.hangout.getParticipantById(participantIds[i]).person.displayName);
+                participantNames.push(playerService.getPlayer(participantIds[i]).name);
             }
             return participantNames.join(", ");
         } else {
@@ -88,7 +88,7 @@ appModule.filter("participantArrayToString", ["$filter", function ($filter) {
             if (participantIds.length == 0) {
                 return "nobody";
             } else if (participantIds.length == 1) {
-                return gapi.hangout.getParticipantById(participantIds[0]).person.displayName;
+                return playerService.getPlayer(participantIds[0]).name;
             } else {
                 return participantIds.length + " people";
             }

@@ -15,6 +15,7 @@
     <script src="[[BASE_PATH]]js/services/message-service.js"></script>
     <script src="[[BASE_PATH]]js/services/setting-service.js"></script>
     <script src="[[BASE_PATH]]js/services/player-service.js"></script>
+    <script src="[[BASE_PATH]]js/services/hangout-service.js"></script>
 
     <script src="[[BASE_PATH]]js/utilities.js"></script>
 
@@ -46,7 +47,7 @@
                     <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png'
                          alt="{{dieResult.die|dieName}} {{dieResult.result|dieResultSummary}}"
                          ng-if="dieResult.die != 'Numeric'" ng-repeat="dieResult in message.data.diceResults" />
-                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" 
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults"
                           ng-if="dieResult.die == 'Numeric'">{{dieResult.result}}</span>
                 </div>
                 <div class='overall-results' title="{{message.data.overallResult|dieResultSummary}}">
@@ -78,14 +79,14 @@
                 </div>
                 <div id="buttonContainer">
                     <div id="controlDiceForContainer" ng-show="showMore">
-                        Control dice for: 
-                        <select id="controlDiceFor" 
+                        Control dice for:
+                        <select id="controlDiceFor"
                                 ng-model="controlDiceForPlayer"
-                                ng-options="value.id as value.person.displayName for value in playerList">
+                                ng-options="value.id as value.name for value in playerList">
                         </select>
                     </div>
                     <div id="controlsYourDiceContainer" ng-show="showMore">
-                        Controls your dice: 
+                        Controls your dice:
                         <span id="controlsYourDice" ng-bind="controlsYourDice | participantArrayToString: false" ng-attr-title="{{controlsYourDice | participantArrayToString: true}}">
                         </span>
                     </div>
@@ -107,7 +108,7 @@
                     <die-container color="Numeric" quantity="diceQuantities['Numeric']" numeric-die-type="numericDieType"></die-container>
 
                     <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" ng-disabled="controlDiceForPlayer != currentPlayer" />
-                    
+
                     <div id="rollCaptionContainer" ng-show="showMore">
                         Roll caption: <input type="text" id="rollCaption" ng-model="rollCaption" />
                     </div>
@@ -172,4 +173,4 @@
     </div>
     <script src="[[BASE_PATH]]js/hangout-init.js"></script>
 </body>
-</html>  
+</html>

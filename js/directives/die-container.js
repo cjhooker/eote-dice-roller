@@ -1,4 +1,4 @@
-﻿appModule.directive("dieContainer", [function () {
+﻿appModule.directive("dieContainer", ["playerService", function (playerService) {
     return {
         restrict: 'E',
         templateUrl: "die-container.html",
@@ -9,17 +9,13 @@
         },
         link: function ($scope, element, attrs) {
 
-            // Note that this is here rather than just a $watch to avoid an infinite loop of sending and receiving notifications
-            // when another player changes the quantity.
+            // Note that this is here rather than just a $watch to avoid sending a notification in response to receiving
+            // a notification when another player changes your quantity.
             var checkShouldNotify = function () {
-                if ($scope.$parent.shouldSendDiceQuantityNotifications()) {
-                    var newQuantity = {}
-                    newQuantity[$scope.color] = $scope.quantity;
-                    var diceQuantities = Object.assign($scope.$parent.diceQuantities, newQuantity);
-                    gapi.hangout.data.setValue("diceQuantities-" + $scope.$parent.controlDiceForPlayer,
-                        JSON.stringify(diceQuantities));
-                    console.log('sent from directive diceQuantities-' + $scope.$parent.controlDiceForPlayer);
-                }
+                var newQuantity = {}
+                newQuantity[$scope.color] = $scope.quantity;
+                var diceQuantities = Object.assign($scope.$parent.diceQuantities, newQuantity);
+                playerService.setDiceForPlayer($scope.$parent.controlDiceForPlayer, $scope.$parent.diceQuantities);
             }
 
             $scope.clearQty = function () {

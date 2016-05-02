@@ -1,5 +1,5 @@
 ﻿module.exports = function (grunt) {
-    var sourceFiles = ['**', "!node_modules/**", "!Gruntfile.js", "!package.json", "!compilerconfig.*"];
+    var sourceFiles = ["**", "!node_modules/**", "!Gruntfile.js", "!package.json", "!compilerconfig.*"];
     var releaseDir = "../eote-dice-roller-release/";
     var qaDir = "../eote-dice-roller-qa/";
     var devDir = "../eote-dice-roller-dev/";
@@ -7,7 +7,7 @@
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON("package.json"),
         build: {
             release: {},
             qa: {},
@@ -19,7 +19,7 @@
                 src: [releaseDir + "/**/*.html", releaseDir + "/**/*.xml", releaseDir + "/**/*.css", releaseDir + "/**/*.js"],
                 overwrite: true,
                 replacements: [{
-                    from: "[[APP_HTML]]", 
+                    from: "[[APP_HTML]]",
                     to: grunt.file.read("app.html")
                 }, {
                     from: "[[HANGOUT_JS]]",
@@ -42,8 +42,11 @@
                     from: "[[FAKE_CONTROLS_HTML]]",
                     to: ""
                 }, {
-                    from: "[[FAKE_CONTROLS_JS]]",
+                    from: "//FAKE_CONTROLS_JS//",
                     to: ""
+                }, {
+                    from: "//DEBUG_LOG_CODE//",
+                    to: grunt.option("debugLog") ? "console.log(debugText);" : "return;"
                 }]
             },
             qa: {
@@ -71,8 +74,11 @@
                     from: "[[FAKE_CONTROLS_HTML]]",
                     to: ""
                 }, {
-                    from: "[[FAKE_CONTROLS_JS]]",
+                    from: "//FAKE_CONTROLS_JS//",
                     to: ""
+                }, {
+                    from: "//DEBUG_LOG_CODE//",
+                    to: grunt.option("debugLog") ? "console.log(debugText);" : "return;"
                 }]
             },
             dev: {
@@ -100,8 +106,11 @@
                     from: "[[FAKE_CONTROLS_HTML]]",
                     to: ""
                 }, {
-                    from: "[[FAKE_CONTROLS_JS]]",
+                    from: "//FAKE_CONTROLS_JS//",
                     to: ""
+                }, {
+                    from: "//DEBUG_LOG_CODE//",
+                    to: grunt.option("debugLog") ? "console.log(debugText);" : "return;"
                 }]
             },
             local: {
@@ -123,8 +132,11 @@
                     from: "[[FAKE_CONTROLS_HTML]]",
                     to: grunt.file.read("fake-controls.html")
                 }, {
-                    from: "[[FAKE_CONTROLS_JS]]",
+                    from: "//FAKE_CONTROLS_JS//",
                     to: grunt.file.read("js/fakes/fake-controls.js")
+                }, {
+                    from: "//DEBUG_LOG_CODE//",
+                    to: grunt.option("debugLog") ? "console.log(debugText);" : "return;"
                 }]
             }
         },
@@ -181,13 +193,20 @@
         }
     });
 
-    grunt.registerMultiTask('build', 'Build the app.', function () {
-        grunt.task.run('clean:' + this.target);
-        grunt.task.run('copy:' + this.target);
-        grunt.task.run('replace:' + this.target);
+    grunt.registerMultiTask("build", "Build the app.", function () {
+        // var debug = grunt.option("debugLog");
+        // var replaceTask = "replace:" + this.target;
+        // if (debug) {
+        //     replaceTask += ":debug";
+        // }
+
+        grunt.task.run("clean:" + this.target);
+        grunt.task.run("copy:" + this.target);
+        // grunt.task.run(replaceTask);
+        grunt.task.run("replace:" + this.target);
     });
 
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-text-replace");
 };
