@@ -1,18 +1,22 @@
 ﻿        // Functions for controlling various fake functionality when not running in Hangouts
 
         $scope.fakeHanTakesControl = function () {
+            gapi.hangout.fake.setLastWriter(1);
             gapi.hangout.data.setValue("controlDiceForPlayer-1", 1234);
         }
 
         $scope.fakeLeiaTakesControl = function () {
+            gapi.hangout.fake.setLastWriter(2);
             gapi.hangout.data.setValue("controlDiceForPlayer-2", 1234);
         }
 
         $scope.fakeHanStopsControlling = function () {
+            gapi.hangout.fake.setLastWriter(1);
             gapi.hangout.data.setValue("controlDiceForPlayer-1", 1);
         }
 
         $scope.fakeLeiaStopsControlling = function () {
+            gapi.hangout.fake.setLastWriter(2);
             gapi.hangout.data.setValue("controlDiceForPlayer-2", 2);
         }
 

@@ -1,7 +1,7 @@
 describe("filters", function () {
     beforeEach(module("appModule"));
 
-    var $filter, playerService;
+    var $filter;
 
     beforeEach(module(testDoubles.mockPlayerService));
 

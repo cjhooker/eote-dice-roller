@@ -196,7 +196,8 @@
 
         hangoutService.onEnabledParticipantsChanged(function (enabledParticipantsChangedEvent) {
             debugLog("enabledParticipants changed");
-            $scope.playerList = enabledParticipantsChangedEvent.enabledParticipants;
+            // $scope.playerList = enabledParticipantsChangedEvent.enabledParticipants;
+            $scope.playerList = playerService.getPlayerList();
         });
 
         hangoutService.data.onStateChanged(function (stateChangedEvent) {
