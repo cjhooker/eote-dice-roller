@@ -93,7 +93,7 @@ input[type="checkbox"]:checked + label span {
     }*/
 }
 #header #headerInner {
-  visibility: hidden;
+  visibility: visible;
   background-color: #fff;
 }
 #header #headerInner #destinyTracker {

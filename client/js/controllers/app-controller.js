@@ -1,6 +1,10 @@
+// NOTE: participantService needs to be injected here even if we don't use it, to ensure it is loaded
+// when the app loads.
+
 ﻿appModule.controller("appController",
-    ["$scope", "$compile", "diceService", "messageService", "settingService", "destinyService",
-    function ($scope, $compile, diceService, messageService, settingService, destinyService) {
+    ["$scope", "$compile", "diceService", "messageService", "settingService", "destinyService", "participantService",
+    function ($scope, $compile, diceService, messageService, settingService, destinyService, participantService) {
+
         var getOutputArea = function () { return angular.element(document.getElementById('outputArea')) };
 
         settingService.set("imageSize", "medium");

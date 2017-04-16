@@ -12,15 +12,40 @@ app.get("/", function(req, res){
 app.use(express.static("client"))
 
 var destiny = "";
+var participants = [];
+var currentParticipantId = 1;
+var testParticipants = [
+    {
+        imageUrl: "/images/test-images/han-solo.jpg",
+        displayName: "Han Solo"
+    },
+    {
+        imageUrl: "/images/test-images/princess-leia.jpg",
+        displayName: "Princess Leia"
+    }
+];
+
+function getNextParticipant(socketId) {
+    var participantId = currentParticipantId++;
+    var testParticipant = testParticipants[participantId % 2];
+    return { participantId, socketId, imageUrl: testParticipant.imageUrl, displayName: testParticipant.displayName };
+}
 
 io.on("connection", function(socket){
-    console.log("a participant connected");
-    // Send new participants the current destiny pool
+
+    var participant = getNextParticipant(socket.id);
+    participants.push(participant);
+    io.emit("participants", participants);
+    socket.emit("join", participant.participantId);
     socket.emit("destiny", destiny);
-    console.log("sending destiny " + destiny)
+    console.log(`A participant connected ${JSON.stringify(participant)}`);
 
     socket.on("disconnect", function(){
-        console.log("user disconnected");
+        var disconnectedParticipant = participants.filter(p => p.socketId === socket.id)[0];
+        var index = participants.indexOf(disconnectedParticipant);
+        participants.splice(index, 1);
+        io.emit("participants", participants);
+        console.log(`A participant disconnected ${JSON.stringify(participant)}`);
     });
 
     socket.on("destiny-add", function(){
@@ -53,18 +78,18 @@ io.on("connection", function(socket){
         console.log(message);
         io.emit("message", message);
     });
+
+    function createMessage (type, data) {
+        var message = {
+            participantId: participants.filter(p => p.socketId === socket.id)[0].participantId,
+            type: type,
+            data: data
+        };
+
+        return message;
+    }
 });
 
 http.listen(3000, function(){
   console.log("listening on *:3000");
 });
-
-function createMessage (type, data) {
-    var message = {
-        type: type,
-        participantId: 1234,
-        data: data
-    };
-
-    return message;
-}

@@ -1,4 +1,4 @@
-﻿appModule.service("messageService", ["socketService", function (socketService) {
+﻿appModule.service("messageService", ["socketService", "participantService", function (socketService, participantService) {
     var listenerFunctions = [];
 
     // When we receive a message from the server, notify any listeners
@@ -11,7 +11,7 @@
     this.createMessage = function(type, data) {
         var message = {
             type: type,
-            participantId: gapi.hangout.getLocalParticipant().id,
+            participantId: participantService.getCurrentParticipant().participantId,
             data: data
         };
 
