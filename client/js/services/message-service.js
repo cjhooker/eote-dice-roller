@@ -6,24 +6,29 @@
         return 'msg-' + gapi.hangout.getLocalParticipant().id + '-' + nextLocalMessageId++;
     }
 
-    this.createMessage = function(messageHtml) {
+    this.createMessage = function(type, data) {
         var message = {
             messageId: this.getNextMessageId(),
-            type: "html",
+            type: type,
             participantId: gapi.hangout.getLocalParticipant().id,
-            data: {
-                html: messageHtml
-            }
+            data: data
         };
 
         return message;
     }
 
-    this.sendMessage = function(messageHtml) {
-        var message = this.createMessage(messageHtml);
+    this.sendMessage = function(type, data) {
+        var message = this.createMessage(type, data);
         // Set the message in the shared state
         gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
         this.receiveMessage(message);
+    }
+
+    this.sendHtmlMessage = function(messageHtml) {
+        var data = {
+            html: messageHtml
+        }
+        this.sendMessage("html", data);
     }
 
     this.receiveMessage = function(message) {

@@ -124,31 +124,6 @@
             $scope.destiny = destiny;
         });
 
-        // gapi.hangout.data.onStateChanged.add(function (stateChangedEvent) {
-        //     // Loop through all the keys that were added to the shared state
-        //     for (var i = 0; i < stateChangedEvent.addedKeys.length; i++) {
-        //         var key = stateChangedEvent.addedKeys[i].key;
-        //         var keyFirstPart = key.substring(0, key.indexOf("-") == -1 ? key.length : key.indexOf("-"));
-        //
-        //         // The first part of the key will tell us what we need to do with it
-        //         switch (keyFirstPart) {
-        //             case "msg":
-        //                 // A message of any type to display in the main output area
-        //                 // e.g. the results of a die roll
-        //                 var message = JSON.parse(stateChangedEvent.addedKeys[i].value);
-        //                 $scope.displayMessage(message);
-        //                 break;
-        //             case "destiny":
-        //                 // The current state of the destiny tracker
-        //                 $scope.destiny = "";
-        //                 if (gapi.hangout.data.getValue('destiny')) {
-        //                     $scope.destiny = gapi.hangout.data.getValue('destiny');
-        //                 }
-        //                 break;
-        //         }
-        //     }
-        // });
-
         //$scope.displayDebug = function () {
         //    var keys = gapi.hangout.data.getKeys();
         //    for (var i = 0; i < keys.length; i++) {

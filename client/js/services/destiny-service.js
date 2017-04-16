@@ -6,14 +6,14 @@ appModule.service("destinyService", ["messageService", function (messageService)
         destiny += "L";
         gapi.hangout.data.setValue("destiny", destiny);
         this.receiveDestiny(destiny);
-        messageService.sendMessage("Destiny added");
+        messageService.sendHtmlMessage("Destiny added");
     }
 
     this.removeDestiny = function() {
         destiny = destiny.substr(0, destiny.length - 1);
         gapi.hangout.data.setValue("destiny", destiny);
         this.receiveDestiny(destiny);
-        messageService.sendMessage("Destiny removed");
+        messageService.sendHtmlMessage("Destiny removed");
     }
 
     this.toggleDestiny = function(position) {
@@ -28,7 +28,7 @@ appModule.service("destinyService", ["messageService", function (messageService)
         gapi.hangout.data.setValue("destiny", destiny);
 
         this.receiveDestiny(destiny);
-        messageService.sendMessage("Destiny used: " + (destinyUsed == "L" ? "Light" : "Dark"));
+        messageService.sendHtmlMessage("Destiny used: " + (destinyUsed == "L" ? "Light" : "Dark"));
     }
 
     this.receiveDestiny = function(destiny) {

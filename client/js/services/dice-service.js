@@ -40,16 +40,13 @@
         }
 
         if (diceResults.length > 0) {
-            var message = new Object();
-            message.messageId = messageService.getNextMessageId();
-            message.type = "roll";
-            message.participantId = gapi.hangout.getLocalParticipant().id;
-            message.data = new Object();
-            message.data.diceResults = diceResults;
-            message.data.overallResult = calculateOverallRollResult(diceResults);
-            message.data.rollCaption = rollCaption;
+            var data = {
+                diceResults: diceResults,
+                overallResult: calculateOverallRollResult(diceResults),
+                rollCaption: rollCaption
+            }
 
-            gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
+            messageService.sendMessage("roll", data);
         }
     }
 
