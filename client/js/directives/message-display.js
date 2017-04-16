@@ -1,4 +1,5 @@
-﻿appModule.directive("messageDisplay", ["$sanitize", "settingService", function ($sanitize, settingService) {
+﻿appModule.directive("messageDisplay", ["$sanitize", "settingService", "participantService",
+        function ($sanitize, settingService, participantService) {
     return {
         restrict: 'E',
         templateUrl: "message-display.html",
@@ -7,7 +8,7 @@
         },
         link: function ($scope, element, attrs) {
 
-            $scope.person = gapi.hangout.getParticipantById($scope.message.participantId).person;
+            $scope.person = participantService.getParticipant($scope.message.participantId);
 
             $scope.symbols = {
                 "S": "Success.png",
