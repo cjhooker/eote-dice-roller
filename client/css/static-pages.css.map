@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "static-pages.css",
+  "sources": [
+    "static-pages.less"
+  ],
+  "names": [],
+  "mappings": "AAAA;EACI,yCAAA;;AAGJ;EACI,YAAA;EACA,cAAA;;AAGJ;EACI,mBAAA"
+}
