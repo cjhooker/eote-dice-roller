@@ -1,5 +1,4 @@
 ﻿appModule.service("messageService", ["socketService", function (socketService) {
-    var nextLocalMessageId = 1;
     var listenerFunctions = [];
 
     // When we receive a message from the server, notify any listeners
@@ -21,9 +20,7 @@
 
     this.sendMessage = function(type, data) {
         var message = this.createMessage(type, data);
-        // Set the message in the shared state
-        gapi.hangout.data.setValue(message.messageId, JSON.stringify(message));
-        this.receiveMessage(message);
+        socketService.emit("message", message);
     }
 
     // Ability to add a listener for when messages are received
