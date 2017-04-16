@@ -19,8 +19,8 @@
                 src: [releaseDir + "/**/*.html", releaseDir + "/**/*.xml", releaseDir + "/**/*.css", releaseDir + "/**/*.js"],
                 overwrite: true,
                 replacements: [{
-                    from: "[[APP_HTML]]", 
-                    to: grunt.file.read("app.html")
+                    from: "[[APP_HTML]]",
+                    to: grunt.file.read("client/app.html")
                 }, {
                     from: "[[HANGOUT_JS]]",
                     to: "//plus.google.com/hangouts/_/api/v1/hangout.js"
@@ -45,7 +45,7 @@
                 overwrite: true,
                 replacements: [{
                     from: "[[APP_HTML]]",
-                    to: grunt.file.read("app.html")
+                    to: grunt.file.read("client/app.html")
                 }, {
                     from: "[[HANGOUT_JS]]",
                     to: "//plus.google.com/hangouts/_/api/v1/hangout.js"
@@ -68,7 +68,7 @@
                 overwrite: true,
                 replacements: [{
                     from: "[[APP_HTML]]",
-                    to: grunt.file.read("app.html")
+                    to: grunt.file.read("client/app.html")
                 }, {
                     from: "[[HANGOUT_JS]]",
                     to: "//plus.google.com/hangouts/_/api/v1/hangout.js"

@@ -1,33 +1,33 @@
 <html ng-controller="appController">
 <head>
-    <link rel="stylesheet" type="text/css" href="[[BASE_PATH]]css/styles.css">
-    <script src="[[HANGOUT_JS]]"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/fakes/hangout-fake.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-animate.js"></script>
 
-    <script src="[[BASE_PATH]]js/modules.js"></script>
-    <script src="[[BASE_PATH]]js/filters.js"></script>
-    <script src="[[BASE_PATH]]js/controllers/app-controller.js"></script>
-    <script src="[[BASE_PATH]]js/directives/die-container.js"></script>
-    <script src="[[BASE_PATH]]js/directives/message-display.js"></script>
-    <script src="[[BASE_PATH]]js/services/dice-service.js"></script>
-    <script src="[[BASE_PATH]]js/services/message-service.js"></script>
-    <script src="[[BASE_PATH]]js/services/setting-service.js"></script>
+    <script src="js/modules.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/controllers/app-controller.js"></script>
+    <script src="js/directives/die-container.js"></script>
+    <script src="js/directives/message-display.js"></script>
+    <script src="js/services/dice-service.js"></script>
+    <script src="js/services/message-service.js"></script>
+    <script src="js/services/setting-service.js"></script>
 
-    <script src="[[BASE_PATH]]js/utilities.js"></script>
+    <script src="js/utilities.js"></script>
 
     <!-- Angular Templates -->
     <!-- Template for display of dice controls -->
     <script type="text/ng-template" id="die-container.html">
         <div class="die-container">
-            <img ng-src="[[BASE_PATH]]images/{{color}}.png" class="die-button" id="roll{{color}}" alt="{{color}} die"
+            <img ng-src="images/{{color}}.png" class="die-button" id="roll{{color}}" alt="{{color}} die"
                  ng-click="clearQty()" ng-if="color!='Numeric'" />
             <input type="text" class="numeric-die-type" ng-model="$parent.numericDieType" ng-if="color=='Numeric'" />
             <span class="qty-text-box">{{quantity}}</span>
             <div class="arrow-container">
-                <img class="arrow-up" src="[[BASE_PATH]]images/arrow-up.png" alt="{{color}} +1" ng-click="changeQty(1)" />
-                <img class="arrow-down" src="[[BASE_PATH]]images/arrow-down.png" alt="{{color}} -1" ng-click="changeQty(-1)" />
+                <img class="arrow-up" src="images/arrow-up.png" alt="{{color}} +1" ng-click="changeQty(1)" />
+                <img class="arrow-down" src="images/arrow-down.png" alt="{{color}} -1" ng-click="changeQty(-1)" />
             </div>
         </div>
     </script>
@@ -42,16 +42,16 @@
                 <div class="roll-caption" ng-if="message.data.rollCaption" ng-bind="message.data.rollCaption">
                 </div>
                 <div class='dice-results'>
-                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{dieResult.die}}-{{dieResult.result}}.png'
+                    <img class='symbol' ng-src='images/{{dieResult.die}}-{{dieResult.result}}.png'
                          alt="{{dieResult.die|dieName}} {{dieResult.result|dieResultSummary}}"
                          ng-if="dieResult.die != 'Numeric'" ng-repeat="dieResult in message.data.diceResults" />
-                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" 
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults"
                           ng-if="dieResult.die == 'Numeric'">{{dieResult.numericDieType}}</span>
                 </div>
                 <div class='overall-results' title="{{message.data.overallResult|dieResultSummary}}">
-                    <img class='symbol' ng-src='[[BASE_PATH]]images/{{symbols[result]}}' alt="{{result|symbolName}}"
+                    <img class='symbol' ng-src='images/{{symbols[result]}}' alt="{{result|symbolName}}"
                          ng-repeat="result in message.data.overallResult track by $index" />
-                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults" 
+                    <span class="numeric-result" ng-repeat="dieResult in message.data.diceResults"
                           ng-if="dieResult.die == 'Numeric'">{{dieResult.result}}</span>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div id="headerInner">
                 <div id="destinyTracker">
                     <div id="destinyTokenContainer">
-                        <img ng-src='[[BASE_PATH]]images/destiny-{{destinyChar|destinyType}}.png' alt="Destiny {{destinyChar|destinyType}}" class='destiny-token' ng-click='toggleDestiny($index)'
+                        <img ng-src='images/destiny-{{destinyChar|destinyType}}.png' alt="Destiny {{destinyChar|destinyType}}" class='destiny-token' ng-click='toggleDestiny($index)'
                              ng-repeat="destinyChar in destiny track by $index" />
                         <div id="destinyWatermark" ng-show="!destiny">DESTINY</div>
                     </div>
@@ -96,7 +96,7 @@
                     <die-container color="Numeric" quantity="diceQuantities['Numeric']" numeric-die-type="numericDieType"></die-container>
 
                     <input class="button" type="button" value="ROLL!" id="roll" ng-click="roll()" />
-                    
+
                     <div id="rollCaptionContainer" ng-show="showMore">
                         Roll caption: <input type="text" id="rollCaption" ng-model="rollCaption" />
                     </div>
@@ -120,7 +120,7 @@
         <div id="content-settings" class="content ng-hide slide-down-animation" ng-show="showSettings" ng-class="{'more-panel-open': showMore}">
             <div id="settings-container">
                 <div id="settings-close" ng-click="showSettings=false">
-                    <img src="[[BASE_PATH]]images/close-button.png" alt="Close Settings" />
+                    <img src="images/close-button.png" alt="Close Settings" />
                 </div>
 
                 <h1>Settings</h1>
@@ -143,7 +143,7 @@
             </div>
         </div>
 
-        [[DEBUG_WATERMARK]]
+        <!-- [[DEBUG_WATERMARK]] -->
 
         <div id="footer">
             <div id="footer-inner">
@@ -151,12 +151,12 @@
 
                 <input class="button" type="button" value="Insert Break Line" id="insertBreak" ng-click="insertBreak()" />
 
-                <img class="settings-button" ng-src="[[BASE_PATH]]images/{{settingsButtonSrc}}" alt="Settings"
+                <img class="settings-button" ng-src="images/{{settingsButtonSrc}}" alt="Settings"
                      ng-init="settingsButtonSrc='settings.png'" ng-mouseover="settingsButtonSrc='settings-hover.png'" ng-mouseout="settingsButtonSrc='settings.png'"
                      ng-click="toggleSettingsDisplay()" />
             </div>
         </div>
     </div>
-    <script src="[[BASE_PATH]]js/hangout-init.js"></script>
+    <script src="js/hangout-init.js"></script>
 </body>
-</html>  
+</html>
