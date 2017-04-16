@@ -1,41 +1,23 @@
-appModule.service("destinyService", ["messageService", function (messageService) {
+appModule.service("destinyService", ["messageService", "socketService", function (messageService, socketService) {
     var listenerFunctions = [];
-    var destiny = "";
 
-    this.addDestiny = function () {
-        destiny += "L";
-        gapi.hangout.data.setValue("destiny", destiny);
-        this.receiveDestiny(destiny);
-        messageService.sendHtmlMessage("Destiny added");
-    }
-
-    this.removeDestiny = function() {
-        destiny = destiny.substr(0, destiny.length - 1);
-        gapi.hangout.data.setValue("destiny", destiny);
-        this.receiveDestiny(destiny);
-        messageService.sendHtmlMessage("Destiny removed");
-    }
-
-    this.toggleDestiny = function(position) {
-        var destinyUsed = destiny.charAt(position);
-
-        if (destinyUsed == "L") {
-            destiny = replaceAt(destiny, position, "D");
-        } else {
-            destiny = replaceAt(destiny, position, "L");
-        }
-
-        gapi.hangout.data.setValue("destiny", destiny);
-
-        this.receiveDestiny(destiny);
-        messageService.sendHtmlMessage("Destiny used: " + (destinyUsed == "L" ? "Light" : "Dark"));
-    }
-
-    this.receiveDestiny = function(destiny) {
-        // Execute each listener function
+    // When we receive a destiny message from the server, notify any listeners
+    socketService.on("destiny", function(destiny) {
         for (var i = 0; i < listenerFunctions.length; i++) {
             listenerFunctions[i](destiny);
         }
+    });
+
+    this.addDestiny = function () {
+        socketService.emit("destiny-add");
+    }
+
+    this.removeDestiny = function() {
+        socketService.emit("destiny-remove");
+    }
+
+    this.toggleDestiny = function(position) {
+        socketService.emit("destiny-toggle", position);
     }
 
     // Ability to add a listener for when destiny updates are received

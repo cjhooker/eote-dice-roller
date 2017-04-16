@@ -121,7 +121,9 @@
         });
 
         destinyService.listeners.add(function(destiny) {
-            $scope.destiny = destiny;
+            $scope.$apply(function () {
+                $scope.destiny = destiny;
+            });
         });
 
         // After everything is defined, call the init function
